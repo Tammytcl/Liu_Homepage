@@ -718,23 +718,49 @@ body {
 }
 
 
+/* 新增的段落内容样式 */
+.intro-content {
+    background-color: var(--project-item-bg-color, #e8dfc4);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--main-text-color, #000000);
+    margin-bottom: 15px;
+}
+
+.intro-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 修改头像容器样式 */
 .logo {
     flex-shrink: 0;
     width: 90%;
     position: relative;
-    aspect-ratio: 1/1;
     margin-top: 50px;
     background-size: cover;
-    /* 移除圆形边框 */
     border-radius: 0;
+    overflow: visible; /* 允许内容溢出 */
+    height: auto; /* 高度自适应 */
+    aspect-ratio: auto; /* 移除固定宽高比 */
     transition: all 0.8s ease-in-out;
 }
 
 .logo img {
-    /* 确保图片不会被设置为圆形 */
+    display: block;
+    max-width: 100%;
+    height: auto;
+    position: relative; /* 不使用绝对定位 */
     border-radius: 0 !important;
+    top: auto;
+    left: auto;
+    transform: none;
 }
-
 
 .left-div {
     flex-shrink: 0;
