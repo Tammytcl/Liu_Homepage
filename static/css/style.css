@@ -1061,6 +1061,7 @@ html[data-theme="dack"] .intern-period {
 }
 
 
+/* 修复Publication链接在夜间模式的样式 */
 .link-badge {
     background-color: white;
     color: rgba(0, 124, 255, 0.65);
@@ -1071,6 +1072,7 @@ html[data-theme="dack"] .intern-period {
     margin: 2px;
     border: 1px solid rgba(0, 124, 255, 0.3);
     transition: all 0.3s ease;
+    user-select: text;
 }
 
 .link-badge:hover {
@@ -1078,6 +1080,19 @@ html[data-theme="dack"] .intern-period {
     color: rgba(0, 124, 255, 0.9);
     box-shadow: 0 0 8px rgba(0, 124, 255, 0.3);
     transform: translateY(-1px);
+}
+
+/* 夜间模式适配 */
+html[data-theme="dack"] .link-badge {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: rgba(120, 190, 255, 0.9);
+    border: 1px solid rgba(100, 180, 255, 0.5);
+}
+
+html[data-theme="dack"] .link-badge:hover {
+    background-color: rgba(40, 40, 40, 0.9);
+    color: rgba(150, 210, 255, 1);
+    box-shadow: 0 0 8px rgba(100, 180, 255, 0.4);
 }
 
 /* Award Experience 样式 */
