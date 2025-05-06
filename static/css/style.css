@@ -907,3 +907,69 @@ body {
     }
 
 }
+
+/* 实习经历部分的样式 */
+.intern-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.intern-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.intern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.intern-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--main-text-color, #000000);
+}
+
+.intern-period {
+    font-size: 14px;
+    color: var(--project-item-left-text-color, #7e7e7e);
+    background-color: var(--main-bg-color, #fffae8);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.intern-details {
+    margin-top: 10px;
+}
+
+.intern-details p {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.intern-details p:last-child {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.intern-details a {
+    color: var(--gradient-start, #bd34fe);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.intern-details a:hover {
+    text-decoration: underline;
+}
+
+/* 适配暗色模式 */
+html[data-theme="dack"] .intern-period {
+    background-color: rgba(255, 255, 255, 0.1);
+}
