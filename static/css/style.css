@@ -986,6 +986,87 @@ body {
     text-decoration: underline;
 }
 
+
+/* 本地PDF链接样式 */
+.publication-links {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.link-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    color: rgba(0, 124, 255, 0.65);
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid rgba(0, 124, 255, 0.3);
+    transition: all 0.3s ease;
+    user-select: text;
+}
+
+.link-badge:hover {
+    background-color: #e3f2fd;
+    color: rgba(0, 124, 255, 0.9);
+    box-shadow: 0 0 8px rgba(0, 124, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* 夜间模式适配 */
+html[data-theme="dack"] .link-badge {
+    background-color: rgba(30, 30, 30, 0.8);
+    color: rgba(120, 190, 255, 0.9);
+    border: 1px solid rgba(100, 180, 255, 0.5);
+}
+
+html[data-theme="dack"] .link-badge:hover {
+    background-color: rgba(40, 40, 40, 0.9);
+    color: rgba(150, 210, 255, 1);
+    box-shadow: 0 0 8px rgba(100, 180, 255, 0.4);
+}
+
+/* PDF下载按钮特殊样式 */
+.link-badge[download] {
+    background-color: rgba(0, 124, 255, 0.1);
+    color: rgba(0, 124, 255, 0.8);
+    border: 1px solid rgba(0, 124, 255, 0.4);
+}
+
+.link-badge[download]:hover {
+    background-color: rgba(0, 124, 255, 0.2);
+    color: rgba(0, 124, 255, 1);
+}
+
+/* 夜间模式下的PDF下载按钮 */
+html[data-theme="dack"] .link-badge[download] {
+    background-color: rgba(100, 180, 255, 0.15);
+    color: rgba(150, 210, 255, 0.9);
+    border: 1px solid rgba(100, 180, 255, 0.5);
+}
+
+html[data-theme="dack"] .link-badge[download]:hover {
+    background-color: rgba(100, 180, 255, 0.25);
+    color: rgba(180, 230, 255, 1);
+}
+
+/* 移动端适配 */
+@media (max-width: 800px) {
+    .publication-links {
+        margin-top: 8px;
+        gap: 6px;
+    }
+
+    .link-badge {
+        padding: 3px 8px;
+        font-size: 13px;
+    }
+}
+
+
 /* 清除浮动 */
 .clearfix::after {
     content: "";
@@ -1061,39 +1142,7 @@ html[data-theme="dack"] .intern-period {
 }
 
 
-/* 修复Publication链接在夜间模式的样式 */
-.link-badge {
-    background-color: white;
-    color: rgba(0, 124, 255, 0.65);
-    padding: 2px 6px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
-    margin: 2px;
-    border: 1px solid rgba(0, 124, 255, 0.3);
-    transition: all 0.3s ease;
-    user-select: text;
-}
 
-.link-badge:hover {
-    background-color: #e3f2fd;
-    color: rgba(0, 124, 255, 0.9);
-    box-shadow: 0 0 8px rgba(0, 124, 255, 0.3);
-    transform: translateY(-1px);
-}
-
-/* 夜间模式适配 */
-html[data-theme="dack"] .link-badge {
-    background-color: rgba(30, 30, 30, 0.8);
-    color: rgba(120, 190, 255, 0.9);
-    border: 1px solid rgba(100, 180, 255, 0.5);
-}
-
-html[data-theme="dack"] .link-badge:hover {
-    background-color: rgba(40, 40, 40, 0.9);
-    color: rgba(150, 210, 255, 1);
-    box-shadow: 0 0 8px rgba(100, 180, 255, 0.4);
-}
 
 /* Award Experience 样式 */
 .awards-container {
@@ -1342,4 +1391,155 @@ html[data-theme="dack"] .personal-info-section {
     .name-section {
         font-size: 18px;
     }
+}
+
+
+
+/* 目录导航组件样式 */
+.toc-navigation {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--project-item-bg-color, #e8dfc4);
+    border-radius: 10px;
+    padding: 15px;
+    width: 180px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+    transition: all 0.3s ease;
+    opacity: 0.85;
+}
+
+.toc-navigation:hover {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.toc-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--main-text-color, #000000);
+}
+
+.toc-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toc-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: var(--main-text-color, #000000);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.toc-link:hover {
+    background: var(--main-bg-color, #fffae8);
+    transform: translateX(3px);
+}
+
+.toc-link.active {
+    background: var(--gradient-start, #bd34fe);
+    background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
+    color: white;
+}
+
+.toc-link-icon {
+    opacity: 0.7;
+    width: 16px;
+    height: 16px;
+}
+
+.toc-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-start, #bd34fe);
+    background: linear-gradient(135deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 101;
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.toc-toggle:hover {
+    transform: scale(1.1);
+}
+
+.toc-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+/* 响应式调整 */
+@media (max-width: 1400px) {
+    .toc-navigation {
+        right: 20px;
+        width: 160px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .toc-navigation {
+        display: none;
+        position: fixed;
+        right: 20px;
+        bottom: 75px;
+        top: auto;
+        transform: none;
+        width: 180px;
+    }
+
+    .toc-navigation.show {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .toc-toggle {
+        display: flex;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 0.85;
+        transform: translateY(0);
+    }
+}
+
+/* 深色模式适配 */
+html[data-theme="dack"] .toc-navigation {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dack"] .toc-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dack"] .toc-toggle {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
