@@ -251,7 +251,8 @@ footer {
 
 
     .right {
-        width: 100%;
+        width: calc(100% - 220px); /* 增加右侧宽度 */
+        padding: 25px 30px; /* 适当调整内边距 */
     }
 .tanChiShe {
     width: 100%;
