@@ -1332,3 +1332,47 @@ html[data-theme="dack"] .publication-links {
         transform: translateY(0);
     }
 }
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .left {
+    width: 100%;
+    height: auto;
+    position: relative;
+    max-height: none;
+  }
+
+  .left-main {
+    height: auto;
+    max-height: none;
+    padding-bottom: 20px;
+  }
+
+  .right {
+    padding: 0 15px 25px 15px;
+  }
+
+  .toc-navigation {
+    display: none;
+  }
+
+  .toc-toggle {
+    display: flex;
+  }
+}
+
+/* 在较小屏幕上隐藏右侧目录 */
+@media (max-width: 768px) {
+  .welcome {
+    font-size: 32px;
+    margin: 15px 0;
+  }
+
+  .intro-content {
+    padding: 15px;
+  }
+}
