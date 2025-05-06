@@ -1394,54 +1394,65 @@ html[data-theme="dack"] .personal-info-section {
 }
 
 
-
-/* 目录导航组件样式 */
+/* 改进的目录导航组件样式 */
 .toc-navigation {
     position: fixed;
     right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 190px; /* 调整顶部位置，避免遮挡标题 */
     background: var(--project-item-bg-color, #e8dfc4);
     border-radius: 10px;
-    padding: 15px;
-    width: 180px;
+    padding: 16px;
+    width: 190px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     z-index: 100;
     transition: all 0.3s ease;
-    opacity: 0.85;
+    opacity: 0.9;
+    max-height: calc(100vh - 250px); /* 限制最大高度 */
+    overflow-y: auto; /* 内容过多时可滚动 */
+}
+
+.toc-navigation::-webkit-scrollbar {
+    width: 4px;
+}
+
+.toc-navigation::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
 }
 
 .toc-navigation:hover {
     opacity: 1;
-    transform: translateY(-50%) translateX(-5px);
+    transform: translateX(-5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .toc-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     color: var(--main-text-color, #000000);
+    text-align: center;
 }
 
 .toc-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .toc-link {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 5px;
+    padding: 8px 12px;
+    border-radius: 6px;
     color: var(--main-text-color, #000000);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
+    user-select: none;
 }
 
 .toc-link:hover {
@@ -1450,25 +1461,30 @@ html[data-theme="dack"] .personal-info-section {
 }
 
 .toc-link.active {
-    background: var(--gradient-start, #bd34fe);
     background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
     color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toc-link.active .toc-link-icon {
+    opacity: 1;
+    filter: brightness(4);
 }
 
 .toc-link-icon {
     opacity: 0.7;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    transition: all 0.25s ease;
 }
 
 .toc-toggle {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: var(--gradient-start, #bd34fe);
     background: linear-gradient(135deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -1490,12 +1506,50 @@ html[data-theme="dack"] .personal-info-section {
     color: white;
 }
 
+/* 二级菜单支持 */
+.toc-submenu {
+    margin-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.toc-link.expanded + .toc-submenu {
+    max-height: 500px;
+}
+
+.toc-sublink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: var(--main-text-color, #000000);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.toc-sublink:hover {
+    background: var(--main-bg-color, #fffae8);
+    transform: translateX(3px);
+}
+
+.toc-sublink.active {
+    color: var(--gradient-start, #bd34fe);
+    font-weight: 600;
+}
+
 /* 响应式调整 */
 @media (max-width: 1400px) {
     .toc-navigation {
         right: 20px;
-        width: 160px;
-        padding: 12px;
+        width: 175px;
+        padding: 14px;
     }
 }
 
@@ -1504,10 +1558,11 @@ html[data-theme="dack"] .personal-info-section {
         display: none;
         position: fixed;
         right: 20px;
-        bottom: 75px;
+        bottom: 80px;
         top: auto;
         transform: none;
-        width: 180px;
+        width: 200px;
+        max-height: 400px; /* 限制移动端高度 */
     }
 
     .toc-navigation.show {
@@ -1526,20 +1581,25 @@ html[data-theme="dack"] .personal-info-section {
         transform: translateY(20px);
     }
     to {
-        opacity: 0.85;
+        opacity: 0.9;
         transform: translateY(0);
     }
 }
 
 /* 深色模式适配 */
 html[data-theme="dack"] .toc-navigation {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-html[data-theme="dack"] .toc-link:hover {
+html[data-theme="dack"] .toc-link:hover,
+html[data-theme="dack"] .toc-sublink:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme="dack"] .toc-toggle {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dack"] .toc-sublink.active {
+    color: var(--gradient-end, #41d1ff);
 }

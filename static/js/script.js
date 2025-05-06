@@ -6,7 +6,179 @@ console.log('  %c /  ~ \\', 'color: #8B4513; font-size: 20px;');
 console.log('  %c/______\\', 'color: #8B4513; font-size: 20px;');
 
 
+// 改进的导航脚本
+document.addEventListener('DOMContentLoaded', function() {
+    // 为各个部分添加ID
+    setupSectionIds();
 
+    // 为论文条目添加ID以支持子导航
+    setupPublicationIds();
+
+    // 处理菜单展开/折叠
+    setupExpandableMenu();
+
+    // 添加滚动监听以高亮当前部分
+    window.addEventListener('scroll', highlightCurrentSection);
+
+    // 初始高亮
+    highlightCurrentSection();
+
+    // 平滑滚动设置
+    setupSmoothScrolling();
+});
+
+// 设置主要部分ID
+function setupSectionIds() {
+    const sections = document.querySelectorAll('.title');
+    sections.forEach(section => {
+        const sectionText = section.textContent.trim();
+
+        if (sectionText.includes('Brief Intro')) {
+            section.id = 'brief-intro';
+        } else if (sectionText.includes('Award Experience')) {
+            section.id = 'award-experience';
+        } else if (sectionText.includes('Intern Experience')) {
+            section.id = 'intern-experience';
+        } else if (sectionText.includes('Publication')) {
+            section.id = 'publication';
+        }
+    });
+}
+
+// 设置论文条目ID
+function setupPublicationIds() {
+    const publications = document.querySelectorAll('.publications ol li');
+    publications.forEach((pub, index) => {
+        pub.id = `publication-${index + 1}`;
+    });
+}
+
+// 设置可展开菜单功能
+function setupExpandableMenu() {
+    const pubLink = document.getElementById('pub-link');
+    const pubSubmenu = document.querySelector('.pub-submenu');
+
+    // 初始状态 - 如果当前在论文部分，自动展开子菜单
+    if (isInViewport(document.getElementById('publication'))) {
+        pubLink.classList.add('expanded');
+    }
+
+    // 点击事件 - 切换子菜单展开状态
+    pubLink.addEventListener('click', function(e) {
+        // 阻止默认行为以不跳转到publication部分
+        // 仅在点击主链接时触发(不是图标)
+        const rect = pubLink.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+
+        // 如果点击在链接左侧2/3处，切换展开状态
+        if (clickX < rect.width * 0.67) {
+            e.preventDefault();
+            pubLink.classList.toggle('expanded');
+        }
+    });
+}
+
+// 高亮当前部分
+function highlightCurrentSection() {
+    const scrollPosition = window.scrollY + 150;
+    const sections = ['brief-intro', 'award-experience', 'intern-experience', 'publication'];
+    const subSections = ['publication-1', 'publication-2', 'publication-3'];
+
+    // 高亮主菜单
+    let activeMainSection = null;
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const activeLink = document.querySelector(`a[href="#${sections[i]}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                activeMainSection = sections[i];
+            }
+            break;
+        }
+    }
+
+    // 如果在论文部分，展开子菜单并高亮小节
+    if (activeMainSection === 'publication') {
+        document.getElementById('pub-link').classList.add('expanded');
+
+        // 高亮子菜单
+        document.querySelectorAll('.toc-sublink').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        for (let i = subSections.length - 1; i >= 0; i--) {
+            const subSection = document.getElementById(subSections[i]);
+            if (subSection && subSection.offsetTop <= scrollPosition) {
+                const activeSublink = document.querySelector(`a[href="#${subSections[i]}"]`);
+                if (activeSublink) {
+                    activeSublink.classList.add('active');
+                }
+                break;
+            }
+        }
+    } else {
+        // 不在论文部分时，可以考虑折叠子菜单
+        // document.getElementById('pub-link').classList.remove('expanded');
+    }
+}
+
+// 设置平滑滚动
+function setupSmoothScrolling() {
+    document.querySelectorAll('.toc-link, .toc-sublink').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // 子菜单切换按钮特殊处理已在setupExpandableMenu中处理
+            // 这里只处理实际导航
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                e.preventDefault();
+
+                // 如果是子菜单项，确保父菜单展开
+                if (this.classList.contains('toc-sublink')) {
+                    document.getElementById('pub-link').classList.add('expanded');
+                }
+
+                // 平滑滚动到目标
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+
+                // 在移动端点击后隐藏目录
+                if (window.innerWidth <= 1200) {
+                    document.querySelector('.toc-navigation').classList.remove('show');
+                }
+            }
+        });
+    });
+}
+
+// 移动端切换目录显示
+function toggleTOC() {
+    const toc = document.querySelector('.toc-navigation');
+    toc.classList.toggle('show');
+}
+
+// 检查元素是否在视口中
+function isInViewport(element) {
+    if (!element) return false;
+
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
 document.addEventListener('contextmenu', function(event) {
   event.preventDefault(); // 阻止默认的上下文菜单行为
