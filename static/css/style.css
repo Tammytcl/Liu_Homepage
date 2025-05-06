@@ -518,18 +518,20 @@ body {
     width: 100%;
     max-width: 1200px;
     position: relative;
-    flex-direction: row;
+    display: flex; /* 添加这一行 */
 }
 
 /* 左侧栏样式 */
 .left {
-    width: 250px; /* 恢复原来的250px宽度 */
+    width: 250px;
     height: 100vh;
-    display: flex;
+    position: sticky;
+    top: 0;
     padding: 0 15px;
-    position: fixed;
+    display: flex;
     align-items: center;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 
@@ -752,14 +754,12 @@ body {
 
 /* 右侧内容样式 */
 .right {
-    width: calc(100% - 250px); /* 相应调整右侧宽度 */
+    flex: 1;
     display: flex;
     padding: 25px;
-    position: relative;
-    float: right;
     flex-direction: column;
+    float: none;
 }
-
 
 .welcome {
     font-size: 55px;
@@ -1320,139 +1320,46 @@ html[data-theme="dack"] .publication-links {
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
 }
 
-/* 响应式布局调整 */
-@media (min-width: 1400px) {
+@media (max-width: 1200px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+
     .left {
-        width: 200px;
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: 30px;
     }
 
     .right {
-        width: calc(100% - 200px);
-        padding: 25px 35px;
-    }
-
-    .toc-navigation {
-        right: 45px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .toc-navigation {
-        display: none;
-        position: fixed;
-        right: 20px;
-        bottom: 80px;
-        top: auto;
-        transform: none;
-        width: 200px;
-        max-height: 400px;
-    }
-
-    .toc-navigation.show {
-        display: block;
-        animation: fadeIn 0.3s ease;
-    }
-
-    .toc-toggle {
-        display: flex;
-    }
-}
-
-@media (max-width: 800px) {
-    .left {
-        position: fixed;
-        z-index: 9999;
-        padding: 0;
         width: 100%;
-        height: 100%;
-        pointer-events: none;
-        background: none;
-        transition: all 0.3s linear;
+        float: none;
     }
 
     .left-main {
-        position: absolute;
-        float: left;
-        width: 60vw;
-        left: -60vw;
-        padding: 15px;
-        box-sizing: border-box;
-        background: var(--main-bg-color, linear-gradient(50deg, #a2d1ff, #ffffff));
-        transition: all 0.25s ease-out;
+        height: auto;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+}
+
+@media (min-width: 1201px) {
+    .main {
+        display: flex;
     }
 
-    .left-open {
-        pointer-events: auto;
-        background: rgba(100, 100, 100, 0.5);
-    }
-
-    .left-main-open {
-        left: 0;
+    .left {
+        flex: 0 0 250px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
     }
 
     .right {
-        width: 100%;
-        padding: 20px;
-    }
-
-    .tanChiShe {
-        width: 100%;
-    }
-
-    .description {
-        font-size: 16px;
-    }
-
-    .welcome {
-        font-size: 48px;
-    }
-
-    .personal-info-header .avatar {
-        width: 80px;
-        height: 80px;
-    }
-
-    .personal-info-header .name {
-        font-size: 20px;
-    }
-
-    .personal-info-header .en-name {
-        font-size: 16px;
-    }
-
-    .award-item {
-        padding: 14px 16px;
-    }
-
-    .award-year h3 {
-        font-size: 20px;
-    }
-
-    .award-title {
-        font-size: 15px;
-        flex-wrap: wrap;
-    }
-
-    .publication-links, .awards-container {
-        gap: 8px;
-    }
-
-    .publication-link, .link-badge {
-        padding: 5px 10px;
-        font-size: 13px;
-    }
-
-    .personal-info-section {
-        padding: 15px;
-    }
-
-    .section-title {
-        font-size: 16px;
-        margin-bottom: 12px;
-    }
-
-    .info-item {
-        font-size: 13px;
+        flex: 1;
+        float: none;
     }
 }
 
