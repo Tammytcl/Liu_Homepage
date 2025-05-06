@@ -108,6 +108,19 @@
     background: var(--icon-5-hover-color, rgb(31, 33, 35));
 }
 
+
+/* 左侧时间线样式优化 */
+.timeline-container {
+    margin-top: 10px;
+}
+
+.timeline-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
 .tanChiShe {
     width: 85%;
 }
@@ -694,7 +707,7 @@ body {
 }
 
 .left {
-    width: 250px;
+    width: 220px;
     height: 100vh;
     display: flex;
     padding: 0 15px;
@@ -854,13 +867,10 @@ body {
 }
 
 
+
 .right {
-    width: calc(100% - 250px);
-    display: flex;
-    padding: 25px;
-    position: relative;
-    float: right;
-    flex-direction: column;
+    width: calc(100% - 220px); /* 增加右侧宽度 */
+    padding: 25px 30px; /* 适当调整内边距 */
 }
 
 .welcome {
@@ -1283,13 +1293,39 @@ html[data-theme="dack"] .award-item:hover {
 }
 
 /* 左侧简化信息样式 */
-.personal-info-section {
+.personal-info-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.personal-info-header .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.personal-info-header .avatar img {
     width: 100%;
-    margin-top: 15px;
-    border-radius: 13px;
-    padding: 20px;
-    background: var(--project-item-bg-color, #e8dfc4);
-    transition: all 0.3s ease;
+    height: 100%;
+    object-fit: cover;
+}
+
+.personal-info-header .name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.personal-info-header .en-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    text-align: center;
 }
 
 .personal-info-section:hover {
@@ -1317,6 +1353,7 @@ html[data-theme="dack"] .award-item:hover {
     background: var(--gradient-start, #bd34fe);
     background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
 }
+
 
 .info-list {
     display: flex;
@@ -1367,6 +1404,31 @@ html[data-theme="dack"] .award-item:hover {
     background: var(--gradient-start, #bd34fe);
     background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
     border-radius: 3px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    background: var(--main-bg-color, #fffae8);
+    transition: all 0.3s ease;
+}
+
+.tag-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: var(--gradient-start, #bd34fe);
+    color: white;
 }
 
 /* 适配暗色模式 */
@@ -1608,4 +1670,97 @@ html[data-theme="dack"] .toc-toggle {
 
 html[data-theme="dack"] .toc-sublink.active {
     color: var(--gradient-end, #41d1ff);
+}
+
+
+
+
+
+
+
+
+/* 统一浮动效果 */
+.intro-content,
+.content.publications,
+.title,
+.personal-info-section,
+.left-div,
+.intern-item,
+.publications ol li,
+.award-item {
+    transition: all 0.3s ease;
+}
+
+.intro-content:hover,
+.content.publications:hover,
+.personal-info-section:hover,
+.left-div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title:hover {
+    transform: translateY(-3px);
+}
+
+.publications ol li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+.intern-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+html[data-theme="dack"] .intro-content:hover,
+html[data-theme="dack"] .content.publications:hover,
+html[data-theme="dack"] .personal-info-section:hover,
+html[data-theme="dack"] .left-div:hover,
+html[data-theme="dack"] .publications ol li:hover,
+html[data-theme="dack"] .intern-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="dack"] .tag-item {
+    background: var(--project-item-bg-color, rgb(19, 20, 24));
+}
+
+html[data-theme="dack"] .tag-item:hover {
+    background: var(--gradient-start, #bd34fe);
+}
+
+/* 在大屏幕上进一步优化布局 */
+@media (min-width: 1400px) {
+    .left {
+        width: 200px; /* 更小的左侧宽度 */
+    }
+
+    .right {
+        width: calc(100% - 200px); /* 更大的右侧宽度 */
+        padding: 25px 35px;
+    }
+}
+
+/* 调整移动端响应式布局 */
+@media (max-width: 800px) {
+    .right {
+        width: 100%; /* 移动端下右侧占满 */
+        padding: 20px;
+    }
+
+    .personal-info-header .avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .personal-info-header .name {
+        font-size: 20px;
+    }
+
+    .personal-info-header .en-name {
+        font-size: 16px;
+    }
 }
