@@ -277,12 +277,9 @@
                         <div class="info text-success italic">
                             Jiacheng Liu, Chang Zou, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang, <span style="font-weight:bold">Linfeng Zhang*</span>
                         </div>
-
-                        <div class="stuff">
                             [<a href="https://arxiv.org/abs/2503.06923">论文</a>]
                             [<a href="https://taylorseer.github.io/TaylorSeer/">项目主页</a>]
                             [<a href="https://github.com/Shenyi-Z/TaylorSeer">代码</a>]
-                        </div>
                         <div style="clear:both"></div>
                     </li>
                 </ol>
@@ -321,87 +318,4 @@
 <script src="./static/js/script.js?v=1.33"> </script>
 
 
-    <script>
-        // 页面加载完成后隐藏加载动画
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.loader-wrapper').style.opacity = '0';
-                document.querySelector('.loader-wrapper').style.visibility = 'hidden';
-            }, 500);
-        });
-
-        // 侧边栏切换功能改进
-        document.getElementById('sidebar-toggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const main = document.getElementById('main');
-
-            sidebar.classList.toggle('active');
-
-            // 当侧边栏显示时，主内容区域应当移动
-            if(sidebar.classList.contains('active')) {
-                main.classList.add('sidebar-active');
-            } else {
-                main.classList.remove('sidebar-active');
-            }
-        });
-
-        // 子菜单功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const researchMenu = document.getElementById('research-menu');
-            const researchSubmenu = document.getElementById('research-submenu');
-
-            // 检查当前页面URL，如果是研究成果相关页面，自动展开子菜单
-            const currentUrl = window.location.href;
-            if (currentUrl.includes('publications') || currentUrl.includes('work1') ||
-                currentUrl.includes('work2') || currentUrl.includes('work3')) {
-                researchMenu.classList.add('active');
-                researchSubmenu.classList.add('active');
-
-                // 如果是具体的项目页面，设置对应的子菜单项为活动状态
-                if (currentUrl.includes('work1')) {
-                    document.querySelector('a[href="work1.html"]').classList.add('active');
-                } else if (currentUrl.includes('work2')) {
-                    document.querySelector('a[href="work2.html"]').classList.add('active');
-                } else if (currentUrl.includes('work3')) {
-                    document.querySelector('a[href="work3.html"]').classList.add('active');
-                } else if (currentUrl.includes('publications')) {
-                    researchMenu.classList.add('active');
-                }
-            }
-
-            // 点击研究成果菜单时展开/收起子菜单
-            researchMenu.addEventListener('click', function(e) {
-                e.preventDefault(); // 阻止默认链接行为
-                this.classList.toggle('active');
-                researchSubmenu.classList.toggle('active');
-            });
-        });
-
-        // 添加滚动动画效果
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // 设置初始透明度和位移
-            document.querySelectorAll('.timeline-item, .team-member, .publications li').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.5s ease-out';
-                observer.observe(el);
-            });
-
-            // 触发动画
-            document.addEventListener('scroll', function() {
-                document.querySelectorAll('.animated').forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
 </html>
