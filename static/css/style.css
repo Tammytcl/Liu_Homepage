@@ -600,7 +600,6 @@ body {
 .personal-info-header .avatar {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
     overflow: hidden;
     margin-bottom: 15px;
 }
