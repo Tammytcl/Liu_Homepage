@@ -600,20 +600,15 @@ body {
 .personal-info-header .avatar {
     width: 100px;
     height: 100px;
-    border-radius: 0; /* 方形 */
-    overflow: visible; /* 关键：允许图片不被裁剪 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9; /* 可选：添加背景色防止留白区域太突兀 */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .personal-info-header .avatar img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* 完整显示图片，不裁剪 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .personal-info-header .name {
