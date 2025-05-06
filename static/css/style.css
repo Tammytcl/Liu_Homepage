@@ -551,7 +551,7 @@ html[data-theme="dack"] {
     --gradient-middle: #f76cc6;
     --gradient-end: rgb(255, 255, 255);
     --purple-text-color: #747bff;
-    --text-bg-color: rgb(26, 4, 48);
+    --text-bg-color: rgb(41, 15, 92);
     --icon-bg-color: rgb(19, 20, 24);
     /*--icon-1-hover-color: rgb(68, 120, 241);*/
     /*--icon-2-hover-color: rgb(232, 68, 241);*/
@@ -988,81 +988,86 @@ body {
 }
 
 
-/* 本地PDF链接样式 */
+/* 统一论文链接样式 */
 .publication-links {
-    margin-top: 10px;
+    margin-top: 12px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
-.link-badge {
+.publication-link {
     display: inline-flex;
     align-items: center;
-    background-color: white;
-    color: rgba(0, 124, 255, 0.65);
-    padding: 4px 10px;
-    border-radius: 4px;
+    background-color: var(--main-bg-color, #fffae8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--main-text-color, #000000);
+    padding: 6px 12px;
+    border-radius: 6px;
     text-decoration: none;
     font-size: 14px;
-    border: 1px solid rgba(0, 124, 255, 0.3);
     transition: all 0.3s ease;
     user-select: text;
 }
 
-.link-badge:hover {
-    background-color: #e3f2fd;
-    color: rgba(0, 124, 255, 0.9);
-    box-shadow: 0 0 8px rgba(0, 124, 255, 0.3);
-    transform: translateY(-1px);
+.publication-link:hover {
+    background-color: var(--gradient-start, #bd34fe);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.publication-link-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.publication-link:hover .publication-link-icon {
+    filter: brightness(4);
+}
+
+/* 针对不同类型的链接设置不同的标识色 */
+.publication-link.pdf {
+    border-left: 3px solid #e74c3c;
+}
+
+.publication-link.project {
+    border-left: 3px solid #3498db;
+}
+
+.publication-link.code {
+    border-left: 3px solid #2ecc71;
+}
+
+.publication-link.arxiv {
+    border-left: 3px solid #9b59b6;
+}
+
+.publication-link.blog {
+    border-left: 3px solid #f39c12;
 }
 
 /* 夜间模式适配 */
-html[data-theme="dack"] .link-badge {
-    background-color: rgba(30, 30, 30, 0.8);
-    color: rgba(120, 190, 255, 0.9);
-    border: 1px solid rgba(100, 180, 255, 0.5);
+html[data-theme="dack"] .publication-link {
+    background-color: var(--project-item-bg-color, rgb(19, 20, 24));
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-html[data-theme="dack"] .link-badge:hover {
-    background-color: rgba(40, 40, 40, 0.9);
-    color: rgba(150, 210, 255, 1);
-    box-shadow: 0 0 8px rgba(100, 180, 255, 0.4);
-}
-
-/* PDF下载按钮特殊样式 */
-.link-badge[download] {
-    background-color: rgba(0, 124, 255, 0.1);
-    color: rgba(0, 124, 255, 0.8);
-    border: 1px solid rgba(0, 124, 255, 0.4);
-}
-
-.link-badge[download]:hover {
-    background-color: rgba(0, 124, 255, 0.2);
-    color: rgba(0, 124, 255, 1);
-}
-
-/* 夜间模式下的PDF下载按钮 */
-html[data-theme="dack"] .link-badge[download] {
-    background-color: rgba(100, 180, 255, 0.15);
-    color: rgba(150, 210, 255, 0.9);
-    border: 1px solid rgba(100, 180, 255, 0.5);
-}
-
-html[data-theme="dack"] .link-badge[download]:hover {
-    background-color: rgba(100, 180, 255, 0.25);
-    color: rgba(180, 230, 255, 1);
+html[data-theme="dack"] .publication-link:hover {
+    background-color: var(--gradient-start, #bd34fe);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* 移动端适配 */
 @media (max-width: 800px) {
     .publication-links {
-        margin-top: 8px;
-        gap: 6px;
+        gap: 8px;
     }
 
-    .link-badge {
-        padding: 3px 8px;
+    .publication-link {
+        padding: 5px 10px;
         font-size: 13px;
     }
 }
