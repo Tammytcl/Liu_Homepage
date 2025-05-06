@@ -1211,3 +1211,120 @@ html[data-theme="dack"] .award-item:hover {
         flex-wrap: wrap;
     }
 }
+
+/* 左侧简化信息样式 */
+.personal-info-section {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 13px;
+    padding: 20px;
+    background: var(--project-item-bg-color, #e8dfc4);
+    transition: all 0.3s ease;
+}
+
+.personal-info-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: var(--main-text-color, #000000);
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30%;
+    height: 2px;
+    background: var(--gradient-start, #bd34fe);
+    background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.info-item .icon {
+    flex-shrink: 0;
+}
+
+.info-label {
+    font-weight: 600;
+    width: 80px;
+    color: var(--project-item-left-title-color, #000000);
+}
+
+.info-value {
+    color: var(--main-text-color, #000000);
+}
+
+.name-section {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 5px 0 15px 0;
+    padding-bottom: 10px;
+    position: relative;
+    color: var(--main-text-color, #000000);
+}
+
+.name-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--gradient-start, #bd34fe);
+    background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
+    border-radius: 3px;
+}
+
+/* 适配暗色模式 */
+html[data-theme="dack"] .personal-info-section {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 解决无法复制的问题 */
+.info-item, .info-label, .info-value, .name-section {
+    user-select: text !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 800px) {
+    .personal-info-section {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .info-item {
+        font-size: 13px;
+    }
+
+    .name-section {
+        font-size: 18px;
+    }
+}
