@@ -523,7 +523,7 @@ body {
 
 /* 左侧栏样式 */
 .left {
-    width: 220px;
+    width: 250px; /* 恢复原来的250px宽度 */
     height: 100vh;
     display: flex;
     padding: 0 15px;
@@ -531,6 +531,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
 
 .left-main {
     width: 100%;
@@ -751,13 +752,14 @@ body {
 
 /* 右侧内容样式 */
 .right {
-    width: calc(100% - 220px);
+    width: calc(100% - 250px); /* 相应调整右侧宽度 */
     display: flex;
-    padding: 25px 30px;
+    padding: 25px;
     position: relative;
     float: right;
     flex-direction: column;
 }
+
 
 .welcome {
     font-size: 55px;
