@@ -21,11 +21,13 @@
 .iconContainer {
     display: flex;
     align-items: center;
-    gap: 24px; /* 控制图标之间的间距 */
-    padding: 16px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    gap: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .iconItem {
@@ -33,34 +35,45 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #333;
     text-decoration: none;
-    transition: transform 0.2s ease-in-out;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .iconItem:hover {
-    transform: translateY(-4px); /* 微动效 */
+    background: rgba(0, 132, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 132, 255, 0.2);
 }
 
-.iconItem svg.icon {
-    fill: currentColor;
-    transition: fill 0.2s ease;
+.icon {
+    width: 28px;
+    height: 28px;
+    fill: #333;
+    transition: all 0.3s ease;
 }
 
-.iconItem:hover .iconTip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.iconItem:hover .icon {
+    fill: #0084ff;
+    transform: scale(1.1);
 }
 
 .iconTip {
     font-size: 12px;
-    margin-top: 6px;
     color: #666;
+    margin-top: 5px;
     opacity: 0;
-    visibility: hidden;
-    transform: translateY(4px);
-    transition: all 0.2s ease;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.iconItem:hover .iconTip {
+    opacity: 1;
+    transform: translateY(0);
+    color: #0084ff;
 }
 
 .iconItemLong:nth-child(1):hover {
@@ -267,47 +280,46 @@ footer {
     border-radius: 50%;
 }
 
+/* Day/Night Switch Styles */
 .onoffswitch {
     position: relative;
-    width: 38px;
-    height: 20px;
+    width: 50px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
 }
 
 .onoffswitch-checkbox {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .onoffswitch-label {
     display: block;
     overflow: hidden;
     cursor: pointer;
-    height: 100%;
-    border-radius: 50px;
+    border: 2px solid #999999;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .onoffswitch-inner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     width: 200%;
-    height: 100%;
     margin-left: -100%;
-    transition: margin 0.2s ease-in 0s;
+    transition: margin 0.3s ease-in 0s;
 }
 
 .onoffswitch-inner:before,
 .onoffswitch-inner:after {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     float: left;
     width: 50%;
-    height: 100%;
+    height: 20px;
     padding: 0;
-    font-size: 12px;
+    line-height: 20px;
+    font-size: 10px;
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
     font-weight: bold;
@@ -315,38 +327,77 @@ footer {
 }
 
 .onoffswitch-inner:before {
-    content: "";
-    background-color: #e4e4e4;
+    content: "🌙";
+    padding-left: 7px;
+    background-color: #34A7C1;
     color: #FFFFFF;
-    text-align: left;
 }
 
 .onoffswitch-inner:after {
-    content: "";
-    background-color: #272727;
-    color: #FAFAFA;
+    content: "☀️";
+    padding-right: 7px;
+    background-color: #EEEEEE;
+    color: #999999;
     text-align: right;
 }
 
 .onoffswitch-switch {
     display: block;
-    height: 70%;
-    aspect-ratio: 1/1;
+    width: 16px;
+    margin: 2px;
     background: #FFFFFF;
     position: absolute;
-    top: 12.5%;
-    bottom: 12.5%;
-    right: 5px;
+    top: 0;
+    bottom: 0;
+    right: 26px;
+    border: 2px solid #999999;
     border-radius: 20px;
-    transition: all 0.2s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
 }
 
-.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
 
-.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
-    right: 50%;
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .iconContainer {
+        background: rgba(30, 30, 30, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .icon {
+        fill: #fff;
+    }
+
+    .iconTip {
+        color: #ccc;
+    }
+
+    .iconItem:hover .iconTip {
+        color: #0084ff;
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .iconContainer {
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .iconTip {
+        font-size: 10px;
+    }
 }
 
 @font-face {
