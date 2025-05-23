@@ -1338,12 +1338,10 @@ html[data-theme="dack"] .publication-links {
     gap: 16px;
     padding: 20px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px) saturate(1.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: transparent; /* 完全透明 */
+    backdrop-filter: none; /* 移除毛玻璃效果 */
+    border: none; /* 移除边框 */
+    box-shadow: none; /* 移除阴影 */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
