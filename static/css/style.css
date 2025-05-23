@@ -21,12 +21,47 @@
 .iconContainer {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 15px;
-    border-radius: 12px;
-    /* 移除背景颜色，保持透明 */
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(1.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.iconContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.iconContainer:hover::before {
+    left: 100%;
+}
+
+.iconContainer:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .iconItem {
@@ -35,83 +70,128 @@
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    padding: 12px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 16px 14px;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-    /* 添加灰色背景来区分每个icon */
-    background-color: rgba(128, 128, 128, 0.15);
-    border: 1px solid rgba(128, 128, 128, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    min-width: 64px;
+}
+
+.iconItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 132, 255, 0.1),
+        rgba(116, 123, 255, 0.1)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.iconItem:hover::before {
+    opacity: 1;
 }
 
 .iconItem:hover {
-    background: rgba(0, 132, 255, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 132, 255, 0.2);
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
     border-color: rgba(0, 132, 255, 0.3);
+    box-shadow:
+        0 12px 24px rgba(0, 132, 255, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-    width: 28px;
-    height: 28px;
-    fill: #333;
-    transition: all 0.3s ease;
+    width: 24px;
+    height: 24px;
+    fill: var(--icon-color, #666);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    z-index: 1;
+    position: relative;
 }
 
 .iconItem:hover .icon {
     fill: #0084ff;
-    transform: scale(1.1);
+    transform: scale(1.2) rotate(-5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 132, 255, 0.3));
 }
 
 .iconTip {
-    font-size: 12px;
+    font-size: 11px;
+    font-weight: 600;
     margin-top: 8px;
-    /* 让文字始终可见 */
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.3s ease;
+    opacity: 0.7;
+    transform: translateY(4px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
-    font-weight: 500;
-    /* Day theme - 黑字 */
-    color: #333;
+    color: var(--icon-tip-color, #666);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+    position: relative;
 }
 
 .iconItem:hover .iconTip {
+    opacity: 1;
+    transform: translateY(0);
+    color: #0084ff;
+    text-shadow: 0 2px 4px rgba(0, 132, 255, 0.2);
+}
+
+/* 特定图标的个性化颜色 */
+.iconItem:nth-child(1):hover {
+    border-color: rgba(36, 41, 46, 0.3);
+}
+
+.iconItem:nth-child(1):hover .icon {
+    fill: #24292e;
+}
+
+.iconItem:nth-child(1):hover .iconTip {
+    color: #24292e;
+}
+
+.iconItem:nth-child(2):hover {
+    border-color: rgba(0, 132, 255, 0.3);
+}
+
+.iconItem:nth-child(2):hover .icon {
+    fill: #0084ff;
+}
+
+.iconItem:nth-child(2):hover .iconTip {
     color: #0084ff;
 }
 
-/* Night theme - 白字 */
-[data-theme="dark"] .iconTip {
-    color: #fff;
+.iconItem:nth-child(4):hover {
+    border-color: rgba(244, 114, 182, 0.3);
 }
 
-[data-theme="dark"] .iconItem {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+.iconItem:nth-child(4):hover .icon {
+    fill: #f472b6;
 }
 
-[data-theme="dark"] .icon {
-    fill: #fff;
+.iconItem:nth-child(4):hover .iconTip {
+    color: #f472b6;
 }
 
-[data-theme="dark"] .iconItem:hover .iconTip {
-    color: #0084ff;
-}
-
-/* 修复 Day/Night Switch 形状问题 */
+/* 优化开关样式 */
 .onoffswitch {
     position: relative;
-    width: 60px;
+    width: 56px;
     height: 28px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.onoffswitch-checkbox {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+    margin-bottom: 8px;
 }
 
 .onoffswitch-label {
@@ -119,115 +199,143 @@
     overflow: hidden;
     cursor: pointer;
     height: 28px;
-    border: 2px solid #ccc;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 28px;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(90deg, #34A7C1 0%, #EEEEEE 100%);
 }
 
-.onoffswitch-inner {
-    display: block;
-    width: 200%;
-    margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
-}
-
-.onoffswitch-inner:before,
-.onoffswitch-inner:after {
-    display: block;
-    float: left;
-    width: 50%;
-    height: 28px;
-    padding: 0;
-    line-height: 28px;
-    font-size: 14px;
-    color: white;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    box-sizing: border-box;
-}
-
-.onoffswitch-inner:before {
-    content: "🌙";
-    padding-left: 10px;
-    background-color: #34A7C1;
-    color: #FFFFFF;
-}
-
-.onoffswitch-inner:after {
-    content: "☀️";
-    padding-right: 10px;
-    background-color: #EEEEEE;
-    color: #999999;
-    text-align: right;
+.onoffswitch-label:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .onoffswitch-switch {
     display: block;
-    width: 22px;
-    height: 22px;
-    margin: 3px;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
     background: #FFFFFF;
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 32px;
-    border: 1px solid #ccc;
+    right: 30px;
     border-radius: 50%;
-    transition: all 0.3s ease-in 0s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 3px;
+    right: 2px;
+    box-shadow:
+        0 2px 6px rgba(52, 167, 193, 0.3),
+        0 0 0 1px rgba(52, 167, 193, 0.1);
 }
 
-.onoffswitch-checkbox:checked + .onoffswitch-label {
-    border-color: #34A7C1;
+/* 暗色主题适配 */
+[data-theme="dark"] .iconContainer {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Night theme 下的开关样式 */
-[data-theme="dark"] .onoffswitch-label {
-    border-color: #555;
+[data-theme="dark"] .iconItem {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="dark"] .onoffswitch-switch {
-    border-color: #555;
+[data-theme="dark"] .iconItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 12px 24px rgba(0, 132, 255, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+[data-theme="dark"] .icon {
+    fill: #e5e5e5;
+}
 
-.iconItem:hover .iconTip {
+[data-theme="dark"] .iconTip {
+    color: #e5e5e5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .iconContainer {
+        gap: 12px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .iconItem {
+        padding: 12px 10px;
+        min-width: 56px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .iconTip {
+        font-size: 10px;
+    }
+
+    .onoffswitch {
+        width: 48px;
+        height: 24px;
+    }
+
+    .onoffswitch-label {
+        height: 24px;
+    }
+
+    .onoffswitch-switch {
+        width: 16px;
+        height: 16px;
+        right: 26px;
+    }
+
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 2px;
+    }
+}
+
+/* 添加动态光效 */
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.iconContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.iconContainer:hover::after {
     opacity: 1;
-    transform: translateY(0);
-    color: #0084ff;
 }
 
-.iconItemLong:nth-child(1):hover {
-    background: var(--icon-1-hover-color, rgb(34, 39, 46));
-}
 
-.iconItem:nth-child(2):hover {
-    background: var(--icon-2-hover-color, rgb(0, 172, 238));
-}
-
-.iconItem:nth-child(3):hover {
-    background: var(--icon-3-hover-color, rgb(251, 114, 153));
-}
-
-.iconItem:nth-child(4):hover {
-    background: var(--icon-4-hover-color, rgb(248, 113, 113));
-}
-
-.iconItem:nth-child(5):hover {
-    background: var(--icon-5-hover-color, rgb(31, 33, 35));
-}
-
-.iconItem:hover .iconTip {
-    display: block;
-}
 
 .switch:hover {
     width: 55px;
