@@ -1378,12 +1378,3 @@ html[data-theme="dack"] .publication-links {
 }
 
 
-/* 目录内的语言切换按钮 */
-.toc-lang-toggle {
-    position: static;
-    display: inline-block;
-    margin-left: 10px;
-    padding: 4px 10px;
-    font-size: 12px;
-    vertical-align: middle;
-}
