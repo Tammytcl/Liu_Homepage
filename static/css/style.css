@@ -64,11 +64,61 @@
     border-color: rgba(255, 255, 255, 0.3);
 }
 
+
+/* Icon Container 样式 */
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(1.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.iconContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.iconContainer:hover::before {
+    left: 100%;
+}
+
+.iconContainer:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Icon Item 基础样式 */
 .iconItem {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     padding: 16px 14px;
     border-radius: 16px;
@@ -79,6 +129,7 @@
     backdrop-filter: blur(10px);
     overflow: hidden;
     min-width: 64px;
+    min-height: 76px; /* 统一高度 */
 }
 
 .iconItem::before {
@@ -111,6 +162,7 @@
         0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Icon 样式 */
 .icon {
     width: 24px;
     height: 24px;
@@ -127,6 +179,7 @@
     filter: drop-shadow(0 4px 8px rgba(0, 132, 255, 0.3));
 }
 
+/* Icon Tip 样式 */
 .iconTip {
     font-size: 11px;
     font-weight: 600;
@@ -154,6 +207,10 @@
     border-color: rgba(36, 41, 46, 0.3);
 }
 
+.iconItem:nth-child(1):hover::before {
+    background: linear-gradient(135deg, rgba(36, 41, 46, 0.1), rgba(36, 41, 46, 0.05));
+}
+
 .iconItem:nth-child(1):hover .icon {
     fill: #24292e;
 }
@@ -178,6 +235,10 @@
     border-color: rgba(244, 114, 182, 0.3);
 }
 
+.iconItem:nth-child(4):hover::before {
+    background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(244, 114, 182, 0.05));
+}
+
 .iconItem:nth-child(4):hover .icon {
     fill: #f472b6;
 }
@@ -186,12 +247,42 @@
     color: #f472b6;
 }
 
-/* 优化开关样式 */
+/* Day/Night 开关特殊样式 */
+.iconItem.switch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 14px;
+    min-height: 76px; /* 与其他图标项保持一致的高度 */
+}
+
+.iconItem.switch:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.iconItem.switch:hover::before {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(124, 58, 237, 0.05));
+}
+
+.switch:hover .iconTip {
+    color: #7c3aed;
+    text-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
+}
+
+/* 开关组件样式 */
 .onoffswitch {
     position: relative;
     width: 56px;
     height: 28px;
     margin-bottom: 8px;
+    flex-shrink: 0; /* 防止开关被压缩 */
+}
+
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .onoffswitch-label {
@@ -208,6 +299,43 @@
 .onoffswitch-label:hover {
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 28px;
+    padding: 0;
+    line-height: 28px;
+    font-size: 14px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "🌙";
+    padding-left: 10px;
+    background-color: #34A7C1;
+    color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: "☀️";
+    padding-right: 10px;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: right;
 }
 
 .onoffswitch-switch {
@@ -227,11 +355,19 @@
         0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 2px;
     box-shadow:
         0 2px 6px rgba(52, 167, 193, 0.3),
         0 0 0 1px rgba(52, 167, 193, 0.1);
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    border-color: #34A7C1;
 }
 
 /* 暗色主题适配 */
@@ -256,11 +392,45 @@
 }
 
 [data-theme="dark"] .icon {
-    fill: #e5e5e5;
+    fill: #ffffff; /* 暗色主题下图标为白色 */
 }
 
 [data-theme="dark"] .iconTip {
-    color: #e5e5e5;
+    color: #ffffff; /* 暗色主题下文字为白色 */
+}
+
+[data-theme="dark"] .iconItem:hover .iconTip {
+    color: #0084ff;
+}
+
+/* 暗色主题下的特定图标颜色 */
+[data-theme="dark"] .iconItem:nth-child(1):hover .iconTip {
+    color: #f0f6ff;
+    background: rgba(36, 41, 46, 0.9);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+[data-theme="dark"] .iconItem:nth-child(2):hover .iconTip {
+    color: #0084ff;
+}
+
+[data-theme="dark"] .iconItem:nth-child(4):hover .iconTip {
+    color: #f472b6;
+}
+
+[data-theme="dark"] .switch:hover .iconTip {
+    color: #a78bfa;
+}
+
+/* 暗色主题下的开关样式 */
+[data-theme="dark"] .onoffswitch-label {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .onoffswitch-switch {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #ffffff;
 }
 
 /* 响应式设计 */
@@ -274,6 +444,11 @@
     .iconItem {
         padding: 12px 10px;
         min-width: 56px;
+        min-height: 64px; /* 移动端相应调整 */
+    }
+
+    .iconItem.switch {
+        min-height: 64px;
     }
 
     .icon {
@@ -337,10 +512,6 @@
 
 
 
-.switch:hover {
-    width: 55px;
-    background: var(--icon-5-hover-color, rgb(31, 33, 35));
-}
 
 .tanChiShe {
     width: 85%;
