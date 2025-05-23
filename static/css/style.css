@@ -66,8 +66,6 @@
 /* Icon Container 样式 */
 .iconContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 16px;
     padding: 20px;
     border-radius: 20px;
@@ -115,8 +113,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-decoration: none;
     padding: 16px 14px;
     border-radius: 16px;
