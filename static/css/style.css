@@ -1333,7 +1333,12 @@ html[data-theme="dack"] .publication-links {
 
 /* =================== ICON 样式 =================== */
 /* =================== 通用容器样式 =================== */
-
+.iconContainer {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 
 /* =================== ICON 专用样式 =================== */
 .iconItem {
