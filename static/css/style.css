@@ -1378,35 +1378,12 @@ html[data-theme="dack"] .publication-links {
 }
 
 
-
-/* 语言切换按钮样式 */
-.lang-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.lang-toggle:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* 暗色模式下的语言切换按钮 */
-html[data-theme="dack"] .lang-toggle {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-html[data-theme="dack"] .lang-toggle:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+/* 目录内的语言切换按钮 */
+.toc-lang-toggle {
+    position: static;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 4px 10px;
+    font-size: 12px;
+    vertical-align: middle;
 }
