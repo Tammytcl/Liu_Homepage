@@ -1334,30 +1334,21 @@ html[data-theme="dack"] .publication-links {
 /* =================== ICON 样式 =================== */
 /* =================== 通用容器样式 =================== */
 /* Icon Container 简化样式 */
-.iconContainer {
+.icon-container {
     display: flex;
-    gap: 16px;
-    padding: 15px;
-    border-radius: 12px;
-    background: var(--project-item-bg-color, #e8dfc4);
-    transition: all 0.2s ease;
+    align-items: center;
+    gap: 20px; /* 图标之间的间距 */
 }
+
 
 /* Icon 项目样式 */
 .iconItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    margin: 0 10px; /* 控制图标之间的间距 */
+    text-align: center;
     text-decoration: none;
-    padding: 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    background: transparent;
-    min-width: 60px;
+    position: relative;
 }
-
 
 .iconItem:hover {
     transform: translateY(-8px) scale(1.05);
