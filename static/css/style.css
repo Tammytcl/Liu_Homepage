@@ -19,55 +19,48 @@
 }
 
 .iconContainer {
-    width: 100%;
-    gap: 8px;
-    height: 60px;
     display: flex;
     align-items: center;
-    overflow-x: scroll;
-    margin-top: 20px;
-}
-
-.iconContainer::-webkit-scrollbar {
-   display: none;
+    gap: 24px; /* 控制图标之间的间距 */
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .iconItem {
-    width: 44px;
-    height: 40px;
-    box-sizing: border-box;
-    background: var(--icon-bg-color, rgba(249, 250, 251, 0.6));
-    border-radius: 7px;
+    position: relative;
     display: flex;
-    gap: 5px;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    color: #333;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
 }
 
-.iconItemLong {
-    width: 80px;
-    height: 40px;
-    box-sizing: border-box;
-    background: var(--icon-bg-color, rgba(249, 250, 251, 0.6));
-    border-radius: 7px;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+.iconItem:hover {
+    transform: translateY(-4px); /* 微动效 */
 }
 
-.switch {
-    width: 55px;
-    display: flex;
+.iconItem svg.icon {
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+.iconItem:hover .iconTip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .iconTip {
-    white-space: nowrap;
-    display: flex;
+    font-size: 12px;
+    margin-top: 6px;
+    color: #666;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: all 0.2s ease;
 }
 
 .iconItemLong:nth-child(1):hover {
