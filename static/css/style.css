@@ -1338,8 +1338,6 @@ html[data-theme="dack"] .publication-links {
     display: flex;
     align-items: center;
     gap: 30px; /* 图标之间的间距 */
-    margin-top: 10px; /* 或者35px、40px等，根据视觉效果调整 */
-
 }
 
 
