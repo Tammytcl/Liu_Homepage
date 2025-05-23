@@ -1337,7 +1337,7 @@ html[data-theme="dack"] .publication-links {
 .icon-container {
     display: flex;
     align-items: center;
-    gap: 20px; /* 图标之间的间距 */
+    gap: 30px; /* 图标之间的间距 */
 }
 
 
