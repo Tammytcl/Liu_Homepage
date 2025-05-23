@@ -1333,19 +1333,7 @@ html[data-theme="dack"] .publication-links {
 
 /* =================== ICON 样式 =================== */
 /* =================== 通用容器样式 =================== */
-.iconContainer {
-    display: flex;
-    gap: 16px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
 
-
-@keyframes shimmer {
-    0% { background-position: -200% center; }
-    100% { background-position: 200% center; }
-}
 
 /* =================== ICON 专用样式 =================== */
 .iconItem {
