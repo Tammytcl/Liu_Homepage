@@ -1768,180 +1768,309 @@ html[data-theme="dack"] .publication-links {
 
 
 
-        /* =================== 语言切换组件样式 =================== */
-        .languageSwitchContainer {
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            text-decoration: none;
-            padding: 16px 14px;
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.03);
-            border: none;
-            backdrop-filter: blur(8px);
-            overflow: hidden;
-            min-width: 100px;
-            min-height: 76px;
-        }
+/* =================== 语言切换组件样式 =================== */
+/* =================== 语言切换组件样式 =================== */
+.languageSwitchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 16px 14px;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border: none;
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+    min-width: 100px;
+    min-height: 76px;
+}
 
-        .languageSwitchContainer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(59, 130, 246, 0.08),
-                rgba(147, 51, 234, 0.08)
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: inherit;
-        }
+.languageSwitchContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.08),
+        rgba(147, 51, 234, 0.08)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
 
-        .languageSwitchContainer:hover::before {
-            opacity: 1;
-        }
+.languageSwitchContainer:hover::before {
+    opacity: 1;
+}
 
-        .languageSwitchContainer:hover {
-            transform: translateY(-4px) scale(1.02);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(59, 130, 246, 0.2);
-            box-shadow:
-                0 8px 20px rgba(59, 130, 246, 0.15),
-                0 2px 6px rgba(0, 0, 0, 0.08);
-        }
+.languageSwitchContainer:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(59, 130, 246, 0.2);
+    box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.15),
+        0 2px 6px rgba(0, 0, 0, 0.08);
+}
 
-        .languageSwitch {
-            position: relative;
-            width: 60px;
-            height: 32px;
-            flex-shrink: 0;
-            background: linear-gradient(90deg, #3b82f6 0%, #9333ea 100%);
-            border-radius: 32px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow:
-                0 4px 12px rgba(59, 130, 246, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
+.languageSwitch {
+    position: relative;
+    width: 60px;
+    height: 32px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, #3b82f6 0%, #9333ea 100%);
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 4px 12px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
 
-        .languageSwitch:hover {
-            box-shadow:
-                0 6px 16px rgba(59, 130, 246, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
+.languageSwitch:hover {
+    box-shadow:
+        0 6px 16px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
 
-        .languageSwitchSlider {
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 28px;
-            height: 28px;
-            background: #ffffff;
-            border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            z-index: 10;
-        }
+.languageSwitch:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
 
-        .languageSwitch.active .languageSwitchSlider {
-            transform: translateX(28px);
-            box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(0, 0, 0, 0.1);
-        }
+.languageSwitchSlider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 28px;
+    height: 28px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 10;
+}
 
-        .languageLabels {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8px;
-            font-size: 11px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-        }
+.languageSwitch.active .languageSwitchSlider {
+    transform: translateX(28px) rotate(180deg);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 0, 0, 0.1);
+}
 
-        .languageLabels .zh {
-            transform: translateX(-2px);
-        }
+.languageLabels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
 
-        .languageLabels .en {
-            transform: translateX(2px);
-        }
+.languageLabels .zh {
+    transform: translateX(-2px);
+    transition: all 0.3s ease;
+}
 
-        .languageSwitch.active .languageLabels .zh {
-            color: rgba(255, 255, 255, 0.5);
-        }
+.languageLabels .en {
+    transform: translateX(2px);
+    transition: all 0.3s ease;
+}
 
-        .languageSwitch.active .languageLabels .en {
-            color: rgba(255, 255, 255, 1);
-        }
+.languageSwitch:not(.active) .languageLabels .zh {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 
-        .languageText {
-            font-size: 11px;
-            font-weight: 600;
-            opacity: 0.6;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-            color: var(--main-text-color, #666);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            z-index: 1;
-            position: relative;
-        }
+.languageSwitch:not(.active) .languageLabels .en {
+    color: rgba(255, 255, 255, 0.5);
+}
 
-        .languageSwitchContainer:hover .languageText {
-            opacity: 1;
-            color: #3b82f6;
-            text-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
-        }
+.languageSwitch.active .languageLabels .zh {
+    color: rgba(255, 255, 255, 0.5);
+}
 
-        /* =================== 暗色主题适配 =================== */
-        [data-theme="dark"] .languageSwitchContainer {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.08);
-        }
+.languageSwitch.active .languageLabels .en {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 
-        [data-theme="dark"] .languageSwitchContainer:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow:
-                0 8px 20px rgba(59, 130, 246, 0.25),
-                0 2px 6px rgba(0, 0, 0, 0.15);
-        }
+.languageText {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.6;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    color: var(--main-text-color, #666);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+    position: relative;
+}
 
-        [data-theme="dark"] .languageText {
-            color: #ffffff;
-        }
+.languageSwitchContainer:hover .languageText {
+    opacity: 1;
+    color: #3b82f6;
+    text-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+}
 
-        [data-theme="dark"] .languageSwitchContainer:hover .languageText {
-            color: #60a5fa;
-        }
+/* =================== 动画效果 =================== */
+.languageSwitch.active {
+    animation: language-switch-glow 2s ease-in-out;
+}
 
-        [data-theme="dark"] .languageSwitch {
-            background: linear-gradient(90deg, #1e40af 0%, #7c3aed 100%);
-        }
+@keyframes language-switch-glow {
+    0%, 100% {
+        box-shadow:
+            0 4px 12px rgba(59, 130, 246, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 4px 20px rgba(59, 130, 246, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 20px rgba(59, 130, 246, 0.3);
+    }
+}
 
-        [data-theme="dark"] .languageSwitchSlider {
-            background: #f8fafc;
-        }
+/* 点击波纹效果 */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Loading状态 */
+.languageSwitch.loading .languageSwitchSlider {
+    animation: loading-spin 1s linear infinite;
+}
+
+@keyframes loading-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 提示框样式 */
+.language-tip {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(59, 130, 246, 0.9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.language-tip.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* =================== 暗色主题适配 =================== */
+[data-theme="dark"] .languageSwitchContainer {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .languageSwitchContainer:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow:
+        0 8px 20px rgba(59, 130, 246, 0.25),
+        0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .languageText {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .languageSwitchContainer:hover .languageText {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .languageSwitch {
+    background: linear-gradient(90deg, #1e40af 0%, #7c3aed 100%);
+}
+
+[data-theme="dark"] .languageSwitchSlider {
+    background: #f8fafc;
+}
+
+[data-theme="dark"] .language-tip {
+    background: rgba(30, 64, 175, 0.9);
+}
+
+/* =================== 响应式设计 =================== */
+@media (max-width: 768px) {
+    .languageSwitchContainer {
+        gap: 8px;
+        padding: 12px 10px;
+        min-height: 64px;
+        min-width: 88px;
+    }
+
+    .languageText {
+        font-size: 10px;
+    }
+
+    .languageSwitch {
+        width: 52px;
+        height: 28px;
+    }
+
+    .languageSwitchSlider {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+
+    .languageSwitch.active .languageSwitchSlider {
+        transform: translateX(24px) rotate(180deg);
+    }
+
+    .language-tip {
+        top: 10px;
+        right: 10px;
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+}

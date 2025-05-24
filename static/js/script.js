@@ -7,7 +7,7 @@ console.log('  %c/______\\', 'color: #8B4513; font-size: 20px;');
 
 
 // 改进的导航脚本
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     // 为各个部分添加ID
     setupSectionIds();
 
@@ -64,7 +64,7 @@ function setupExpandableMenu() {
     }
 
     // 点击事件 - 切换子菜单展开状态
-    pubLink.addEventListener('click', function (e) {
+    pubLink.addEventListener('click', function(e) {
         // 阻止默认行为以不跳转到publication部分
         // 仅在点击主链接时触发(不是图标)
         const rect = pubLink.getBoundingClientRect();
@@ -131,7 +131,7 @@ function highlightCurrentSection() {
 // 设置平滑滚动
 function setupSmoothScrolling() {
     document.querySelectorAll('.toc-link, .toc-sublink').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             // 子菜单切换按钮特殊处理已在setupExpandableMenu中处理
             // 这里只处理实际导航
 
@@ -180,9 +180,12 @@ function isInViewport(element) {
     );
 }
 
-document.addEventListener('contextmenu', function (event) {
-    event.preventDefault(); // 阻止默认的上下文菜单行为
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault(); // 阻止默认的上下文菜单行为
 });
+
+
+
 
 
 function toggleClass(selector, className) {
@@ -199,6 +202,7 @@ function PopUp(imageURL) {
     }
     toggleClass(".tc-main", "active");
     toggleClass(".tc", "active");
+
 
 
 }
@@ -220,6 +224,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var tanChiShe = document.getElementById("tanChiShe");
 
 
+
+
     function changeSvg(color) {
         for (var i = 0; i < svgItems.length; i++) {
             var paths = svgItems[i].getElementsByTagName("path");
@@ -228,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
+
 
 
     function changeTheme(theme) {
@@ -244,6 +251,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         setCookie("themeState", theme, 365);
     }
+
+
 
 
     function setCookie(name, value, days) {
@@ -273,6 +282,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+
+
+
     const switchCheckbox = document.getElementById('myonoffswitch');
     /*夜间自动打开暗色主题*/
     const currentTime = new Date();
@@ -300,9 +312,10 @@ document.addEventListener('DOMContentLoaded', function () {
     changeTheme(themeState);
 
 
+
+
     /*淡入效果*/
     var projectItems = document.querySelectorAll(".projectItem");
-
     function checkProjectItems() {
         for (var i = 0; i < projectItems.length; i++) {
             var projectItem = projectItems[i];
@@ -316,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener("scroll", checkProjectItems);
     window.addEventListener("resize", checkProjectItems);
+
 
 
     /*加载效果*/
@@ -334,262 +348,397 @@ document.addEventListener('DOMContentLoaded', function () {
     // changeTheme("Dark")
 
 
+
 });
 
 
-    // 语言切换功能
-    function toggleLanguage() {
-    const languageSwitch = document.getElementById('languageSwitch');
-    const isEnglish = languageSwitch.classList.contains('active');
+class LanguageSwitch {
+    constructor(options = {}) {
+        this.options = {
+            switchId: 'languageSwitch',
+            englishPage: 'index_en.html',
+            chinesePage: 'index.html',
+            enableKeyboard: true,
+            enableTouch: true,
+            enableTip: true,
+            tipDuration: 3000,
+            loadingDelay: 300,
+            ...options
+        };
 
-    if (isEnglish) {
-    // 切换到中文
-    languageSwitch.classList.remove('active');
-    // 这里可以添加页面跳转逻辑
-    console.log('切换到中文版本');
-    // window.location.href = 'index.html'; // 如果有中文版页面
-} else {
-    // 切换到英文
-    languageSwitch.classList.add('active');
-    // 跳转到英文页面
-    console.log('切换到英文版本');
-    window.location.href = 'index_en.html';
-}
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.isInitialized = false;
+
+        this.init();
+    }
+
+    /**
+     * 初始化组件
+     */
+    init() {
+        if (this.isInitialized) return;
+
+        // 等待DOM加载完成
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setup());
+        } else {
+            this.setup();
+        }
+    }
+
+    /**
+     * 设置组件
+     */
+    setup() {
+        this.languageSwitch = document.getElementById(this.options.switchId);
+
+        if (!this.languageSwitch) {
+            console.warn('Language switch element not found');
+            return;
+        }
+
+        this.bindEvents();
+        this.checkCurrentLanguage();
+
+        if (this.options.enableTip) {
+            this.showTip();
+        }
+
+        this.isInitialized = true;
+    }
+
+    /**
+     * 绑定事件
+     */
+    bindEvents() {
+        // 点击事件
+        this.languageSwitch.addEventListener('click', (e) => this.handleClick(e));
+
+        // 键盘事件
+        if (this.options.enableKeyboard) {
+            document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+        }
+
+        // 触摸事件
+        if (this.options.enableTouch) {
+            document.addEventListener('touchstart', (e) => this.handleTouchStart(e));
+            document.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+        }
+
+        // 悬停效果
+        this.languageSwitch.addEventListener('mouseenter', () => this.handleMouseEnter());
+        this.languageSwitch.addEventListener('mouseleave', () => this.handleMouseLeave());
+
+        // 焦点事件
+        this.languageSwitch.addEventListener('focus', () => this.handleFocus());
+        this.languageSwitch.addEventListener('blur', () => this.handleBlur());
+    }
+
+    /**
+     * 处理点击事件
+     */
+    handleClick(event) {
+        this.createRipple(event);
+        this.toggleLanguage();
+    }
+
+    /**
+     * 处理键盘事件
+     */
+    handleKeyboard(event) {
+        // Ctrl/Cmd + L 快捷键
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'l') {
+            event.preventDefault();
+            this.toggleLanguage();
+        }
+
+        // Enter键或空格键（当焦点在开关上时）
+        if (document.activeElement === this.languageSwitch &&
+            (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+            this.toggleLanguage();
+        }
+    }
+
+    /**
+     * 处理触摸开始
+     */
+    handleTouchStart(event) {
+        this.touchStartX = event.changedTouches[0].screenX;
+    }
+
+    /**
+     * 处理触摸结束
+     */
+    handleTouchEnd(event) {
+        this.touchEndX = event.changedTouches[0].screenX;
+        this.handleSwipe();
+    }
+
+    /**
+     * 处理滑动手势
+     */
+    handleSwipe() {
+        const swipeThreshold = 100;
+        const swipeDistance = this.touchEndX - this.touchStartX;
+
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            const isEnglish = this.languageSwitch.classList.contains('active');
+
+            if (swipeDistance > 0 && isEnglish) {
+                // 向右滑动，切换到中文
+                this.toggleLanguage();
+            } else if (swipeDistance < 0 && !isEnglish) {
+                // 向左滑动，切换到英文
+                this.toggleLanguage();
+            }
+        }
+    }
+
+    /**
+     * 处理鼠标进入
+     */
+    handleMouseEnter() {
+        this.languageSwitch.style.transform = 'scale(1.1)';
+    }
+
+    /**
+     * 处理鼠标离开
+     */
+    handleMouseLeave() {
+        this.languageSwitch.style.transform = 'scale(1)';
+    }
+
+    /**
+     * 处理获得焦点
+     */
+    handleFocus() {
+        this.languageSwitch.style.outline = '2px solid #3b82f6';
+        this.languageSwitch.style.outlineOffset = '2px';
+    }
+
+    /**
+     * 处理失去焦点
+     */
+    handleBlur() {
+        this.languageSwitch.style.outline = 'none';
+    }
+
+    /**
+     * 切换语言
+     */
+    toggleLanguage() {
+        const isEnglish = this.languageSwitch.classList.contains('active');
+
+        // 添加loading状态
+        this.languageSwitch.classList.add('loading');
+
+        // 延迟执行以显示loading效果
+        setTimeout(() => {
+            if (isEnglish) {
+                // 切换到中文
+                this.switchToChinese();
+            } else {
+                // 切换到英文
+                this.switchToEnglish();
+            }
+
+            // 移除loading状态
+            this.languageSwitch.classList.remove('loading');
+        }, this.options.loadingDelay);
+    }
+
+    /**
+     * 切换到中文
+     */
+    switchToChinese() {
+        this.languageSwitch.classList.remove('active');
+        console.log('切换到中文版本');
+
+        // 触发自定义事件
+        this.dispatchEvent('languageChanged', { language: 'zh', target: 'chinese' });
+
+        // 页面跳转（如果需要）
+        if (this.options.chinesePage && window.location.pathname.includes('index_en.html')) {
+            window.location.href = this.options.chinesePage;
+        }
+    }
+
+    /**
+     * 切换到英文
+     */
+    switchToEnglish() {
+        this.languageSwitch.classList.add('active');
+        console.log('切换到英文版本');
+
+        // 触发自定义事件
+        this.dispatchEvent('languageChanged', { language: 'en', target: 'english' });
+
+        // 页面跳转
+        if (this.options.englishPage) {
+            window.location.href = this.options.englishPage;
+        }
+    }
+
+    /**
+     * 检查当前语言状态
+     */
+    checkCurrentLanguage() {
+        // 根据URL判断当前语言
+        if (window.location.pathname.includes('index_en.html') ||
+            window.location.pathname.includes('/en/')) {
+            this.languageSwitch.classList.add('active');
+        }
+
+        // 根据HTML lang属性判断
+        const htmlLang = document.documentElement.lang;
+        if (htmlLang === 'en' || htmlLang === 'en-US') {
+            this.languageSwitch.classList.add('active');
+        }
+    }
+
+    /**
+     * 创建波纹效果
+     */
+    createRipple(event) {
+        const button = event.currentTarget;
+        const circle = document.createElement('span');
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+        circle.classList.add('ripple');
+
+        // 移除之前的波纹
+        const existingRipple = button.querySelector('.ripple');
+        if (existingRipple) {
+            existingRipple.remove();
+        }
+
+        button.appendChild(circle);
+
+        // 清理波纹元素
+        setTimeout(() => {
+            if (circle.parentNode) {
+                circle.parentNode.removeChild(circle);
+            }
+        }, 600);
+    }
+
+    /**
+     * 显示提示信息
+     */
+    showTip() {
+        // 延迟显示，避免影响页面加载
+        setTimeout(() => {
+            const tip = document.createElement('div');
+            tip.className = 'language-tip';
+            tip.textContent = '快捷键: Ctrl/Cmd + L';
+
+            document.body.appendChild(tip);
+
+            // 显示动画
+            requestAnimationFrame(() => {
+                tip.classList.add('show');
+            });
+
+            // 自动隐藏
+            setTimeout(() => {
+                tip.classList.remove('show');
+                setTimeout(() => {
+                    if (tip.parentNode) {
+                        tip.parentNode.removeChild(tip);
+                    }
+                }, 300);
+            }, this.options.tipDuration);
+        }, 1000);
+    }
+
+    /**
+     * 派发自定义事件
+     */
+    dispatchEvent(eventName, detail) {
+        const event = new CustomEvent(eventName, {
+            detail,
+            bubbles: true,
+            cancelable: true
+        });
+        this.languageSwitch.dispatchEvent(event);
+    }
+
+    /**
+     * 获取当前语言
+     */
+    getCurrentLanguage() {
+        return this.languageSwitch.classList.contains('active') ? 'en' : 'zh';
+    }
+
+    /**
+     * 设置语言
+     */
+    setLanguage(language) {
+        if (language === 'en' || language === 'english') {
+            this.languageSwitch.classList.add('active');
+        } else if (language === 'zh' || language === 'chinese') {
+            this.languageSwitch.classList.remove('active');
+        }
+    }
+
+    /**
+     * 销毁组件
+     */
+    destroy() {
+        if (!this.isInitialized) return;
+
+        // 移除事件监听器
+        if (this.languageSwitch) {
+            this.languageSwitch.removeEventListener('click', this.handleClick);
+            this.languageSwitch.removeEventListener('mouseenter', this.handleMouseEnter);
+            this.languageSwitch.removeEventListener('mouseleave', this.handleMouseLeave);
+            this.languageSwitch.removeEventListener('focus', this.handleFocus);
+            this.languageSwitch.removeEventListener('blur', this.handleBlur);
+        }
+
+        if (this.options.enableKeyboard) {
+            document.removeEventListener('keydown', this.handleKeyboard);
+        }
+
+        if (this.options.enableTouch) {
+            document.removeEventListener('touchstart', this.handleTouchStart);
+            document.removeEventListener('touchend', this.handleTouchEnd);
+        }
+
+        this.isInitialized = false;
+    }
 }
 
-    // 页面加载时检查当前语言状态
-    document.addEventListener('DOMContentLoaded', function() {
-    // 如果当前是英文页面，设置为英文状态
-    if (window.location.pathname.includes('index_en.html')) {
-    document.getElementById('languageSwitch').classList.add('active');
+// 全局便利函数（向后兼容）
+function toggleLanguage() {
+    if (window.languageSwitchInstance) {
+        window.languageSwitchInstance.toggleLanguage();
+    }
 }
+
+// 自动初始化
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建全局实例
+    window.languageSwitchInstance = new LanguageSwitch();
+
+    // 提供全局访问
+    window.LanguageSwitch = LanguageSwitch;
 });
 
-    // 添加键盘快捷键支持 (Ctrl/Cmd + L)
-    document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
-    e.preventDefault();
-    toggleLanguage();
-}
-});
-
-    // 添加触摸支持
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', function(e) {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-    document.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-    function handleSwipe() {
-    const swipeThreshold = 100;
-    const swipeDistance = touchEndX - touchStartX;
-
-    // 向右滑动切换到中文，向左滑动切换到英文
-    if (Math.abs(swipeDistance) > swipeThreshold) {
-    if (swipeDistance > 0) {
-    // 向右滑动 - 切换到中文
-    if (document.getElementById('languageSwitch').classList.contains('active')) {
-    toggleLanguage();
-}
-} else {
-    // 向左滑动 - 切换到英文
-    if (!document.getElementById('languageSwitch').classList.contains('active')) {
-    toggleLanguage();
-}
-}
-}
+// 模块导出（如果支持ES6模块）
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = LanguageSwitch;
 }
 
-    // 添加悬停效果增强
-    document.querySelector('.languageSwitch').addEventListener('mouseenter', function() {
-    this.style.transform = 'scale(1.1)';
-});
-
-    document.querySelector('.languageSwitch').addEventListener('mouseleave', function() {
-    this.style.transform = 'scale(1)';
-});
-
-    // 添加点击波纹效果
-    function createRipple(event) {
-    const button = event.currentTarget;
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-    circle.classList.add('ripple');
-
-    const ripple = button.getElementsByClassName('ripple')[0];
-    if (ripple) {
-    ripple.remove();
+// AMD支持
+if (typeof define === 'function' && define.amd) {
+    define([], function() {
+        return LanguageSwitch;
+    });
 }
-
-    button.appendChild(circle);
-}
-
-    document.querySelector('.languageSwitch').addEventListener('click', createRipple);
-
-    // 添加波纹动画样式
-    const style = document.createElement('style');
-    style.textContent = `
-    .languageSwitch {
-    position: relative;
-    overflow: hidden;
-}
-
-    .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
-    pointer-events: none;
-}
-
-    @keyframes ripple-animation {
-    to {
-    transform: scale(4);
-    opacity: 0;
-}
-}
-
-    /* 添加焦点样式以提升可访问性 */
-    .languageSwitch:focus {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
-}
-
-    /* 添加激活状态的微动画 */
-    .languageSwitch.active {
-    animation: language-switch-glow 2s ease-in-out;
-}
-
-    @keyframes language-switch-glow {
-    0 %, 100% {
-    box-shadow:
-    0 4px 12px rgba(59, 130, 246, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-    50% {
-    box-shadow:
-    0 4px 20px rgba(59, 130, 246, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 0 20px rgba(59, 130, 246, 0.3);
-}
-}
-
-    /* 滑块图标旋转动画 */
-    .languageSwitchSlider {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-    .languageSwitch.active .languageSwitchSlider {
-    transform: translateX(28px) rotate(180deg);
-}
-
-    /* 标签文字的淡入淡出效果 */
-    .languageLabels .zh,
-    .languageLabels .en {
-    transition: all 0.3s ease;
-}
-
-    .languageSwitch:not(.active) .languageLabels .zh {
-    color: rgba(255, 255, 255, 1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-    .languageSwitch:not(.active) .languageLabels .en {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-    /* 添加loading状态 */
-    .languageSwitch.loading .languageSwitchSlider {
-    animation: loading-spin 1s linear infinite;
-}
-
-    @keyframes loading-spin {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-}
-    `;
-    document.head.appendChild(style);
-
-    // 优化的语言切换函数，添加loading状态
-    function toggleLanguage() {
-    const languageSwitch = document.getElementById('languageSwitch');
-    const isEnglish = languageSwitch.classList.contains('active');
-
-    // 添加loading状态
-    languageSwitch.classList.add('loading');
-
-    // 延迟执行以显示loading效果
-    setTimeout(() => {
-    if (isEnglish) {
-    // 切换到中文
-    languageSwitch.classList.remove('active');
-    console.log('切换到中文版本');
-    // 在实际项目中，这里应该跳转到中文页面
-    // window.location.href = 'index.html';
-} else {
-    // 切换到英文
-    languageSwitch.classList.add('active');
-    console.log('切换到英文版本');
-    // 跳转到英文页面
-    window.location.href = 'index_en.html';
-}
-
-    // 移除loading状态
-    languageSwitch.classList.remove('loading');
-}, 300);
-}
-
-    // 添加提示信息
-    function showLanguageTip() {
-    const tip = document.createElement('div');
-    tip.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(59, 130, 246, 0.9);
-        color: white;
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-size: 12px;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transform: translateY(-20px);
-        opacity: 0;
-        transition: all 0.3s ease;
-    `;
-    tip.textContent = '快捷键: Ctrl/Cmd + L';
-    document.body.appendChild(tip);
-
-    // 显示动画
-    requestAnimationFrame(() => {
-    tip.style.transform = 'translateY(0)';
-    tip.style.opacity = '1';
-});
-
-    // 3秒后自动消失
-    setTimeout(() => {
-    tip.style.transform = 'translateY(-20px)';
-    tip.style.opacity = '0';
-    setTimeout(() => {
-    document.body.removeChild(tip);
-}, 300);
-}, 3000);
-}
-
-    // 页面加载完成后显示提示
-    window.addEventListener('load', () => {
-    setTimeout(showLanguageTip, 1000);
-});
