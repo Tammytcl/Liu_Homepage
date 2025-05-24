@@ -1,10 +1,603 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>111</title>
+<html class="zyyo.net">
+
+<head class="zyyo.net">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jiacheng Liu's Homepage</title>
+    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Jiacheng Liu's website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./static/css/style.css?v=1.35">
+
+
 </head>
 <body>
 
+
+<div class="main">
+    <!-- Improved TOC Navigation Component -->
+    <div class="toc-navigation">
+        <div class="toc-title">
+            Content Navigation
+        </div>
+
+        <div class="toc-links">
+            <a href="#brief-intro" class="toc-link">
+                <!-- Icon -->
+                Personal Introduction
+            </a>
+            <a href="#award-experience" class="toc-link">
+                <!-- Icon -->
+                Awards
+            </a>
+            <a href="#intern-experience" class="toc-link">
+                <!-- Icon -->
+                Internship Experience
+            </a>
+            <a href="#publication" class="toc-link" id="pub-link">
+                <!-- Icon -->
+                Publications
+            </a>
+            <div class="toc-submenu pub-submenu">
+                <a href="#publication-1" class="toc-sublink">SpeCa</a>
+                <a href="#publication-2" class="toc-sublink">FeMo</a>
+                <a href="#publication-3" class="toc-sublink">TaylorSeer</a>
+                <a href="#publication-4" class="toc-sublink">PCMamba</a>
+                <a href="#publication-5" class="toc-sublink">FQCDM</a>
+                <a href="#publication-6" class="toc-sublink">PSVT</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile TOC Toggle Button -->
+    <div class="toc-toggle" onclick="toggleTOC()">
+        <!-- Icon -->
+    </div>
+
+    <!-- Left Sidebar -->
+    <div class="left">
+        <div class="left-main">
+            <!-- Avatar, Name & Basic Info -->
+            <div class="personal-info-section">
+                <div class="personal-info-header">
+                    <div class="avatar">
+                        <img src="static/img/profile.jpg" alt="avatar">
+                    </div>
+                    <div class="name">Jiacheng Liu</div>
+                    <div class="en-name">Jiacheng Liu</div>
+                </div>
+
+                <div class="switchContainer">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                        <label class="onoffswitch-label" for="myonoffswitch">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                    <div class="switchText">Day/Night</div>
+                </div>
+
+                <!-- Language Switcher -->
+                <div class="languageSwitchContainer">
+                    <div class="languageSwitch" id="languageSwitch" onclick="toggleLanguage()">
+                        <div class="languageLabels">
+                            <span class="zh">中文</span>
+                            <span class="en">EN</span>
+                        </div>
+                        <div class="languageSwitchSlider">🌐</div>
+                    </div>
+                    <div class="languageText">Language</div>
+                </div>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <!-- Icon -->
+                        Shandong University
+                    </div>
+                    <div class="info-item">
+                        <!-- Icon -->
+                        Undergraduate, Class of 2022
+                    </div>
+                    <div class="info-item">
+                        <!-- Icon -->
+                        ljc.mytcl@gmail.com
+                    </div>
+                    <div class="info-item">
+                        <!-- Icon -->
+                        LJC10165216900
+                    </div>
+
+                    <div class="icon-container">
+                        <a class="iconItem" target="_blank" href="https://github.com/Tammytcl">
+                            <!-- GitHub Icon -->
+                            <div class="iconTip">GitHub</div>
+                        </a>
+
+                        <a class="iconItem" target="_blank" href="https://www.zhihu.com/people/ming-yue-tou-chui-lei">
+                            <img class="icon" src="static/img/zhihu.png" alt="Zhihu" width="24" height="24">
+                            <div class="iconTip">Zhihu</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Info -->
+            <div class="personal-info-section">
+                <div class="section-title">Academic Info</div>
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-label">GPA</div>
+                        <div class="info-value">90.52/100</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Rank</div>
+                        <div class="info-value">4/106</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">CET-4</div>
+                        <div class="info-value">607</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">CET-6</div>
+                        <div class="info-value">575</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Tags -->
+            <div class="personal-info-section">
+                <div class="section-title">Skills</div>
+                <div class="tags-container">
+                    <div class="tag-item">Student</div>
+                    <div class="tag-item">Python</div>
+                    <div class="tag-item">AI</div>
+                    <div class="tag-item">AIGC</div>
+                    <div class="tag-item">SDU</div>
+                    <div class="tag-item">SJTU</div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="personal-info-section">
+                <div class="section-title">Timeline</div>
+                <div class="timeline-container">
+                    <ul id="line">
+                        <li>
+                            <div class="focus"></div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Present</span>
+                                <p>TO BE CONTINUED</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="focus"></div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Dec 2024</span>
+                                <p>Joined SJTU EPIC-Lab Internship</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="focus"></div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Sep 2022</span>
+                                <p>Admitted to Shandong University</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <header> <!-- 头部开始 -->
+            <div class="welcome">Welcome to <span class="gradientText">Liu Jiacheng's Homepage</span></div>
+
+            <div class="description">
+                唯有幽默地看待现实，唯有在生命中轻盈地跳舞，开怀大笑，人才能找到摆脱生存危机的出路，在抵达完善的征程中迈出微小的一步。
+            </div>
+
+
+
+
+            <div class="tanChiShe">
+                <img id="tanChiShe" src="./static/svg/snake-Light.svg" alt="">
+            </div>
+        </header>
+        <!-- 头部结束 -->
+
+        <content>
+            <!-- 内容开始 -->
+            <!-- Brief Intro 部分 -->
+            <div class="title">
+                <svg class="icon" viewBox="0 0 24 24" width="26px" height="26px">
+                    <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M13 2v7h7M8 13h8M8 17h8M8 9h1" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                Brief Intro
+            </div>
+            <div class="intro-content">
+                <p>本人目前是山东大学2022级本科生, </p>
+
+            </div>
+
+            <!-- Award Experience 部分 -->
+            <div class="title">
+                <svg class="icon" viewBox="0 0 24 24" width="26px" height="26px">
+                    <path d="M12 15c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Award Experience
+            </div>
+                <div class="intro-content">
+                    <div class="awards-container">
+                        <!-- Awards for 2024 -->
+                        <div class="award-year">
+                            <h3>2024</h3>
+                            <div class="awards-list">
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        National College Student Software Innovation Competition
+                                        <span class="award-badge gold">National First Prize – 2nd Place</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        9th China International College Students’ Innovation Competition
+                                        <span class="award-badge gold">National Gold Award</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        14th “Challenge Cup” Qinchuanyuan China College Students’ Entrepreneurship Competition
+                                        <span class="award-badge gold">National Gold Award</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        China Collegiate Computing Contest – AIGC Innovation Track
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        Future Designer – National College Digital Art Design Competition
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        China Undergraduate Mathematical Contest
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        17th Chinese Collegiate Computing Competition
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        China–US Young Maker Competition
+                                        <span class="award-badge bronze">National Third Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        Mathematical Contest in Modeling (MCM/ICM)
+                                        <span class="award-badge other">Honorable Mention</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Awards for 2023 -->
+                        <div class="award-year">
+                            <h3>2023</h3>
+                            <div class="awards-list">
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        15th National College Student Electrical and Mathematical Modeling Competition
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        National Undergraduate Mathematical Modeling Competition
+                                        <span class="award-badge gold">Provincial First Prize</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Awards for 2022 -->
+                        <div class="award-year">
+                            <h3>2022</h3>
+                            <div class="awards-list">
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        4th “Huashu Cup” National Undergraduate Mathematical Modeling Competition
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+
+                                <div class="award-item">
+                                    <div class="award-title">
+                                        Mathorcup Undergraduate Big Data Mathematical Modeling Challenge
+                                        <span class="award-badge silver">National Second Prize</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Intern Experience 部分 -->
+            <div class="title">
+                <svg class="icon" viewBox="0 0 24 24" width="26px" height="26px">
+                    <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                Intern Experience
+            </div>
+            <div class="intro-content">
+                <div class="intern-item">
+                    <div class="intern-header">
+                        <h3>EPIC Laboratory, Shanghai Jiao Tong University</h3>
+                    </div>
+                    <div class="intern-details">
+                        <p>
+                            <strong>Research Area:</strong> Efficient AIGC
+                            <span class="intern-period">Dec 2024 – Present</span>
+                        </p>
+                        <p>
+                            <strong>Supervisor:</strong> Prof. Linfeng Zhang [<a href="http://www.zhanglinfeng.tech/">Page</a>]
+                        </p>
+                        <p>
+                            Actively involved in research on Efficient AIGC (Artificial Intelligence Generated Content), focusing on enhancing the performance and efficiency of generative models in image and video tasks. Designed and implemented innovative cache-based methods to accelerate the inference process of Diffusion Transformers (DiT), significantly reducing computational costs. Analyzed and optimized redundant computation paths in Transformer structures within diffusion models, improving generation speed and quality through pruning and feature reuse strategies.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="intern-item">
+                    <div class="intern-header">
+                        <h3>Shandong Key Laboratory of Intelligent Electronic Packaging Testing and Application</h3>
+                    </div>
+                    <div class="intern-details">
+                        <p>
+                            <strong>Research Area:</strong> Medical Image Segmentation
+                            <span class="intern-period">Mar 2023 – Present</span>
+                        </p>
+                        <p>
+                            <strong>Supervisor:</strong> Prof. Fei Yang [<a href="https://faculty.sdu.edu.cn/yangfei1/zh_CN/index.htm">Page</a>]
+                        </p>
+                        <p>
+                            Participated in the development of deep learning models for medical image segmentation across multiple clinical imaging modalities, including CT, MRI, and ultrasound. Designed and optimized models based on U-Net, nnU-Net, and Transformer architectures, significantly improving robustness and generalization in real-world medical scenarios. Achieved outstanding performance on benchmark datasets such as ACDC (cardiac MRI) and Synapse (abdominal CT), surpassing mainstream baseline methods in key evaluation metrics such as Dice coefficient and Hausdorff distance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Publication 部分 -->
+            <div class="title">
+                <svg class="icon" viewBox="0 0 24 24" width="26px" height="26px">
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M8 7h8M8 12h8M8 17h5" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Publication
+            </div>
+            <div class="content publications">
+                <p><i>* indicates the corresponding author</i></p>
+                <ol>
+                    <!-- 论文列表 -->
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/SpeCa/figures/method.png" alt="SpeCa方法图">
+                        </div>
+                        <span class="title">SpeCa: Accelerating Diffusion Transformers with Speculative Feature Caching</span>
+                        <div class="info text-success italic">
+                            <span style="font-weight:bold">Jiacheng Liu</span>, Chang Zou, Yuanhuiyi Lyu, Fei Ren, Shaobo Wang, Kaixin Li, Linfeng Zhang*
+                        </div>
+
+                            <a href="assets/SpeCa/SpeCa.pdf" class="link-badge" target="_blank">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                </svg>
+                                View
+                            </a>
+
+                            <a href="https://speca2025.github.io/SpeCa2025/" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Project Page
+                            </a>
+                        <div style="clear:both"></div>
+                    </li>
+
+
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/FeMo/figures/method.png" alt="Femo方法图">
+                        </div>
+                        <span class="title">Accelerate Diffusion Transformers with Feature Momentum</span>
+                        <div class="info text-success italic">
+                            Jiaxin Fang, Chang Zou, <span style="font-weight:bold">Jiacheng Liu</span>, Yuanhuiyi Lyu, Xuming Hu, Linfeng Zhang*
+                        </div>
+
+                            <a href="assets/FeMo/2025 - Accelerate Diffusion Transformers with Feature Momentum.pdf" class="link-badge" target="_blank">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                </svg>
+                                View
+                            </a>
+
+
+                        <div style="clear:both"></div>
+                    </li>
+
+
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/TaylorSeer/figures/method.png" alt="TaylorSeer方法图">
+                        </div>
+                        <span class="title">From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers</span>
+                        <div class="info text-success italic">
+                            <span style="font-weight:bold">Jiacheng Liu</span>, Chang Zou, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang*
+                        </div>
+                            <a href="https://arxiv.org/abs/2503.06923" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                                Arxiv
+                            </a>
+
+                            <a href="https://taylorseer.github.io/TaylorSeer/" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Project Page
+                            </a>
+
+                            <a href="https://github.com/Shenyi-Z/TaylorSeer" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" fill="currentColor"/>
+                                </svg>
+                                Github
+                            </a>
+
+                            <a href="https://zhuanlan.zhihu.com/p/1899104160282018548" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                                </svg>
+                                ZhiHu
+                            </a>
+                        <div style="clear:both"></div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/PCMamba/figures/method.png" alt="PCMamba方法图">
+                        </div>
+                        <span class="title">PCMamba: Parallel Convolution-Mamba Network for Medical Image Segmentation</span>
+                        <div class="info text-success italic">
+                            <span style="font-weight:bold">Jiacheng Liu</span>, Liquan Dong, Bo Chen, Jiahui Shi, Weigang Lu, Shugang Zhang, Fei Yang*, Dong Li, Lei Zhang
+                        </div>
+
+                            <a href="assets/PCMamba/PCMamba.pdf" class="link-badge" target="_blank">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                </svg>
+                                View
+                            </a>
+                        <div style="clear:both"></div>
+                    </li>
+
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/FQCDM/figures/method.png" alt="FQCDM方法图">
+                        </div>
+                        <span class="title">FQCDM: Feature Quantization-Based Cardiac Image Diffusion Synthesis Model</span>
+                        <div class="info text-success italic">
+                            Jiahui Shi, Bo Chen, <span style="font-weight:bold">Jiacheng Liu</span>, Weigang Lu, Shugang Zhang, Weimin Ma, Fei Yang*, Dong Li
+                        </div>
+
+                            <a href="assets/FQCDM/BSPC-D-25-02189.pdf" class="link-badge" target="_blank">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                </svg>
+                                View
+                            </a>
+                        <div style="clear:both"></div>
+                    </li>
+
+
+
+
+
+                    <li>
+                        <div class="imgblock">
+                            <img src="assets/PSVT/figures/method.png" alt="PSVT方法图">
+                        </div>
+                        <span class="title">PSVT: Pyramid Shifted Window based Vision Transformer for cardiac image segmentation</span>
+                        <div class="info text-success italic">
+                            Xingyu Zhang, <span style="font-weight:bold">Jiacheng Liu</span>, Xiaoli Xian, Bo Chen, Dong Li, Fei Yang*, Lei Zhang
+                        </div>
+                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1746809424013971" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                </svg>
+                                ScienceDirect
+                            </a>
+                            <a href="https://github.com/Tammytcl/PSVT" class="link-badge">
+                                <svg width="14" height="14" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" fill="currentColor"/>
+                                </svg>
+                                Github
+                            </a>
+                    </li>
+
+
+
+
+                </ol>
+            </div>
+
+
+
+        </content> <!-- 内容结束 -->
+
+        <footer>
+            Jiacheng Liu © 2025 &nbsp;
+        </footer>
+
+    </div>
+</div> <!-- main结束 -->
+<!--弹窗-->
+
+<div class="tc">
+    <div class="tc-main">
+        <img class="tc-img" src="" alt="" srcset="">
+    </div>
+    <div onclick="PopUp()" class="tc-close">
+        <svg t="1700047644371" class="icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="950" width="19px" height="19px">
+            <path
+                d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z"
+                p-id="951" fill="#000000"></path>
+        </svg>
+    </div>
+</div>
+
+
+
+
 </body>
+
+<script src="./static/js/script.js?v=1.33"> </script>
+
+
+
+
+
 </html>

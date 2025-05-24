@@ -636,7 +636,7 @@ class LanguageSwitch {
         setTimeout(() => {
             const tip = document.createElement('div');
             tip.className = 'language-tip';
-            tip.textContent = '快捷键: Ctrl/Cmd + L';
+            tip.textContent = '中英文页面切换: Ctrl/Cmd + L';
 
             document.body.appendChild(tip);
 
