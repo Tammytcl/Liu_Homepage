@@ -7,54 +7,63 @@
             shortTitle: 'Focused Forcing',
             title: 'Focused Forcing: Content-Aware Per-Frame KV Selection for Efficient Autoregressive Video Diffusion',
             authors: `Cai, P., Zhang, E., ${me}, Lin, H., Zhang, R., Mo, W., Ma, Y., Zheng, S., Huang, J., Liu, D., &amp; Zhang, L.&dagger;`,
+            image: 'assets/FocusedForcing/figures/image.png',
         },
         {
             venue: 'Submit to NeurIPS 2026',
             shortTitle: 'Dynamic Video',
             title: 'Dynamic Video Generation: Shaping Video Generation Across Time and Space',
             authors: `Zheng, S., Huang, J., ${me}, Chen, G., He, L., Lin, Y., Cai, P., &amp; Zhang, L.&dagger;`,
+            image: 'assets/DynamicVideo/figures/image.png',
         },
         {
             venue: 'Submit to NeurIPS 2026',
             shortTitle: 'FreqCa',
             title: 'FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching',
             authors: `${me}*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., &amp; Zhang, L.&dagger;`,
+            image: 'assets/FreqCa/figures/image.png',
         },
         {
             venue: 'Submit to NeurIPS 2026',
             shortTitle: 'SpecEdit',
             title: 'SpecEdit: Training-Free Acceleration for Diffusion-Based Image Editing via Semantic Locking',
             authors: `Yan, Z.*, Zheng, S.*, Qin, H.*, Tu, X., Wang, Y., ${me}, Ren, J., Lin, Y., Cai, P., Ren, J., Zhang, X., &amp; Zhang, L.&dagger;`,
+            image: 'assets/SpecEdit/figures/image.png',
         },
         {
             venue: 'Submit to NeurIPS 2026',
             shortTitle: 'Z-Cache',
             title: 'Z-Cache: Accelerating Diffusion Transformers via Self-Reflection',
             authors: `Cheng, Z.*, Wang, Z.*, ${me}*, Tu, X., Zhou, C., Chen, J., Ma, Y., Ma, Z., Ren, J., Zou, L., &amp; Zhang, L.&dagger;`,
+            image: 'assets/Z-Cache/figures/image.png',
         },
         {
             venue: 'ECCV 2026',
             shortTitle: 'LinCa',
             title: 'LinCa: Accelerating Diffusion Models via Learnable Decomposed Feature Caching',
             authors: `Liu, J.*, Qin, H.*, Tu, X., ${me}, Hu, J., Yan, Z., Xie, Y., Shen, K., Ren, J., Lin, Y., Zhang, X., &amp; Zhang, L.&dagger;`,
+            image: 'assets/LinCa/figures/image.png',
         },
         {
             venue: 'ECCV 2026',
             shortTitle: 'AViTS',
             title: 'AViTS: Adaptive Spatiotemporal Token Selection for Efficient Dynamic-Resolution Generation',
             authors: `Qin, H.*, Yan, Z.*, Zheng, S.*, Tu, X., ${me}, Lin, Y., Zou, C., Liu, J., Cai, P., Zhang, X., Ren, J., &amp; Zhang, L.&dagger;`,
+            image: 'assets/AViTS/figures/image.png',
         },
         {
             venue: 'ECCV 2026',
             shortTitle: 'GP Cache',
             title: 'Accelerating Diffusion Transformers with Gaussian Process Rectified Feature Cache',
             authors: `Shen, Z.*, Huang, R.*, Zou, C., Zheng, S., ${me}, Cai, P., Shi, Z., Du, Y., Feng, L., Tu, X., Ren, J., Zhang, X., &amp; Zhang, L.&dagger;`,
+            image: 'assets/GPCache/figures/image.png',
         },
         {
             venue: 'CVPR 2026',
             shortTitle: 'LESA',
             title: 'LESA: Learnable Stage-Aware Predictors for Diffusion Model Acceleration',
             authors: `Cai, P.*, ${me}*, Xu, H., Wang, X., Zou, C., &amp; Zhang, L.&dagger;`,
+            image: 'assets/LESA/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/abs/2602.20497', type: 'paper' },
             ],
@@ -64,6 +73,7 @@
             shortTitle: 'Sketch to Fresco',
             title: 'From Sketch to Fresco: Efficient Diffusion Transformer with Progressive Resolution',
             authors: `Zheng, S., Chen, G., He, L., ${me}, Lin, Y., Zou, C., &amp; Zhang, L.&dagger;`,
+            image: 'assets/SketchToFresco/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/abs/2601.07462', type: 'paper' },
             ],
@@ -73,6 +83,7 @@
             shortTitle: 'Data-Driven Predictor',
             title: 'Beyond Fixed Formulas: Data-Driven Linear Predictor for Efficient Diffusion Models',
             authors: `Shen, Z.*, Huang, R.*, ${me}, Zou, C., Cai, P., Zheng, S., Shi, Z., Feng, L., &amp; Zhang, L.&dagger;`,
+            image: 'assets/DataDrivenPredictor/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://cvpr.thecvf.com/virtual/2026/poster/40070', type: 'paper' },
             ],
@@ -82,6 +93,7 @@
             shortTitle: 'GameCraft-2',
             title: 'GameCraft-2: Instruction-following Interactive Game World Model',
             authors: `Tang, J.*, ${me}*, Li, J.*, Wu, L., Yang, H., Zhao, P., Shao, S., Zhang, L., &amp; Lu, Q.&dagger;`,
+            image: 'assets/GameCraft-2/figures/image.png',
         },
         {
             venue: 'ICLR 2026 Oral',
@@ -97,6 +109,7 @@
             shortTitle: 'HiCache',
             title: 'HiCache: Training-free Acceleration of Diffusion Models via Hermite Polynomial-based Feature Caching',
             authors: `Feng, L.*, Zheng, S.*, ${me}, Wang, X., Zou, C., Ma, Y., Chen, J., Cai, P., &amp; Zhang, L.&dagger;`,
+            image: 'assets/HiCache/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/html/2508.16984v1', type: 'paper' },
             ],
@@ -106,6 +119,7 @@
             shortTitle: 'WaveEx',
             title: 'WaveEx: Accelerating Flow Matching-based Speech Generation via Wavelet-guided Extrapolation',
             authors: `Liu, X.*, Gui, X.*, Ge, Z., Ge, Y., Zou, C., ${me}, Niu, Z., Zheng, Q., Xu, C., Chen, X., Xiao, T., Zhu, J., &amp; Zhang, L.&dagger;`,
+            image: 'assets/WaveEx/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://ojs.aaai.org/index.php/AAAI/article/view/40490', type: 'paper' },
             ],
@@ -115,6 +129,7 @@
             shortTitle: 'Forecast Calibrate',
             title: 'Forecast then Calibrate: Feature Caching as ODE for Efficient Diffusion Transformers',
             authors: `Zheng, S., Feng, L., Wang, X., ${me}, Zou, C., Ma, Y., Chen, J., Cai, P., &amp; Zhang, L.&dagger;`,
+            image: 'assets/ForecastCalibrate/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/abs/2508.16211', type: 'paper' },
                 { label: 'GitHub', href: 'https://github.com/Shenyi-Z/Cache4Diffusion', type: 'github' },
@@ -125,6 +140,7 @@
             shortTitle: 'Cache Survey',
             title: 'A Survey on Cache Methods in Diffusion Models: Toward Efficient Multi-modal Generation',
             authors: `${me}*, Wang, X.*, Lin, Y., Wang, Z., Wang, P., Cai, P., Zhou, Q., Yan, Z., Yan, Z., Shi, Z., Zou, C., Ma, Y., &amp; Zhang, L.&dagger;`,
+            image: 'assets/CacheSurvey/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/abs/2510.19755', type: 'paper' },
             ],
@@ -134,6 +150,7 @@
             shortTitle: 'Linear Attention Survey',
             title: 'A Survey of Linear Attention: Algorithm, Theory, Application, and Infrastructure',
             authors: `Zhang, Y., Sun, W., Sun, S., Ding, W., Xie, R., Wang, H., Chen, J., ${me}, Wang, S., Zhang, Y., Huang, Y., Wang, J., Zhao, T., Han, W., Chen, Y., Zhang, K., Li, S., Xie, R., Wang, D., Chen, J., Zhang, L., Xu, C., &amp; Wang, Y.&dagger;`,
+            image: 'assets/LinearAttentionSurvey/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://www.techrxiv.org/doi/abs/10.36227/techrxiv.177032877.70562626/v1', type: 'paper' },
             ],
