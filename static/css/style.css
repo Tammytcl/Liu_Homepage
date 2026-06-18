@@ -453,6 +453,10 @@ body {
     margin-bottom: 0;
 }
 
+.seeking-opportunities {
+    border-left: 4px solid var(--gradient-start, #bd34fe);
+}
+
 /* 个人信息部分 */
 .personal-info-section {
     width: 100%;

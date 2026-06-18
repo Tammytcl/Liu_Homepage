@@ -36,7 +36,9 @@ function setupSectionIds() {
     sections.forEach(section => {
         const sectionText = section.textContent.trim();
 
-        if (sectionText.includes('Brief Intro')) {
+        if (sectionText.includes('Seeking')) {
+            section.id = 'seeking-opportunities';
+        } else if (sectionText.includes('Brief Intro')) {
             section.id = 'brief-intro';
         } else if (sectionText.includes('Award Experience')) {
             section.id = 'award-experience';
@@ -60,7 +62,7 @@ function reorderMainSections() {
     const content = document.querySelector('content');
     if (!content) return;
 
-    const orderedSectionIds = ['brief-intro', 'research-experience', 'publication', 'award-experience'];
+    const orderedSectionIds = ['seeking-opportunities', 'brief-intro', 'research-experience', 'publication', 'award-experience'];
     const sections = orderedSectionIds.map(id => {
         const title = document.getElementById(id);
         return {
@@ -107,7 +109,7 @@ function setupExpandableMenu() {
 // 高亮当前部分
 function highlightCurrentSection() {
     const scrollPosition = window.scrollY + 150;
-    const sections = ['brief-intro', 'research-experience', 'publication', 'award-experience'];
+    const sections = ['seeking-opportunities', 'brief-intro', 'research-experience', 'publication', 'award-experience'];
     const subSections = Array.from(document.querySelectorAll('.toc-sublink'))
         .map(link => link.getAttribute('href')?.substring(1))
         .filter(Boolean);
