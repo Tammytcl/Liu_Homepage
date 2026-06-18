@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 为各个部分添加ID
     setupSectionIds();
 
+    // 按主页展示优先级重排主要内容区块
+    reorderMainSections();
+
     // 为论文条目添加ID以支持子导航
     setupPublicationIds();
 
@@ -37,8 +40,8 @@ function setupSectionIds() {
             section.id = 'brief-intro';
         } else if (sectionText.includes('Award Experience')) {
             section.id = 'award-experience';
-        } else if (sectionText.includes('Intern Experience')) {
-            section.id = 'intern-experience';
+        } else if (sectionText.includes('Research Experience') || sectionText.includes('研究经历')) {
+            section.id = 'research-experience';
         } else if (sectionText.includes('Publication')) {
             section.id = 'publication';
         }
@@ -47,9 +50,32 @@ function setupSectionIds() {
 
 // 设置论文条目ID
 function setupPublicationIds() {
-    const publications = document.querySelectorAll('.publications ol li');
+    const publications = document.querySelectorAll('.publications .publication-item');
     publications.forEach((pub, index) => {
         pub.id = `publication-${index + 1}`;
+    });
+}
+
+function reorderMainSections() {
+    const content = document.querySelector('content');
+    if (!content) return;
+
+    const orderedSectionIds = ['brief-intro', 'research-experience', 'publication', 'award-experience'];
+    const sections = orderedSectionIds.map(id => {
+        const title = document.getElementById(id);
+        return {
+            title,
+            body: title ? title.nextElementSibling : null,
+        };
+    });
+
+    sections.forEach(section => {
+        if (section.title) {
+            content.appendChild(section.title);
+        }
+        if (section.body) {
+            content.appendChild(section.body);
+        }
     });
 }
 
@@ -81,7 +107,7 @@ function setupExpandableMenu() {
 // 高亮当前部分
 function highlightCurrentSection() {
     const scrollPosition = window.scrollY + 150;
-    const sections = ['brief-intro', 'award-experience', 'intern-experience', 'publication'];
+    const sections = ['brief-intro', 'research-experience', 'publication', 'award-experience'];
     const subSections = Array.from(document.querySelectorAll('.toc-sublink'))
         .map(link => link.getAttribute('href')?.substring(1))
         .filter(Boolean);
@@ -140,13 +166,16 @@ function setupSmoothScrolling() {
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
 
-            if (targetElement) {
-                e.preventDefault();
+                if (targetElement) {
+                    e.preventDefault();
 
-                // 如果是子菜单项，确保父菜单展开
-                if (this.classList.contains('toc-sublink')) {
-                    document.getElementById('pub-link').classList.add('expanded');
-                }
+                    // 如果是子菜单项，确保父菜单展开
+                    if (this.classList.contains('toc-sublink')) {
+                        document.getElementById('pub-link').classList.add('expanded');
+                        if (targetElement.tagName === 'DETAILS') {
+                            targetElement.open = true;
+                        }
+                    }
 
                 // 平滑滚动到目标
                 window.scrollTo({

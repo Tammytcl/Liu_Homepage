@@ -151,6 +151,7 @@
         },
         {
             venue: 'BSPC',
+            year: '2025',
             shortTitle: 'FQCDM',
             title: 'FQCDM: Feature Quantization-Based Cardiac Image Diffusion Synthesis Model',
             authors: `Shi, J., Chen, B., ${me}, Lu, W., Zhang, S., Ma, W., Yang, F.&dagger;, &amp; Li, D.`,
@@ -216,6 +217,33 @@
         return list.findIndex((item) => item.title === publication.title) === index;
     });
 
+    function getPublicationYear(publication) {
+        if (publication.year) {
+            return publication.year;
+        }
+
+        const match = publication.venue.match(/\b(20\d{2})\b/);
+        return match ? match[1] : '2026';
+    }
+
+    function getPublicationGroups() {
+        const groups = [];
+        const groupsByYear = new Map();
+
+        uniquePublications.forEach((publication) => {
+            const year = getPublicationYear(publication);
+            if (!groupsByYear.has(year)) {
+                const group = { year, publications: [] };
+                groupsByYear.set(year, group);
+                groups.push(group);
+            }
+
+            groupsByYear.get(year).publications.push(publication);
+        });
+
+        return groups;
+    }
+
     function renderLinks(links) {
         if (!links || links.length === 0) {
             return '';
@@ -235,7 +263,7 @@
             : '';
 
         return [
-            '<li>',
+            '<li class="publication-item">',
             image,
             `<span class="title"><span class="publication-venue">[${publication.venue}]</span> ${publication.title}</span>`,
             `<div class="info text-success italic">${publication.authors}</div>`,
@@ -245,9 +273,23 @@
         ].join('');
     }
 
+    function renderPublicationGroup(group) {
+        return [
+            '<li class="publication-year-group">',
+            `<details class="publication-year-details" id="publication-year-${group.year}">`,
+            '<summary class="publication-year-summary">',
+            `<span class="publication-year-title">${group.year}</span>`,
+            `<span class="publication-year-count">${group.publications.length} publications</span>`,
+            '</summary>',
+            `<ol class="publication-year-list">${group.publications.map(renderPublication).join('')}</ol>`,
+            '</details>',
+            '</li>',
+        ].join('');
+    }
+
     function renderPublicationList() {
-        document.querySelectorAll('.publications ol').forEach((list) => {
-            list.innerHTML = uniquePublications.map(renderPublication).join('');
+        document.querySelectorAll('.publications > ol').forEach((list) => {
+            list.innerHTML = getPublicationGroups().map(renderPublicationGroup).join('');
         });
     }
 
@@ -257,8 +299,8 @@
             return;
         }
 
-        submenu.innerHTML = uniquePublications.map((publication, index) => {
-            return `<a href="#publication-${index + 1}" class="toc-sublink">${publication.shortTitle}</a>`;
+        submenu.innerHTML = getPublicationGroups().map((group) => {
+            return `<a href="#publication-year-${group.year}" class="toc-sublink">${group.year}</a>`;
         }).join('');
     }
 
