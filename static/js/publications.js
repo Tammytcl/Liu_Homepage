@@ -100,6 +100,7 @@
             shortTitle: 'Hybrid Caching',
             title: 'Let Features Decide Their Own Solvers: Hybrid Feature Caching for Diffusion Transformers',
             authors: `Zheng, S., Chen, G., Zhou, Q., Lin, Y., He, L., Zou, C., Cai, P., ${me}, &amp; Zhang, L.&dagger;`,
+            image: 'assets/HybridCaching/figures/image.png',
             links: [
                 { label: 'Paper', href: 'https://arxiv.org/abs/2510.04188', type: 'paper' },
             ],

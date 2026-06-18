@@ -817,7 +817,7 @@ body {
     padding: 6px;
     overflow: hidden;
     border-radius: 8px;
-    background: var(--main-bg-color, #fffae8);
+    background: #ffffff;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
