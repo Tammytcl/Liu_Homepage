@@ -82,7 +82,9 @@ function setupExpandableMenu() {
 function highlightCurrentSection() {
     const scrollPosition = window.scrollY + 150;
     const sections = ['brief-intro', 'award-experience', 'intern-experience', 'publication'];
-    const subSections = ['publication-1', 'publication-2', 'publication-3'];
+    const subSections = Array.from(document.querySelectorAll('.toc-sublink'))
+        .map(link => link.getAttribute('href')?.substring(1))
+        .filter(Boolean);
 
     // 高亮主菜单
     let activeMainSection = null;

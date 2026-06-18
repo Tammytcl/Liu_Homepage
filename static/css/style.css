@@ -720,6 +720,17 @@ body {
     color: var(--main-text-color, #000000);
 }
 
+.publication-venue {
+    color: var(--gradient-middle, #e0321b);
+    margin-right: 6px;
+}
+
+.author-self {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
 .publications .info {
     padding-left: 0;
     margin-bottom: 10px;
@@ -802,19 +813,19 @@ body {
     border-left: 3px solid #e74c3c;
 }
 
-.publication-link.project, .link-badge[href*="Page"] {
+.publication-link.project, .link-badge.project, .link-badge[href*="Page"] {
     border-left: 3px solid #3498db;
 }
 
-.publication-link.code, .link-badge[href*="github"] {
+.publication-link.code, .link-badge.github, .link-badge[href*="github"] {
     border-left: 3px solid #2ecc71;
 }
 
-.publication-link.arxiv, .link-badge[href*="arxiv"] {
+.publication-link.arxiv, .link-badge.paper, .link-badge[href*="arxiv"] {
     border-left: 3px solid #9b59b6;
 }
 
-.publication-link.blog, .link-badge[href*="zhihu"] {
+.publication-link.blog, .link-badge.blog, .link-badge[href*="zhihu"] {
     border-left: 3px solid #f39c12;
 }
 
@@ -1111,7 +1122,8 @@ body {
 }
 
 .toc-link.expanded + .toc-submenu {
-    max-height: 500px;
+    max-height: min(520px, calc(100vh - 260px));
+    overflow-y: auto;
 }
 
 .toc-sublink {
