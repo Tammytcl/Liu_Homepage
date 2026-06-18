@@ -1508,18 +1508,26 @@ html[data-theme="dack"] .publication-links {
 .icon-container {
     display: flex;
     align-items: center;
-    gap: 30px; /* 图标之间的间距 */
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 10px;
+    width: 100%;
 }
 
 
 /* Icon 项目样式 */
 .iconItem {
-    display: inline-block;
-    margin: 0 10px; /* 控制图标之间的间距 */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 58px;
+    min-height: 58px;
+    margin: 0;
     text-align: center;
     text-decoration: none;
     position: relative;
-
 }
 
 .iconItem:hover {
@@ -1534,6 +1542,7 @@ html[data-theme="dack"] .publication-links {
 .icon {
     width: 24px;
     height: 24px;
+    display: block;
     fill: var(--icon-color, #666);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -1545,6 +1554,11 @@ html[data-theme="dack"] .publication-links {
     fill: #0084ff;
     transform: scale(1.2) rotate(-5deg);
     filter: drop-shadow(0 4px 8px rgba(0, 132, 255, 0.3));
+}
+
+.scholar-icon {
+    fill: none;
+    border-radius: 50%;
 }
 
 .iconTip {
@@ -1598,20 +1612,20 @@ html[data-theme="dack"] .publication-links {
     color: #0084ff;
 }
 
-.iconItem:nth-child(4):hover {
+.scholar-link:hover {
     border-color: rgba(244, 114, 182, 0.3);
 }
 
-.iconItem:nth-child(4):hover::before {
+.scholar-link:hover::before {
     background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(244, 114, 182, 0.05));
 }
 
-.iconItem:nth-child(4):hover .icon {
-    fill: #f472b6;
+.scholar-link:hover .icon {
+    filter: drop-shadow(0 4px 8px rgba(66, 133, 244, 0.35));
 }
 
-.iconItem:nth-child(4):hover .iconTip {
-    color: #f472b6;
+.scholar-link:hover .iconTip {
+    color: #4285f4;
 }
 
 /* =================== ONOFF 专用样式 =================== */
@@ -1854,8 +1868,8 @@ html[data-theme="dack"] .publication-links {
     color: #0084ff;
 }
 
-[data-theme="dark"] .iconItem:nth-child(4):hover .iconTip {
-    color: #f472b6;
+[data-theme="dark"] .scholar-link:hover .iconTip {
+    color: #8ab4f8;
 }
 
 [data-theme="dark"] .onoffswitch-label {
