@@ -898,59 +898,97 @@ body {
 
 /* 研究经历部分样式 */
 .intern-item {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 18px;
+    padding: 18px 20px;
+    border-left: 4px solid var(--gradient-start, #bd34fe);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
 }
 
 .intern-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
 }
 
 .intern-item:last-child {
-    border-bottom: none;
     margin-bottom: 0;
-    padding-bottom: 0;
 }
 
 .intern-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+
+.intern-heading {
+    min-width: 0;
 }
 
 .intern-header h3 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
     margin: 0;
     color: var(--main-text-color, #000000);
 }
 
-.intern-period {
+.intern-direction {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--main-bg-color, #fffae8);
+    color: var(--gradient-middle, #e0321b);
     font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.intern-period {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--project-item-left-text-color, #7e7e7e);
     background-color: var(--main-bg-color, #fffae8);
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-top: 5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 1px;
+    white-space: nowrap;
 }
 
 .intern-details {
-    margin-top: 10px;
+    margin-top: 0;
 }
 
-.intern-details p {
-    margin-bottom: 8px;
+.intern-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--main-text-color, #000000);
     line-height: 1.6;
 }
 
-.intern-details p:last-child {
-    margin-top: 15px;
-    margin-bottom: 0;
+.intern-meta-label {
+    flex: 0 0 auto;
+    padding: 2px 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--gradient-start, #bd34fe), var(--gradient-middle, #e0321b));
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.intern-details .intern-description {
+    margin: 0;
+    line-height: 1.75;
+    color: var(--main-text-color, #000000);
 }
 
 .intern-details a {
@@ -1229,6 +1267,16 @@ html[data-theme="dack"] .publication-year-details {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
+html[data-theme="dack"] .intern-item {
+    background: rgba(255, 255, 255, 0.04);
+    border-left-color: var(--gradient-end, #41d1ff);
+}
+
+html[data-theme="dack"] .intern-direction {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--gradient-end, #41d1ff);
+}
+
 html[data-theme="dack"] .award-item {
     background: var(--project-item-bg-color, rgb(19, 20, 24));
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1336,6 +1384,23 @@ html[data-theme="dack"] .publication-links {
 
   .intro-content {
     padding: 15px;
+  }
+
+  .intern-item {
+    padding: 16px;
+  }
+
+  .intern-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .intern-period {
+    white-space: normal;
+  }
+
+  .intern-meta {
+    align-items: flex-start;
   }
 }
 
