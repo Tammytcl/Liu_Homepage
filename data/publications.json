@@ -1,0 +1,428 @@
+[
+  {
+    "id": "Focused Forcing",
+    "title": "Focused Forcing: Content-Aware Per-Frame KV Selection for Efficient Autoregressive Video Diffusion",
+    "venue": "NeurIPS 2026",
+    "year": 2026,
+    "authors": "Cai, P., Zhang, E., Jiacheng Liu, Lin, H., Zhang, R., Mo, W., Ma, Y., Zheng, S., Huang, J., Liu, D., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "Dynamic Video",
+    "title": "Dynamic Video Generation: Shaping Video Generation Across Time and Space",
+    "venue": "NeurIPS 2026",
+    "year": 2026,
+    "authors": "Zheng, S., Huang, J., Jiacheng Liu, Chen, G., He, L., Lin, Y., Cai, P., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "FreqCa",
+    "title": "FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching",
+    "venue": "NeurIPS 2026",
+    "year": 2026,
+    "authors": "Jiacheng Liu*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., & Zhang, L.†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2510.08669",
+        "type": "paper"
+      }
+    ],
+    "description": {
+      "zh": "根据不同频段的特征演化设计缓存策略，将高效推理拓展到图像生成与编辑。",
+      "en": "Frequency-aware feature caching that models different frequency-band dynamics for efficient image generation and editing."
+    }
+  },
+  {
+    "id": "SpecEdit",
+    "title": "SpecEdit: Training-Free Acceleration for Diffusion-Based Image Editing via Semantic Locking",
+    "venue": "NeurIPS 2026",
+    "year": 2026,
+    "authors": "Yan, Z.*, Zheng, S.*, Qin, H.*, Tu, X., Wang, Y., Jiacheng Liu, Ren, J., Lin, Y., Cai, P., Ren, J., Zhang, X., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "Z-Cache",
+    "title": "Z-Cache: Accelerating Diffusion Transformers via Self-Reflection",
+    "venue": "NeurIPS 2026",
+    "year": 2026,
+    "authors": "Cheng, Z.*, Wang, Z.*, Jiacheng Liu*, Tu, X., Zhou, C., Chen, J., Ma, Y., Ma, Z., Ren, J., Zou, L., & Zhang, L.†",
+    "role": "equal",
+    "links": []
+  },
+  {
+    "id": "LinCa",
+    "title": "LinCa: Accelerating Diffusion Models via Learnable Decomposed Feature Caching",
+    "venue": "ECCV 2026",
+    "year": 2026,
+    "authors": "Liu, J.*, Qin, H.*, Tu, X., Jiacheng Liu, Hu, J., Yan, Z., Xie, Y., Shen, K., Ren, J., Lin, Y., Zhang, X., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "AViTS",
+    "title": "AViTS: Adaptive Spatiotemporal Token Selection for Efficient Dynamic-Resolution Generation",
+    "venue": "ECCV 2026",
+    "year": 2026,
+    "authors": "Qin, H.*, Yan, Z.*, Zheng, S.*, Tu, X., Jiacheng Liu, Lin, Y., Zou, C., Liu, J., Cai, P., Zhang, X., Ren, J., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "GP Cache",
+    "title": "Accelerating Diffusion Transformers with Gaussian Process Rectified Feature Cache",
+    "venue": "ECCV 2026",
+    "year": 2026,
+    "authors": "Shen, Z.*, Huang, R.*, Zou, C., Zheng, S., Jiacheng Liu, Cai, P., Shi, Z., Du, Y., Feng, L., Tu, X., Ren, J., Zhang, X., & Zhang, L.†",
+    "links": []
+  },
+  {
+    "id": "LESA",
+    "title": "LESA: Learnable Stage-Aware Predictors for Diffusion Model Acceleration",
+    "venue": "CVPR 2026",
+    "year": 2026,
+    "authors": "Peiliang Cai*, Jiacheng Liu*, Haowen Xu, Xinyu Wang, Chang Zou, Linfeng Zhang†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2602.20497",
+        "type": "paper"
+      }
+    ],
+    "description": {
+      "zh": "学习不同噪声阶段的特征演化，以阶段感知的预测器提升图像与视频扩散模型的质量和效率。",
+      "en": "Learning stage-dependent feature dynamics with specialized predictors to improve the quality–efficiency trade-off in image and video diffusion."
+    }
+  },
+  {
+    "id": "Sketch to Fresco",
+    "title": "From Sketch to Fresco: Efficient Diffusion Transformer with Progressive Resolution",
+    "venue": "CVPR 2026",
+    "year": 2026,
+    "authors": "Zheng, S., Chen, G., He, L., Jiacheng Liu, Lin, Y., Zou, C., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2601.07462",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "Data-Driven Predictor",
+    "title": "Beyond Fixed Formulas: Data-Driven Linear Predictor for Efficient Diffusion Models",
+    "venue": "CVPR 2026",
+    "year": 2026,
+    "authors": "Shen, Z.*, Huang, R.*, Jiacheng Liu, Zou, C., Cai, P., Zheng, S., Shi, Z., Feng, L., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://cvpr.thecvf.com/virtual/2026/poster/40070",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "GameCraft-2",
+    "title": "GameCraft-2: Instruction-following Interactive Game World Model",
+    "venue": "CVPR 2026 Workshop",
+    "year": 2026,
+    "authors": "Junshu Tang*, Jiacheng Liu*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2511.23429",
+        "type": "paper"
+      },
+      {
+        "label": "Project",
+        "href": "https://hunyuan-gamecraft-2.github.io/",
+        "type": "project"
+      }
+    ],
+    "description": {
+      "zh": "指令驱动的交互式游戏世界模型。参与交互数据构建、教师模型 SFT、少步蒸馏与评测，支持自然语言控制、玩家动作响应和长时序生成。",
+      "en": "An instruction-following interactive game world model. Contributed to interactive data, teacher-model SFT, few-step distillation, and evaluation for language control, action response, and long-horizon generation."
+    }
+  },
+  {
+    "id": "Hybrid Caching",
+    "title": "Let Features Decide Their Own Solvers: Hybrid Feature Caching for Diffusion Transformers",
+    "venue": "ICLR 2026 Oral",
+    "year": 2026,
+    "authors": "Zheng, S., Chen, G., Zhou, Q., Lin, Y., He, L., Zou, C., Cai, P., Jiacheng Liu, & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2510.04188",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "HiCache",
+    "title": "HiCache: Training-free Acceleration of Diffusion Models via Hermite Polynomial-based Feature Caching",
+    "venue": "ICLR 2026",
+    "year": 2026,
+    "authors": "Feng, L.*, Zheng, S.*, Jiacheng Liu, Wang, X., Zou, C., Ma, Y., Chen, J., Cai, P., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/html/2508.16984v1",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "WaveEx",
+    "title": "WaveEx: Accelerating Flow Matching-based Speech Generation via Wavelet-guided Extrapolation",
+    "venue": "AAAI 2026",
+    "year": 2026,
+    "authors": "Liu, X.*, Gui, X.*, Ge, Z., Ge, Y., Zou, C., Jiacheng Liu, Niu, Z., Zheng, Q., Xu, C., Chen, X., Xiao, T., Zhu, J., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://ojs.aaai.org/index.php/AAAI/article/view/40490",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "Forecast Calibrate",
+    "title": "Forecast then Calibrate: Feature Caching as ODE for Efficient Diffusion Transformers",
+    "venue": "AAAI 2026",
+    "year": 2026,
+    "authors": "Zheng, S., Feng, L., Wang, X., Jiacheng Liu, Zou, C., Ma, Y., Chen, J., Cai, P., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2508.16211",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Shenyi-Z/Cache4Diffusion",
+        "type": "github"
+      }
+    ]
+  },
+  {
+    "id": "Cache Survey",
+    "title": "A Survey on Cache Methods in Diffusion Models: Toward Efficient Multi-modal Generation",
+    "venue": "Survey 2026",
+    "year": 2026,
+    "authors": "Jiacheng Liu*, Wang, X.*, Lin, Y., Wang, Z., Wang, P., Cai, P., Zhou, Q., Yan, Z., Yan, Z., Shi, Z., Zou, C., Ma, Y., & Zhang, L.†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2510.19755",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "Linear Attention Survey",
+    "title": "A Survey of Linear Attention: Algorithm, Theory, Application, and Infrastructure",
+    "venue": "TMLR",
+    "year": 2026,
+    "authors": "Zhang, Y., Sun, W., Sun, S., Ding, W., Xie, R., Wang, H., Chen, J., Jiacheng Liu, Wang, S., Zhang, Y., Huang, Y., Wang, J., Zhao, T., Han, W., Chen, Y., Zhang, K., Li, S., Xie, R., Wang, D., Chen, J., Zhang, L., Xu, C., & Wang, Y.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://www.techrxiv.org/doi/abs/10.36227/techrxiv.177032877.70562626/v1",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "PCMamba",
+    "title": "PCMamba: Parallel Convolution-Mamba Network for Medical Image Segmentation",
+    "venue": "Neurocomputing, Under Review",
+    "year": 2026,
+    "authors": "Jiacheng Liu, Dong, L., Chen, B., Shi, J., Lu, W., Zhang, S., Yang, F.†, Li, D., & Zhang, L.",
+    "role": "first",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "assets/PCMamba/PCMamba.pdf",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "FQCDM",
+    "title": "FQCDM: Feature Quantization-Based Cardiac Image Diffusion Synthesis Model",
+    "venue": "BSPC",
+    "year": 2025,
+    "authors": "Shi, J., Chen, B., Jiacheng Liu, Lu, W., Zhang, S., Ma, W., Yang, F.†, & Li, D.",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://www.sciencedirect.com/science/article/abs/pii/S1746809425017161",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "SpeCa",
+    "title": "SpeCa: Accelerating Diffusion Transformers with Speculative Feature Caching",
+    "venue": "ACM MM 2025",
+    "year": 2025,
+    "authors": "Jiacheng Liu*, Chang Zou*, Yuanhuiyi Lyu, Fei Ren, Shaobo Wang, Kaixin Li, Linfeng Zhang†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2509.11628",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Shenyi-Z/Cache4Diffusion",
+        "type": "github"
+      },
+      {
+        "label": "Project Page",
+        "href": "https://speca2025.github.io/SpeCa2025/",
+        "type": "project"
+      }
+    ],
+    "description": {
+      "zh": "通过 Forecast-Then-Verify 判断预测特征的可靠性，并按样本复杂度自适应分配计算，改善高加速比下的生成质量。",
+      "en": "A forecast-then-verify framework that checks feature predictions and adapts computation to sample complexity, improving generation quality at high acceleration ratios."
+    }
+  },
+  {
+    "id": "TaylorSeer",
+    "title": "From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers",
+    "venue": "ICCV 2025",
+    "year": 2025,
+    "authors": "Jiacheng Liu*, Chang Zou*, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://doi.org/10.48550/arXiv.2503.06923",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Shenyi-Z/TaylorSeer",
+        "type": "github"
+      },
+      {
+        "label": "Project Page",
+        "href": "https://taylorseer.github.io/TaylorSeer/",
+        "type": "project"
+      },
+      {
+        "label": "Zhihu",
+        "href": "https://zhuanlan.zhihu.com/p/1899104160282018548",
+        "type": "blog"
+      }
+    ],
+    "description": {
+      "zh": "基于历史特征与高阶差分预测后续时间步，将缓存从直接复用推进到预测；论文实验在 FLUX 与 HunyuanVideo 上分别实现 4.99× 和 5.00× 加速，无需额外训练。",
+      "en": "Predicting future features from their history with higher-order differences, moving caching from reuse to forecasting. Paper experiments report 4.99× acceleration on FLUX and 5.00× on HunyuanVideo without additional training."
+    }
+  },
+  {
+    "id": "FeMo",
+    "title": "Accelerate Diffusion Transformers with Feature Momentum",
+    "venue": "Preprint 2025",
+    "year": 2025,
+    "authors": "Fang, J., Zou, C., Jiacheng Liu, Lyu, Y., Hu, X., & Zhang, L.†",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "assets/FeMo/2025 - Accelerate Diffusion Transformers with Feature Momentum.pdf",
+        "type": "paper"
+      }
+    ]
+  },
+  {
+    "id": "PSVT",
+    "title": "PSVT: Pyramid Shifted Window based Vision Transformer for Cardiac Image Segmentation",
+    "venue": "BSPC 2025",
+    "year": 2025,
+    "authors": "Zhang, X., Jiacheng Liu, Xian, X., Chen, B., Li, D., Yang, F.†, & Zhang, L.",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://doi.org/10.1016/j.bspc.2024.107339",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Tammytcl/PSVT",
+        "type": "github"
+      }
+    ]
+  },
+  {
+    "id": "ESCD",
+    "title": "Beyond Token Alignment: Event Completion for Cross-Tokenizer On-Policy Distillation",
+    "venue": "ICLR 2027 · Under Review",
+    "year": 2027,
+    "authors": "Jiacheng Liu*, Song, J.*, Zhang, Q., Chen, S., Linfeng Zhang†",
+    "role": "equal",
+    "links": [],
+    "description": {
+      "zh": "针对教师与学生 Tokenizer 不一致的问题，研究基于事件补全的 On-Policy 蒸馏与异构 MoE 知识迁移。",
+      "en": "Event-completion supervision for on-policy distillation across different tokenizers, with heterogeneous MoE knowledge transfer."
+    }
+  },
+  {
+    "id": "RolloutRemover",
+    "title": "RolloutRemover: Scribble-Guided Object Removal via Latent Rollout Modeling",
+    "venue": "ICLR 2027 · Under Review",
+    "year": 2027,
+    "authors": "Wang, Z., Li, Y., Jiacheng Liu, Ma, Y., Huang, W., Liu, Q., Zhang, J.†",
+    "links": []
+  },
+  {
+    "id": "TempoKV",
+    "title": "TempoKV: Predictive KV Cache Quantization For Autoregressive Video Generation",
+    "venue": "ICLR 2027 · Under Review",
+    "year": 2027,
+    "authors": "Hu, J., Mo, W., Cai, P., Jiacheng Liu, Ren, J., Zhang, X., Tu, X., Linfeng Zhang†",
+    "links": []
+  },
+  {
+    "id": "Noise Trajectory Selection",
+    "title": "Search Low, Refine the Winner: Fast Inference through Noise-Trajectory Selection",
+    "venue": "ICLR 2027 · Under Review",
+    "year": 2027,
+    "authors": "Qin, H., Yan, Z., Jiacheng Liu, Peng, H., Liu, J., Tu, X., Ren, J., Zhang, X., Wang, Y., Linfeng Zhang†",
+    "links": []
+  },
+  {
+    "id": "PHYRD",
+    "title": "PHYRD: A Living Benchmark for Reproducing and Extending Theoretical Physics Research",
+    "venue": "ICLR 2027 · Under Review",
+    "year": 2027,
+    "authors": "Zhang, Q., Chen, G., Zhang, W., Wang, J., Song, J., Jiacheng Liu, Chen, S., Linfeng Zhang†",
+    "links": []
+  },
+  {
+    "id": "BigBang",
+    "title": "BigBang: Pursuing Open-Ended Intelligence through Self-Evolving Synthesis of Verifiable Frontier Tasks",
+    "venue": "Technical Report",
+    "year": 2026,
+    "authors": "",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://endlessfrontier.tech/assets/paper.pdf",
+        "type": "paper"
+      },
+      {
+        "label": "Project",
+        "href": "https://endlessfrontier.tech/",
+        "type": "project"
+      }
+    ]
+  }
+]
