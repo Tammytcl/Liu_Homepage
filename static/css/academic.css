@@ -34,6 +34,7 @@ h1 { font-size: 34px; line-height: 1.2; font-weight: 500; margin: 0 0 8px; lette
 .chinese-name { display: inline-block; font-size: 25px; font-weight: 400; }
 .affiliation { margin: 0 0 13px; color: var(--muted); font-size: 15px; }
 .contact { font-size: 15px; gap: 6px 16px; }
+.contact-email { font-size: 15px; margin: 0 0 6px; }
 .portrait { width: 164px; height: 164px; display: block; object-fit: cover; border-radius: 3px; }
 .bio { margin: 24px 0 0; }
 p { margin: 0 0 12px; }

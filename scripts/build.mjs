@@ -123,7 +123,8 @@ for (const [language, l] of Object.entries(labels)) {
             <div>
                 <h1>Jiacheng Liu <span class="chinese-name">留嘉城</span></h1>
                 <p class="affiliation">${l.affiliation}</p>
-                <div class="contact">${link('Email', 'mailto:ljc.mytcl@gmail.com')}${link('Google Scholar', 'https://scholar.google.com/citations?user=B4udiEoAAAAJ')}${link('GitHub', 'https://github.com/Tammytcl')}${link(language === 'zh' ? '知乎' : 'Zhihu', 'https://www.zhihu.com/people/ming-yue-tou-chui-lei')}</div>
+                <p class="contact-email">Contact: ${link('ljc.mytcl@gmail.com', 'mailto:ljc.mytcl@gmail.com')}</p>
+                <div class="contact">${link('Google Scholar', 'https://scholar.google.com/citations?user=B4udiEoAAAAJ')}${link('GitHub', 'https://github.com/Tammytcl')}</div>
             </div>
             <img class="portrait" src="static/img/profile.jpg" width="164" height="164" alt="${language === 'zh' ? '留嘉城的现有头像：阳光下的黑猫' : 'Jiacheng Liu’s existing avatar: a black cat in the sunlight'}">
         </div>
