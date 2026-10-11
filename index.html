@@ -15,7 +15,7 @@
 <a class="skip-link" href="#about">跳到正文</a>
 <main class="page">
     <div class="topline">
-        <nav class="section-nav" aria-label="页面导航"><a href="#about">简介</a><a href="#research">研究方向</a><a href="#internships">实习</a><a href="#selected-projects">代表项目</a><a href="#other-publications">其他论文</a></nav>
+        <nav class="section-nav" aria-label="页面导航"><a href="#about">简介</a><a href="#research">研究方向</a><a href="#internships">实习</a><a href="#project-overview">项目介绍</a><a href="#selected-projects">代表项目</a><a href="#other-publications">其他论文</a></nav>
         <nav class="languages" aria-label="Language"><a href="index.html" lang="zh-CN" aria-current="page">中文</a><a href="index_en.html" lang="en">EN</a></nav>
     </div>
     <header id="about">
@@ -38,10 +38,14 @@
         <h2 id="internships-heading">实习经历</h2>
         <article class="experience"><div class="experience-heading"><h3>无尽前沿（Endless Frontier）</h3><span class="period">2026.09–至今</span></div><p class="role">LLM 基模组 · 后训练实习生 · 上海</p><p>开展 On-Policy Distillation 与异构 MoE 知识蒸馏研究，关注跨模型知识迁移和多轮 Coding Agent 训练。</p></article><article class="experience"><div class="experience-heading"><h3>腾讯混元</h3><span class="period">2025.07–2026.06</span></div><p class="role">多模态模型部 · 世界模型基模组 · 青云计划研究实习生 · 上海</p><p>参与 GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。</p></article>
     </section>
+    <section id="project-overview" aria-labelledby="overview-heading">
+        <h2 id="overview-heading">项目介绍</h2>
+        <article><h3>高效多模态生成</h3><p>围绕扩散模型在图像、视频生成与编辑中的推理成本，研究如何利用跨时间步的特征演化减少冗余计算。从 TaylorSeer 的预测式缓存出发，进一步探索 SpeCa 的预测验证与自适应计算、LESA 的阶段感知可学习预测器，以及 FreqCa 的频域缓存，优化生成质量与推理效率之间的平衡。</p></article><article><h3>交互式世界模型</h3><p>围绕自然语言指令与玩家动作驱动的视频生成，参与 Hunyuan-GameCraft-2 研发，研究指令跟随、动作响应与长时序交互一致性。工作涵盖交互视频数据清洗与标注、交互记忆教师模型 SFT、少步生成蒸馏与评测；基于 Self-Forcing 与 DMD 开展蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。</p></article><article><h3>大语言模型后训练</h3><p>围绕大语言模型的知识迁移与多轮智能体学习，开展 On-Policy Distillation 研究，包括 ESCD 跨 Tokenizer 蒸馏、异构 MoE 知识迁移与 MOPD。进一步研究需要推理、调用工具和读取环境反馈的多轮 Coding Agent 任务，围绕 Terminal-Bench 2.0 与 SWE-bench Verified，关注训练效率、监督分配与任务求解能力。</p></article>
+    </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">代表项目</h2>
         <p class="section-note">精选一作 / 共同一作工作。* 表示共同第一作者，† 表示通讯作者。</p>
-        <h3>高效多模态生成</h3><p class="project-intro">从特征复用到预测式缓存，研究图像、视频生成与编辑中的质量和效率。</p><article class="work" id="work-TaylorSeer">
+        <h3>高效多模态生成</h3><article class="work" id="work-TaylorSeer">
         <p class="work-title"><a href="https://doi.org/10.48550/arXiv.2503.06923">From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers</a></p>
         <p class="work-meta">ICCV 2025 · 共同一作<br><strong>Jiacheng Liu</strong>*, Chang Zou*, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang†</p>
         <p class="work-description">基于历史特征与高阶差分预测后续时间步，将缓存从直接复用推进到预测；论文实验在 FLUX 与 HunyuanVideo 上分别实现 4.99× 和 5.00× 加速，无需额外训练。</p>
@@ -61,18 +65,17 @@
         <p class="work-meta">NeurIPS 2026 · 共同一作<br><strong>Jiacheng Liu</strong>*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., &amp; Zhang, L.†</p>
         <p class="work-description">根据不同频段的特征演化设计缓存策略，将高效推理拓展到图像生成与编辑。</p>
         <div class="paper-links"><a href="https://arxiv.org/abs/2510.08669">论文</a></div>
-    </article><h3>交互式世界模型</h3><p class="project-intro">通过自然语言与玩家动作控制视频世界，连接数据、训练和生成。</p><article class="work" id="work-GameCraft-2">
+    </article><h3>交互式世界模型</h3><article class="work" id="work-GameCraft-2">
         <p class="work-title"><a href="https://arxiv.org/abs/2511.23429">GameCraft-2: Instruction-following Interactive Game World Model</a></p>
         <p class="work-meta">CVPR 2026 Workshop · 共同一作<br>Junshu Tang*, <strong>Jiacheng Liu</strong>*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†</p>
         <p class="work-description">指令驱动的交互式游戏世界模型。参与交互数据构建、教师模型 SFT、少步蒸馏与评测，支持自然语言控制、玩家动作响应和长时序生成。</p>
         <div class="paper-links"><a href="https://arxiv.org/abs/2511.23429">论文</a><a href="https://hunyuan-gamecraft-2.github.io/">项目</a></div>
-    </article><h3>大语言模型后训练</h3><p class="project-intro">研究教师知识如何迁移到学生自身访问的状态，并用于大规模模型与多轮智能体训练。</p><article class="work" id="work-ESCD">
+    </article><h3>大语言模型后训练</h3><article class="work" id="work-ESCD">
         <p class="work-title">Beyond Token Alignment: Event Completion for Cross-Tokenizer On-Policy Distillation</p>
         <p class="work-meta">ESCD · ICLR 2027 · 在审 · 共同一作<br><strong>Jiacheng Liu</strong>*, Song, J.*, Zhang, Q., Chen, S., Linfeng Zhang†</p>
         <p class="work-description">针对教师与学生 Tokenizer 不一致的问题，研究基于事件补全的 On-Policy 蒸馏与异构 MoE 知识迁移。</p>
 
     </article>
-        <p class="ongoing">同时开展 MOPD 与多轮 Coding Agent OPD 研究，围绕 Terminal-Bench 2.0 和 SWE-bench Verified，关注训练效率与监督分配。</p>
     </section>
     <section id="other-publications" aria-labelledby="publications-heading">
         <h2 id="publications-heading">其他论文</h2>
