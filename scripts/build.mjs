@@ -27,8 +27,9 @@ const labels = {
         ],
         overviews: [
             ['大语言模型后训练与智能体', [
-                '我关注如何将强教师模型的能力有效迁移到学生模型，并让模型在与环境交互的过程中持续学习。研究从 On-Policy Distillation 出发，覆盖跨 Tokenizer 监督对齐、异构 MoE 知识迁移与 MOPD，重点讨论模型词表和结构不一致时如何构造有效监督，以及训练效率与能力保持之间的关系。',
-                '进一步将知识迁移拓展到多轮 Coding Agent：模型需要在推理、工具调用和环境反馈之间反复切换，监督也需要覆盖完整交互过程。围绕 Terminal-Bench 2.0 与 SWE-bench Verified，研究轨迹采样、监督分配、训练与评测的一致性及任务求解能力；同时参与开放式可验证任务构建与科研任务评测相关工作，关注更复杂任务中的能力学习与检验。'
+                { label: 'Cross-Tokenizer OPD：', text: '我关注教师与学生使用不同 Tokenizer 时的知识迁移，研究如何在学生自主生成的轨迹上构造有效监督。围绕跨词表的概率对齐与事件补全，探索学生生成教师 Token 的部分前缀后，如何对兼容的后续补全集合施加监督，避免将概率任意分配给单个学生 Token，并将这一方法拓展到异构 MoE 的蒸馏。' },
+                { label: 'MOPD：', text: '开展 MOPD 相关的蒸馏训练与实验，关注教师能力向学生模型的迁移，以及训练效率与能力保持，积累大模型后训练的实践经验。' },
+                { label: 'Agentic OPD（TRAIL）：', text: '围绕需要反复推理、调用工具与读取环境反馈的多轮智能体，研究训练基础设施与监督分配的协同设计。一方面，采用轮级流式异步 OPD：学生完成的响应持续进入教师评分流程，在环境反馈与评分就绪后参与 Actor 的梯度累积；Actor 累积足够的有效训练 Token 后更新，Rollout 在后续生成请求边界同步新策略，减少完整轨迹交接带来的跨阶段等待。另一方面，在线训练独立的 Critic，利用不断返回的有效终局结果学习当前学生的未来任务价值；比较同一 Critic 版本下行动前后的状态价值，将价值变化映射为有界、非负的蒸馏权重，调整当前响应的监督强度。当前轮的评分无需等待自身轨迹结束，而 Critic 从已完成的有效轨迹中持续学习，使监督能够及时消费，评分依据也能随学生能力更新。' }
             ]],
             ['高效多模态生成', [
                 '围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。',
@@ -69,8 +70,9 @@ const labels = {
         ],
         overviews: [
             ['LLM Post-training and Agents', [
-                'I study how to transfer capabilities from strong teachers to student models and enable learning through interaction with an environment. My work on on-policy distillation spans cross-tokenizer supervision alignment, heterogeneous MoE knowledge transfer, and MOPD. I focus on constructing useful supervision across different vocabularies and model architectures, and on balancing training efficiency with capability retention.',
-                'I extend this direction to multi-turn coding agents, where reasoning, tool use, and environment feedback form an ongoing interaction. Using Terminal-Bench 2.0 and SWE-bench Verified, I investigate trajectory sampling, supervision allocation, consistency between training and evaluation, and task-solving capabilities. I also contribute to work on open-ended verifiable tasks and research-task evaluation, exploring how capabilities can be learned and assessed on more complex problems.'
+                { label: 'Cross-Tokenizer OPD:', text: 'I study knowledge transfer between teachers and students with different tokenizers, focusing on useful supervision along student-generated trajectories. My work explores cross-vocabulary probability alignment and event completion: after a student generates a partial prefix of a teacher token, supervision targets compatible completion sets rather than arbitrary probability splits among individual student tokens. I also extend this direction to heterogeneous MoE distillation.' },
+                { label: 'MOPD:', text: 'I work on MOPD distillation training and experiments, focusing on teacher-to-student capability transfer, training efficiency, and capability retention, building practical experience in LLM post-training.' },
+                { label: 'Agentic OPD (TRAIL):', text: 'For multi-turn agents that repeatedly reason, call tools, and read environment feedback, I study the joint design of training infrastructure and supervision allocation. Turn-level streaming asynchronous OPD sends completed student responses to teacher scoring and allows Actor gradient accumulation once environment feedback and scores are ready. The Actor updates after accumulating enough valid training tokens, and rollout workers synchronize the new policy at subsequent generation-request boundaries, reducing cross-stage waiting caused by complete-trajectory handoffs. In parallel, an independently trained online Critic learns the current student’s future task value from valid terminal outcomes as they arrive. Value changes between pre-action and post-action states, evaluated with the same Critic version, become bounded, nonnegative distillation weights for the current response. Turn scoring does not require that trajectory’s terminal outcome, while Critic learning uses completed valid trajectories, enabling timely supervision consumption and scoring that evolves with the student.' }
             ]],
             ['Efficient Multimodal Generation', [
                 'I study how feature dynamics across timesteps, network layers, and frequency bands can reduce redundant computation in image, video, and speech generation. My work spans training-free extrapolation, prediction and calibration, learnable and stage-aware predictors, adaptive verification, and computation allocation, alongside surveys of caching methods and efficient attention. The central questions are which computations can be reused or predicted, when to recompute, and how to preserve quality under acceleration.',
@@ -93,6 +95,11 @@ const labels = {
         paper: 'Paper', code: 'Code', project: 'Project', footer: 'Updated October 2026'
     }
 };
+
+function overviewParagraph(paragraph) {
+    if (typeof paragraph === 'string') return `<p>${escape(paragraph)}</p>`;
+    return `<p><strong>${escape(paragraph.label)}</strong> ${escape(paragraph.text)}</p>`;
+}
 
 function links(p, l) {
     return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
@@ -165,7 +172,7 @@ for (const [language, l] of Object.entries(labels)) {
     <section id="project-overview" aria-labelledby="overview-heading">
         <h2 id="overview-heading">${l.overview}</h2>
         <p class="section-note">${l.overviewNote}</p>
-        ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(paragraph => `<p>${escape(paragraph)}</p>`).join('')}</article>`).join('\n        ')}
+        ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(overviewParagraph).join('')}</article>`).join('\n        ')}
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">${l.projects}</h2>
