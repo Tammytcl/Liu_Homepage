@@ -363,7 +363,13 @@
     "year": 2027,
     "authors": "Jiacheng Liu*, Song, J.*, Zhang, Q., Chen, S., Linfeng Zhang†",
     "role": "equal",
-    "links": [],
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2609.34738",
+        "type": "paper"
+      }
+    ],
     "description": {
       "zh": "针对教师与学生 Tokenizer 不一致的问题，研究基于事件补全的 On-Policy 蒸馏与异构 MoE 知识迁移。",
       "en": "Event-completion supervision for on-policy distillation across different tokenizers, with heterogeneous MoE knowledge transfer."
