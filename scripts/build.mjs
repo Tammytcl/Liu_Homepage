@@ -1,8 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const stylesheetVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'static/css/academic.css'))).digest('hex').slice(0, 12);
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'data/publications.json'), 'utf8'));
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const authorText = value => escape(value).replaceAll('Jiacheng Liu', '<strong>Jiacheng Liu</strong>');
@@ -135,7 +137,7 @@ for (const [language, l] of Object.entries(labels)) {
     <title>${l.title}</title>
     <meta name="description" content="${escape(l.description)}">
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="static/css/academic.css">
+    <link rel="stylesheet" href="static/css/academic.css?v=${stylesheetVersion}">
     <link rel="alternate" hreflang="zh-CN" href="https://tammytcl.github.io/Liu_Homepage/">
     <link rel="alternate" hreflang="en" href="https://tammytcl.github.io/Liu_Homepage/index_en.html">
     <link rel="canonical" href="https://tammytcl.github.io/Liu_Homepage/${language === 'en' ? 'index_en.html' : ''}">
