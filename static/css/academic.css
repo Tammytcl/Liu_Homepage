@@ -1,9 +1,11 @@
 :root {
     color-scheme: light;
     --ink: #242424;
-    --muted: #686868;
+    --muted: #626b75;
     --link: #1765a3;
-    --rule: #e6e6e6;
+    --rule: #dce2e8;
+    --soft: #f3f6f9;
+    --heading-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -21,7 +23,7 @@ body:lang(en) { font-size: 17px; line-height: 1.65; }
 a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
 a:hover { text-decoration: underline; }
 a:focus-visible, summary:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; }
-.page { max-width: 860px; margin: 0 auto; padding: 52px 32px 32px; }
+.page { max-width: 900px; margin: 0 auto; padding: 52px 32px 32px; }
 .skip-link { position: absolute; left: 16px; top: -80px; background: white; padding: 8px 16px; }
 .skip-link:focus { top: 12px; }
 .topline { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 26px; }
@@ -33,38 +35,46 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--link); outline
 h1 { font-size: 34px; line-height: 1.2; font-weight: 500; margin: 0 0 8px; letter-spacing: -.4px; }
 .chinese-name { display: inline-block; font-size: 25px; font-weight: 400; }
 .affiliation { margin: 0 0 13px; color: var(--muted); font-size: 15px; }
+.advisor { margin: 0 0 8px; font-size: 15px; }
 .contact { font-size: 15px; gap: 6px 16px; }
 .contact-email { font-size: 15px; margin: 0 0 6px; }
 .portrait { width: 164px; height: 164px; display: block; object-fit: cover; border-radius: 3px; }
 .bio { margin: 24px 0 0; }
 p { margin: 0 0 12px; }
 .opportunities { color: var(--muted); font-size: 15px; margin: 12px 0 0; }
-section { margin-top: 35px; }
-h2 { margin: 0 0 16px; font-size: 24px; font-weight: 500; line-height: 1.4; }
-h3 { margin: 25px 0 12px; font-size: 18px; line-height: 1.5; font-weight: 600; }
+section { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule); }
+h2 { margin: 0 0 22px; padding-left: 14px; border-left: 4px solid var(--link); font-family: var(--heading-font); font-size: 28px; font-weight: 700; line-height: 1.3; letter-spacing: -.3px; }
+h3 { margin: 28px 0 14px; font-family: var(--heading-font); font-size: 20px; line-height: 1.5; font-weight: 650; }
 .interests { padding-left: 21px; margin: 0; }
 .interests li { margin: 5px 0; padding-left: 3px; }
-.experience { margin-bottom: 19px; }
+.experience { margin-bottom: 24px; }
 .experience-heading { display: flex; gap: 16px; justify-content: space-between; align-items: baseline; }
-.experience-heading h3 { margin: 0; font-size: 17px; }
+.experience-heading h3 { margin: 0; font-size: 19px; }
 .period { color: var(--muted); font-size: 14px; white-space: nowrap; }
-.role { margin: 2px 0 4px; font-size: 14px; color: var(--muted); }
+.role { margin: 6px 0 10px; font-size: 14px; color: var(--muted); }
 .experience p:last-child { margin-bottom: 0; }
-.section-note { color: var(--muted); font-size: 14px; margin: -8px 0 20px; }
+.section-note { color: var(--muted); font-size: 14px; margin: -8px 0 26px; }
+.research-overview + .research-overview { margin-top: 30px; }
+.research-overview h3 { margin: 0 0 14px; }
+.research-overview p { margin: 0 0 14px; }
+.research-overview p:last-child { margin-bottom: 0; }
+.selected-group + .selected-group { margin-top: 32px; }
+.group-heading { margin: 0 0 20px; padding: 9px 14px; border-radius: 3px; background: var(--soft); color: var(--link); font-size: 17px; font-weight: 650; }
 .project-intro { margin: -4px 0 16px; color: var(--muted); font-size: 15px; }
-.work { margin: 0 0 22px; }
-.work-title { font-weight: 600; line-height: 1.5; margin: 0 0 4px; font-size: 16px; }
-body:lang(en) .work-title { font-size: 17px; }
+.work { margin: 0; padding: 0 0 22px; }
+.work + .work { padding-top: 22px; border-top: 1px solid var(--rule); }
+.work:last-child { padding-bottom: 0; }
+.work-title { font-weight: 700; line-height: 1.45; margin: 0 0 9px; font-size: 18px; overflow-wrap: anywhere; }
 .work-title a { color: var(--ink); }
 .work-title a:hover { color: var(--link); }
-.work-meta { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 0 5px; }
+.work-meta { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 0 10px; }
 .work-meta strong { color: var(--ink); font-weight: 600; }
-.work-description { margin: 0 0 5px; }
+.work-description { margin: 0 0 10px; }
 .paper-links { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; }
 .ongoing { font-size: 15px; color: var(--muted); margin-top: -3px; }
 .publication-group { border-top: 1px solid var(--rule); }
 .publication-group:last-child { border-bottom: 1px solid var(--rule); }
-summary { cursor: pointer; padding: 12px 0; font-size: 16px; }
+summary { cursor: pointer; padding: 14px 0; font-family: var(--heading-font); font-size: 17px; font-weight: 600; }
 summary::marker { color: #8a8a8a; font-size: 12px; }
 .publication-list { margin: 0; padding: 2px 0 6px 22px; }
 .publication-list li { margin: 0 0 17px; padding-left: 3px; }
@@ -83,11 +93,13 @@ summary::marker { color: #8a8a8a; font-size: 12px; }
     .affiliation { font-size: 14px; }
     .contact { font-size: 14px; gap: 3px 12px; }
     .bio { margin-top: 19px; }
-    section { margin-top: 29px; }
-    h2 { font-size: 22px; }
+    section { margin-top: 36px; padding-top: 22px; }
+    h2 { font-size: 24px; margin-bottom: 20px; }
+    h3 { font-size: 19px; }
+    .group-heading { font-size: 16px; }
     .experience-heading { display: block; }
     .period { display: block; margin-top: 3px; }
-    .work-title { overflow-wrap: anywhere; }
+    .contact-email { overflow-wrap: anywhere; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print {

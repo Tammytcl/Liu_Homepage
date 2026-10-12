@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jiacheng Liu (留嘉城)</title>
-    <meta name="description" content="Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. Efficient multimodal generation, interactive world models, and LLM post-training.">
+    <meta name="description" content="Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="static/css/academic.css">
     <link rel="alternate" hreflang="zh-CN" href="https://tammytcl.github.io/Liu_Homepage/">
@@ -23,17 +23,18 @@
             <div>
                 <h1>Jiacheng Liu <span class="chinese-name">留嘉城</span></h1>
                 <p class="affiliation">Ph.D. Student · School of Artificial Intelligence · SJTU</p>
+                <p class="advisor">Advisor: <a href="https://scholar.google.com/citations?user=AK9VF30AAAAJ&amp;hl=zh-CN">Prof. Linfeng Zhang</a></p>
                 <p class="contact-email">Contact: <a href="mailto:ljc.mytcl@gmail.com">ljc.mytcl@gmail.com</a></p>
                 <div class="contact"><a href="https://scholar.google.com/citations?user=B4udiEoAAAAJ">Google Scholar</a><a href="https://github.com/Tammytcl">GitHub</a></div>
             </div>
             <img class="portrait" src="static/img/profile.jpg" width="164" height="164" alt="Jiacheng Liu’s existing avatar: a black cat in the sunlight">
         </div>
-        <p class="bio">I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning efficient multimodal generation, interactive world models, and LLM post-training.</p>
-        <p class="opportunities">I welcome research internship and collaboration opportunities in multimodal generation, world models, and LLM post-training.</p>
+        <p class="bio">I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agent learning, efficient multimodal generation, and interactive world models.</p>
+        <p class="opportunities">I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.</p>
     </header>
     <section id="research" aria-labelledby="research-heading">
         <h2 id="research-heading">Research Interests</h2>
-        <ul class="interests"><li><strong>Efficient multimodal generation:</strong> feature caching, diffusion inference acceleration, and few-step distillation.</li><li><strong>Interactive world models:</strong> instruction-driven video generation, action response, and long-horizon consistency.</li><li><strong>LLM post-training:</strong> on-policy distillation, cross-tokenizer knowledge transfer, and multi-turn coding agents.</li></ul>
+        <ul class="interests"><li><strong>LLM post-training and agents:</strong> on-policy distillation, cross-tokenizer and heterogeneous MoE knowledge transfer, multi-turn coding-agent training and evaluation.</li><li><strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.</li><li><strong>Interactive world models:</strong> instruction-driven video generation, action response, and long-horizon consistency.</li></ul>
     </section>
     <section id="internships" aria-labelledby="internships-heading">
         <h2 id="internships-heading">Internships</h2>
@@ -41,42 +42,51 @@
     </section>
     <section id="project-overview" aria-labelledby="overview-heading">
         <h2 id="overview-heading">Project Overview</h2>
-        <article><h3>Efficient Multimodal Generation</h3><p>I study how feature dynamics across timesteps can reduce redundant computation in diffusion-based image and video generation and editing. Starting with predictive caching in TaylorSeer, my work explores forecast verification and adaptive computation in SpeCa, learnable stage-aware predictors in LESA, and frequency-aware caching in FreqCa to improve the quality–efficiency trade-off.</p></article><article><h3>Interactive World Models</h3><p>I contributed to Hunyuan-GameCraft-2, studying video generation controlled by natural-language instructions and player actions, with a focus on instruction following, action response, and long-horizon consistency. My work spans interactive video data cleaning and annotation, interaction-memory teacher-model SFT, few-step distillation, and evaluation, including Self-Forcing / DMD distillation and reinforcement learning for generation stability and visual quality.</p></article><article><h3>LLM Post-training</h3><p>I study on-policy distillation for knowledge transfer and multi-turn agents, including cross-tokenizer distillation with ESCD, heterogeneous MoE knowledge transfer, and MOPD. I also investigate multi-turn coding-agent tasks that combine reasoning, tool use, and environment feedback, focusing on training efficiency, supervision allocation, and task-solving capabilities with Terminal-Bench 2.0 and SWE-bench Verified.</p></article>
+        <p class="section-note">Research on knowledge transfer, generation efficiency, and interactive capabilities.</p>
+        <article class="research-overview" aria-labelledby="overview-1"><h3 id="overview-1">LLM Post-training and Agents</h3><p>I study how to transfer capabilities from strong teachers to student models and enable learning through interaction with an environment. My work on on-policy distillation spans cross-tokenizer supervision alignment, heterogeneous MoE knowledge transfer, and MOPD. I focus on constructing useful supervision across different vocabularies and model architectures, and on balancing training efficiency with capability retention.</p><p>I extend this direction to multi-turn coding agents, where reasoning, tool use, and environment feedback form an ongoing interaction. Using Terminal-Bench 2.0 and SWE-bench Verified, I investigate trajectory sampling, supervision allocation, consistency between training and evaluation, and task-solving capabilities. I also contribute to work on open-ended verifiable tasks and research-task evaluation, exploring how capabilities can be learned and assessed on more complex problems.</p></article>
+        <article class="research-overview" aria-labelledby="overview-2"><h3 id="overview-2">Efficient Multimodal Generation</h3><p>I study how feature dynamics across timesteps, network layers, and frequency bands can reduce redundant computation in image, video, and speech generation. My work spans training-free extrapolation, prediction and calibration, learnable and stage-aware predictors, adaptive verification, and computation allocation, alongside surveys of caching methods and efficient attention. The central questions are which computations can be reused or predicted, when to recompute, and how to preserve quality under acceleration.</p><p>This direction also covers how computation is organized throughout generation: progressive resolution, spatiotemporal token selection, noise-trajectory selection, and KV selection and quantization for autoregressive video. In image editing, I explore semantic preservation and local changes; in speech generation, frequency- and wavelet-guided extrapolation. Together, these studies investigate efficiency across features, space, time, and tasks.</p></article>
+        <article class="research-overview" aria-labelledby="overview-3"><h3 id="overview-3">Interactive World Models</h3><p>I study how video generators can model controllable environments with sustained interaction, responding to natural-language instructions and player actions while preserving scene, state, and history consistency over long horizons. My work spans interactive video data construction, cleaning and annotation, interaction-memory teacher-model SFT, and evaluation of instruction following, action response, and temporal consistency.</p><p>For training and inference, I work on Self-Forcing / DMD few-step distillation and reinforcement learning for long-horizon stability and visual quality. This research considers control, interaction memory, and generation efficiency together, aiming to produce coherent interactions under continuous feedback.</p></article>
+        <article class="research-overview" aria-labelledby="overview-4"><h3 id="overview-4">Earlier Work: Medical Vision and Generation</h3><p>My earlier work on medical image segmentation and synthesis explores local detail and global structure with convolutional, Transformer, and Mamba architectures, as well as feature quantization for diffusion-based synthesis. These studies form the foundation of my interest in visual representations, structural modeling, and generative methods, leading to my current research on multimodal model efficiency and capabilities.</p></article>
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Selected Projects</h2>
         <p class="section-note">Selected first-author / co-first-author work. * Equal contribution; † corresponding author.</p>
-        <h3>Efficient Multimodal Generation</h3><article class="work" id="work-TaylorSeer">
-        <p class="work-title"><a href="https://doi.org/10.48550/arXiv.2503.06923">From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers</a></p>
-        <p class="work-meta">ICCV 2025 · Co-first author<br><strong>Jiacheng Liu</strong>*, Chang Zou*, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang†</p>
-        <p class="work-description">Predicting future features from their history with higher-order differences, moving caching from reuse to forecasting. Paper experiments report 4.99× acceleration on FLUX and 5.00× on HunyuanVideo without additional training.</p>
-        <div class="paper-links"><a href="https://doi.org/10.48550/arXiv.2503.06923">Paper</a><a href="https://github.com/Shenyi-Z/TaylorSeer">Code</a><a href="https://taylorseer.github.io/TaylorSeer/">Project</a></div>
-    </article><article class="work" id="work-SpeCa">
-        <p class="work-title"><a href="https://arxiv.org/abs/2509.11628">SpeCa: Accelerating Diffusion Transformers with Speculative Feature Caching</a></p>
-        <p class="work-meta">ACM MM 2025 · Co-first author<br><strong>Jiacheng Liu</strong>*, Chang Zou*, Yuanhuiyi Lyu, Fei Ren, Shaobo Wang, Kaixin Li, Linfeng Zhang†</p>
-        <p class="work-description">A forecast-then-verify framework that checks feature predictions and adapts computation to sample complexity, improving generation quality at high acceleration ratios.</p>
-        <div class="paper-links"><a href="https://arxiv.org/abs/2509.11628">Paper</a><a href="https://github.com/Shenyi-Z/Cache4Diffusion">Code</a><a href="https://speca2025.github.io/SpeCa2025/">Project</a></div>
-    </article><article class="work" id="work-LESA">
-        <p class="work-title"><a href="https://arxiv.org/abs/2602.20497">LESA: Learnable Stage-Aware Predictors for Diffusion Model Acceleration</a></p>
-        <p class="work-meta">CVPR 2026 · Co-first author<br>Peiliang Cai*, <strong>Jiacheng Liu</strong>*, Haowen Xu, Xinyu Wang, Chang Zou, Linfeng Zhang†</p>
-        <p class="work-description">Learning stage-dependent feature dynamics with specialized predictors to improve the quality–efficiency trade-off in image and video diffusion.</p>
-        <div class="paper-links"><a href="https://arxiv.org/abs/2602.20497">Paper</a></div>
-    </article><article class="work" id="work-FreqCa">
-        <p class="work-title"><a href="https://arxiv.org/abs/2510.08669">FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching</a></p>
-        <p class="work-meta">NeurIPS 2026 · Co-first author<br><strong>Jiacheng Liu</strong>*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., &amp; Zhang, L.†</p>
-        <p class="work-description">Frequency-aware feature caching that models different frequency-band dynamics for efficient image generation and editing.</p>
-        <div class="paper-links"><a href="https://arxiv.org/abs/2510.08669">Paper</a></div>
-    </article><h3>Interactive World Models</h3><article class="work" id="work-GameCraft-2">
-        <p class="work-title"><a href="https://arxiv.org/abs/2511.23429">GameCraft-2: Instruction-following Interactive Game World Model</a></p>
-        <p class="work-meta">CVPR 2026 Workshop · Co-first author<br>Junshu Tang*, <strong>Jiacheng Liu</strong>*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†</p>
-        <p class="work-description">An instruction-following interactive game world model. Contributed to interactive data, teacher-model SFT, few-step distillation, and evaluation for language control, action response, and long-horizon generation.</p>
-        <div class="paper-links"><a href="https://arxiv.org/abs/2511.23429">Paper</a><a href="https://hunyuan-gamecraft-2.github.io/">Project</a></div>
-    </article><h3>LLM Post-training</h3><article class="work" id="work-ESCD">
-        <p class="work-title">Beyond Token Alignment: Event Completion for Cross-Tokenizer On-Policy Distillation</p>
+        <div class="selected-group" role="group" aria-labelledby="selected-group-1"><h3 class="group-heading" id="selected-group-1">LLM Post-training</h3><article class="work" id="work-ESCD">
+        <h4 class="work-title">Beyond Token Alignment: Event Completion for Cross-Tokenizer On-Policy Distillation</h4>
         <p class="work-meta">ESCD · ICLR 2027 · Under review · Co-first author<br><strong>Jiacheng Liu</strong>*, Song, J.*, Zhang, Q., Chen, S., Linfeng Zhang†</p>
         <p class="work-description">Event-completion supervision for on-policy distillation across different tokenizers, with heterogeneous MoE knowledge transfer.</p>
 
+    </article></div>
+        <div class="selected-group" role="group" aria-labelledby="selected-group-2"><h3 class="group-heading" id="selected-group-2">Efficient Multimodal Generation</h3><article class="work" id="work-FreqCa">
+        <h4 class="work-title"><a href="https://arxiv.org/abs/2510.08669">FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching</a></h4>
+        <p class="work-meta">NeurIPS 2026 · Co-first author<br><strong>Jiacheng Liu</strong>*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., &amp; Zhang, L.†</p>
+        <p class="work-description">Frequency-aware feature caching that models different frequency-band dynamics for efficient image generation and editing.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2510.08669">Paper</a></div>
     </article>
+<article class="work" id="work-LESA">
+        <h4 class="work-title"><a href="https://arxiv.org/abs/2602.20497">LESA: Learnable Stage-Aware Predictors for Diffusion Model Acceleration</a></h4>
+        <p class="work-meta">CVPR 2026 · Co-first author<br>Peiliang Cai*, <strong>Jiacheng Liu</strong>*, Haowen Xu, Xinyu Wang, Chang Zou, Linfeng Zhang†</p>
+        <p class="work-description">Learning stage-dependent feature dynamics with specialized predictors to improve the quality–efficiency trade-off in image and video diffusion.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2602.20497">Paper</a></div>
+    </article>
+<article class="work" id="work-SpeCa">
+        <h4 class="work-title"><a href="https://arxiv.org/abs/2509.11628">SpeCa: Accelerating Diffusion Transformers with Speculative Feature Caching</a></h4>
+        <p class="work-meta">ACM MM 2025 · Co-first author<br><strong>Jiacheng Liu</strong>*, Chang Zou*, Yuanhuiyi Lyu, Fei Ren, Shaobo Wang, Kaixin Li, Linfeng Zhang†</p>
+        <p class="work-description">A forecast-then-verify framework that checks feature predictions and adapts computation to sample complexity, improving generation quality at high acceleration ratios.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2509.11628">Paper</a><a href="https://github.com/Shenyi-Z/Cache4Diffusion">Code</a><a href="https://speca2025.github.io/SpeCa2025/">Project</a></div>
+    </article>
+<article class="work" id="work-TaylorSeer">
+        <h4 class="work-title"><a href="https://doi.org/10.48550/arXiv.2503.06923">From Reusing to Forecasting: Accelerating Diffusion Models with TaylorSeers</a></h4>
+        <p class="work-meta">ICCV 2025 · Co-first author<br><strong>Jiacheng Liu</strong>*, Chang Zou*, Yuanhuiyi Lyu, Junjie Chen, Linfeng Zhang†</p>
+        <p class="work-description">Predicting future features from their history with higher-order differences, moving caching from reuse to forecasting. Paper experiments report 4.99× acceleration on FLUX and 5.00× on HunyuanVideo without additional training.</p>
+        <div class="paper-links"><a href="https://doi.org/10.48550/arXiv.2503.06923">Paper</a><a href="https://github.com/Shenyi-Z/TaylorSeer">Code</a><a href="https://taylorseer.github.io/TaylorSeer/">Project</a></div>
+    </article></div>
+        <div class="selected-group" role="group" aria-labelledby="selected-group-3"><h3 class="group-heading" id="selected-group-3">Interactive World Models</h3><article class="work" id="work-GameCraft-2">
+        <h4 class="work-title"><a href="https://arxiv.org/abs/2511.23429">GameCraft-2: Instruction-following Interactive Game World Model</a></h4>
+        <p class="work-meta">CVPR 2026 Workshop · Co-first author<br>Junshu Tang*, <strong>Jiacheng Liu</strong>*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†</p>
+        <p class="work-description">An instruction-following interactive game world model. Contributed to interactive data, teacher-model SFT, few-step distillation, and evaluation for language control, action response, and long-horizon generation.</p>
+        <div class="paper-links"><a href="https://arxiv.org/abs/2511.23429">Paper</a><a href="https://hunyuan-gamecraft-2.github.io/">Project</a></div>
+    </article></div>
     </section>
     <section id="other-publications" aria-labelledby="publications-heading">
         <h2 id="publications-heading">Other Publications</h2>
