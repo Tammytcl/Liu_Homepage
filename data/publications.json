@@ -124,8 +124,8 @@
   },
   {
     "id": "GameCraft-2",
-    "title": "GameCraft-2: Instruction-following Interactive Game World Model",
-    "venue": "CVPR 2026 Workshop",
+    "title": "Hunyuan-GameCraft-2: Instruction-following Interactive Game World Model",
+    "venue": "Technical Report",
     "year": 2026,
     "authors": "Junshu Tang*, Jiacheng Liu*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†",
     "role": "equal",

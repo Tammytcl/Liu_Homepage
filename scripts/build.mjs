@@ -23,7 +23,7 @@ const labels = {
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.09–至今', 'LLM 基模组 · 后训练实习生 · 上海', '开展 On-Policy Distillation 与异构 MoE 知识蒸馏研究，关注跨模型知识迁移和多轮 Coding Agent 训练。'],
-            ['腾讯混元', '2025.07–2026.06', '多模态模型部 · 世界模型基模组 · 青云计划研究实习生 · 上海', '参与 GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。']
+            ['腾讯混元', '2025.07–2026.06', '多模态模型部 · 世界模型基模组 · 青云计划研究实习生 · 上海', '参与 Hunyuan-GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。']
         ],
         overviews: [
             ['大语言模型后训练与智能体', [
@@ -43,7 +43,7 @@ const labels = {
             ]]
         ],
         overviewNote: '围绕知识迁移、生成效率与交互能力展开的研究。',
-        selectedNote: '精选一作 / 共同一作工作。* 表示共同第一作者，† 表示通讯作者。',
+        selectedNote: '* 表示同等贡献，† 表示通讯作者。',
         groups: [
             ['大语言模型后训练', ['ESCD']],
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
@@ -68,7 +68,7 @@ const labels = {
         ],
         experience: [
             ['Endless Frontier', 'Sep 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on on-policy distillation and heterogeneous MoE distillation, with a focus on cross-model knowledge transfer and multi-turn coding agents.'],
-            ['Tencent Hunyuan', 'Jul 2025–Jun 2026', 'World Model Team · Qingyun Research Intern · Shanghai', 'Contributed to GameCraft-2 through interactive video data, teacher-model SFT, Self-Forcing / DMD few-step distillation, reinforcement learning, and evaluation.']
+            ['Tencent Hunyuan', 'Jul 2025–Jun 2026', 'World Model Team · Qingyun Research Intern · Shanghai', 'Contributed to Hunyuan-GameCraft-2 through interactive video data, teacher-model SFT, Self-Forcing / DMD few-step distillation, reinforcement learning, and evaluation.']
         ],
         overviews: [
             ['LLM Post-training and Agents', [
@@ -88,7 +88,7 @@ const labels = {
             ]]
         ],
         overviewNote: 'Research on knowledge transfer, generation efficiency, and interactive capabilities.',
-        selectedNote: 'Selected first-author / co-first-author work. * Equal contribution; † corresponding author.',
+        selectedNote: '* Equal contribution; † corresponding author.',
         groups: [
             ['LLM Post-training', ['ESCD']],
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
@@ -104,8 +104,8 @@ function links(p, l) {
     return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
 }
 
-function metadata(p, l) {
-    const role = p.role === 'equal' ? l.roleEqual : p.role === 'first' ? l.roleFirst : '';
+function metadata(p, l, showRole) {
+    const role = showRole ? (p.role === 'equal' ? l.roleEqual : p.role === 'first' ? l.roleFirst : '') : '';
     return [p.id === 'ESCD' ? 'ESCD' : '', p.venue.replaceAll('Under Review', l.underReview), role].filter(Boolean).map(escape).join(' · ');
 }
 
@@ -115,7 +115,7 @@ function work(p, l, language, compact = false) {
     const description = p.description?.[language];
     return `<${compact ? 'li' : 'article'} class="${compact ? '' : 'work'}"${compact ? '' : ` id="work-${escape(p.id)}"`}>
         <${compact ? 'p' : 'h4'} class="work-title">${title}</${compact ? 'p' : 'h4'}>
-        <p class="work-meta">${metadata(p, l)}${p.authors ? `<br>${authorText(p.authors)}` : ''}</p>
+        <p class="work-meta">${metadata(p, l, compact)}${p.authors ? `<br>${authorText(p.authors)}` : ''}</p>
         ${!compact && description ? `<p class="work-description">${escape(description)}</p>` : ''}
         ${p.links?.length ? `<div class="paper-links">${links(p, l)}</div>` : ''}
     </${compact ? 'li' : 'article'}>`;
