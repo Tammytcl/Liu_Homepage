@@ -25,7 +25,7 @@ const labels = {
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.09–至今', 'LLM 基模组 · 后训练实习生 · 上海', '开展 On-Policy Distillation 与异构 MoE 知识蒸馏研究，关注跨模型知识迁移和多轮 Coding Agent 训练。'],
-            ['腾讯混元', '2025.07–2026.06', '多模态模型部 · 世界模型基模组 · 青云计划研究实习生 · 上海', '参与 Hunyuan-GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。']
+            ['腾讯混元', '2025.07–2026.06', '世界模型组 · 青云计划研究实习生', '参与 Hunyuan-GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。']
         ],
         overviews: [
             ['大语言模型后训练与智能体', [
@@ -68,7 +68,7 @@ const labels = {
         ],
         experience: [
             ['Endless Frontier', 'Sep 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on on-policy distillation and heterogeneous MoE distillation, with a focus on cross-model knowledge transfer and multi-turn coding agents.'],
-            ['Tencent Hunyuan', 'Jul 2025–Jun 2026', 'World Model Team · Qingyun Research Intern · Shanghai', 'Contributed to Hunyuan-GameCraft-2 through interactive video data, teacher-model SFT, Self-Forcing / DMD few-step distillation, reinforcement learning, and evaluation.']
+            ['Tencent Hunyuan', 'Jul 2025–Jun 2026', 'World Model Team · Qingyun Research Intern', 'Contributed to Hunyuan-GameCraft-2 through interactive video data, teacher-model SFT, Self-Forcing / DMD few-step distillation, reinforcement learning, and evaluation.']
         ],
         overviews: [
             ['LLM Post-training and Agents', [
