@@ -40,14 +40,6 @@
     }
   },
   {
-    "id": "SpecEdit",
-    "title": "SpecEdit: Training-Free Acceleration for Diffusion-Based Image Editing via Semantic Locking",
-    "venue": "NeurIPS 2026",
-    "year": 2026,
-    "authors": "Yan, Z.*, Zheng, S.*, Qin, H.*, Tu, X., Wang, Y., Jiacheng Liu, Ren, J., Lin, Y., Cai, P., Ren, J., Zhang, X., & Zhang, L.†",
-    "links": []
-  },
-  {
     "id": "Z-Cache",
     "title": "Z-Cache: Accelerating Diffusion Transformers via Self-Reflection",
     "venue": "NeurIPS 2026",
@@ -150,6 +142,26 @@
       "zh": "指令驱动的交互式游戏世界模型。参与交互数据构建、教师模型 SFT、少步蒸馏与评测，支持自然语言控制、玩家动作响应和长时序生成。",
       "en": "An instruction-following interactive game world model. Contributed to interactive data, teacher-model SFT, few-step distillation, and evaluation for language control, action response, and long-horizon generation."
     }
+  },
+  {
+    "id": "GameCraft-2-Workshop",
+    "title": "Hunyuan-GameCraft-2: Instruction-following Interactive Game World Model",
+    "venue": "CVPR 2026 Workshop",
+    "year": 2026,
+    "authors": "Junshu Tang*, Jiacheng Liu*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†",
+    "role": "equal",
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2511.23429",
+        "type": "paper"
+      },
+      {
+        "label": "Project",
+        "href": "https://hunyuan-gamecraft-2.github.io/",
+        "type": "project"
+      }
+    ]
   },
   {
     "id": "Hybrid Caching",
@@ -378,7 +390,8 @@
     "description": {
       "zh": "针对教师与学生 Tokenizer 不一致的问题，研究基于事件补全的 On-Policy 蒸馏与异构 MoE 知识迁移。",
       "en": "Event-completion supervision for on-policy distillation across different tokenizers, with heterogeneous MoE knowledge transfer."
-    }
+    },
+    "submissionYear": 2026
   },
   {
     "id": "RolloutRemover",
@@ -386,7 +399,8 @@
     "venue": "ICLR 2027 · Under Review",
     "year": 2027,
     "authors": "Wang, Z., Li, Y., Jiacheng Liu, Ma, Y., Huang, W., Liu, Q., Zhang, J.†",
-    "links": []
+    "links": [],
+    "submissionYear": 2026
   },
   {
     "id": "TempoKV",
@@ -394,7 +408,8 @@
     "venue": "ICLR 2027 · Under Review",
     "year": 2027,
     "authors": "Hu, J., Mo, W., Cai, P., Jiacheng Liu, Ren, J., Zhang, X., Tu, X., Linfeng Zhang†",
-    "links": []
+    "links": [],
+    "submissionYear": 2026
   },
   {
     "id": "Noise Trajectory Selection",
@@ -402,7 +417,8 @@
     "venue": "ICLR 2027 · Under Review",
     "year": 2027,
     "authors": "Qin, H., Yan, Z., Jiacheng Liu, Peng, H., Liu, J., Tu, X., Ren, J., Zhang, X., Wang, Y., Linfeng Zhang†",
-    "links": []
+    "links": [],
+    "submissionYear": 2026
   },
   {
     "id": "PHYRD",
@@ -410,7 +426,8 @@
     "venue": "ICLR 2027 · Under Review",
     "year": 2027,
     "authors": "Zhang, Q., Chen, G., Zhang, W., Wang, J., Song, J., Jiacheng Liu, Chen, S., Linfeng Zhang†",
-    "links": []
+    "links": [],
+    "submissionYear": 2026
   },
   {
     "id": "BigBang",

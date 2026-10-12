@@ -49,7 +49,7 @@ const labels = {
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['交互式世界模型', ['GameCraft-2']]
         ],
-        otherNote: '代表项目之外的合作论文、综述与早期研究，按年份展开。',
+        otherNote: '代表项目之外的合作论文、综述与早期研究。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审',
         paper: '论文', code: '代码', project: '项目', footer: '更新于 2026 年 10 月'
     },
@@ -92,7 +92,7 @@ const labels = {
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['Interactive World Models', ['GameCraft-2']]
         ],
-        otherNote: 'Additional collaborations, surveys, and earlier research, grouped by year.',
+        otherNote: 'Additional collaborations, surveys, and earlier research. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review',
         paper: 'Paper', code: 'Code', project: 'Project', footer: 'Updated October 2026'
     }
@@ -116,6 +116,8 @@ function metadata(p, l, showRole) {
     return [p.id === 'ESCD' ? 'ESCD' : '', p.venue.replaceAll('Under Review', l.underReview), role].filter(Boolean).map(escape).join(' · ');
 }
 
+const archiveYear = p => p.submissionYear ?? p.year;
+
 function work(p, l, language, compact = false) {
     const primary = (p.links || []).find(item => item.type === 'paper') || (p.links || [])[0];
     const title = primary ? link(p.title, primary.href) : escape(p.title);
@@ -132,7 +134,7 @@ for (const [language, l] of Object.entries(labels)) {
     const ids = ['about', 'research', 'internships', 'project-overview', 'selected-projects', 'other-publications'];
     const selectedIds = new Set(l.groups.flatMap(group => group[1]));
     const otherPapers = publications.filter(p => !selectedIds.has(p.id));
-    const years = [...new Set(otherPapers.map(p => p.year))].sort((a, b) => b - a);
+    const years = [...new Set(otherPapers.map(archiveYear))].sort((a, b) => b - a);
     const html = `<!doctype html>
 <html lang="${l.lang}">
 <head>
@@ -188,7 +190,7 @@ for (const [language, l] of Object.entries(labels)) {
     <section id="other-publications" aria-labelledby="publications-heading">
         ${sectionHeading('publications-heading', l.others, 5)}
         <p class="section-note">${l.otherNote}</p>
-        ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${otherPapers.filter(p => p.year === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
+        ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${otherPapers.filter(p => archiveYear(p) === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
     </section>
     <footer class="footer"><span>Jiacheng Liu · ${link('ljc.mytcl@gmail.com', 'mailto:ljc.mytcl@gmail.com')}</span><span>${l.footer}</span></footer>
 </main>
