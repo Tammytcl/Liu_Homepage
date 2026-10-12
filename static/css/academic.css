@@ -36,9 +36,11 @@ h1 { font-size: 34px; line-height: 1.2; font-weight: 500; margin: 0 0 8px; lette
 .chinese-name { display: inline-block; font-size: 25px; font-weight: 400; }
 .affiliation { margin: 0 0 13px; color: var(--muted); font-size: 15px; }
 .advisor { margin: 0 0 8px; font-size: 15px; }
-.contact { font-size: 15px; gap: 6px 16px; }
+.contact { font-size: 15px; gap: 6px 16px; align-items: center; }
+.resume-link { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border: 1px solid var(--rule); border-radius: 4px; font-size: 14px; line-height: 1.3; }
+.resume-link:hover { background: var(--soft); border-color: var(--link); text-decoration: none; }
 .contact-email { font-size: 15px; margin: 0 0 6px; }
-.portrait { width: 164px; height: 164px; display: block; object-fit: cover; border-radius: 3px; }
+.portrait { width: 164px; height: 164px; display: block; object-fit: contain; border-radius: 50%; }
 .bio { margin: 24px 0 0; }
 p { margin: 0 0 12px; }
 .opportunities { color: var(--muted); font-size: 15px; margin: 12px 0 0; }

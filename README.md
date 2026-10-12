@@ -11,7 +11,8 @@ and a complete publication list grouped by year, including selected work.
 - `data/publications.json`: paper titles, authors, venues, links, and bilingual project descriptions.
 - `scripts/build.mjs`: introduction, research directions, internships, and selected project ordering.
 - `static/css/academic.css`: responsive page layout and typography.
-- `static/img/profile.jpg`: existing profile avatar.
+- `static/img/profile.png`: profile portrait supplied by the owner.
+- `assets/resume.pdf`: current public resume, opened by the View CV button.
 
 After editing the source content, regenerate both language pages:
 
@@ -20,6 +21,7 @@ node scripts/build.mjs
 ```
 
 The generated `index.html` and `index_en.html` contain all text and links.
+Stylesheet, portrait, and resume URLs include content versions to avoid stale browser caches.
 JavaScript is not required to read either page or expand publication groups.
 
 ## Preview

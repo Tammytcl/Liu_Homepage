@@ -385,6 +385,26 @@
         "label": "Paper",
         "href": "https://arxiv.org/abs/2609.34738",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Tammytcl/ESCD",
+        "type": "github"
+      },
+      {
+        "label": "Latest Report",
+        "href": "https://github.com/Tammytcl/ESCD/blob/main/ESCD.pdf",
+        "type": "report"
+      },
+      {
+        "label": "Hugging Face · SciDeriv",
+        "href": "https://huggingface.co/datasets/mytcl/SciDeriv",
+        "type": "dataset"
+      },
+      {
+        "label": "Hugging Face · PHYRD-40",
+        "href": "https://huggingface.co/datasets/mytcl/PHYRD-40",
+        "type": "dataset"
       }
     ],
     "description": {

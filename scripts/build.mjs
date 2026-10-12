@@ -5,6 +5,8 @@ import { createHash } from 'node:crypto';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const stylesheetVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'static/css/academic.css'))).digest('hex').slice(0, 12);
+const portraitVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'static/img/profile.png'))).digest('hex').slice(0, 12);
+const resumeVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/resume.pdf'))).digest('hex').slice(0, 12);
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'data/publications.json'), 'utf8'));
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const authorText = value => escape(value).replaceAll('Jiacheng Liu', '<strong>Jiacheng Liu</strong>');
@@ -15,6 +17,7 @@ const labels = {
         nav: ['简介', '研究方向', '实习', '项目介绍', '代表项目', '论文汇总'],
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
+        resume: '查看简历', resumeLabel: '在新标签页查看简历 PDF',
         bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体学习、高效多模态生成，以及交互式世界模型。',
         opportunities: '欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。',
         research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '论文汇总',
@@ -51,13 +54,14 @@ const labels = {
         ],
         otherNote: '收录全部论文、综述与技术报告。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审',
-        paper: '论文', code: '代码', project: '项目', footer: '更新于 2026 年 10 月'
+        paper: '论文', code: '代码', project: '项目', report: '最新报告', footer: '更新于 2026 年 10 月'
     },
     en: {
         lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.',
         nav: ['About', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Publications'],
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
+        resume: 'View CV', resumeLabel: 'View CV PDF in a new tab',
         bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agent learning, efficient multimodal generation, and interactive world models.',
         opportunities: 'I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.',
         research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Publications',
@@ -94,7 +98,7 @@ const labels = {
         ],
         otherNote: 'Complete list of papers, surveys, and technical reports. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review',
-        paper: 'Paper', code: 'Code', project: 'Project', footer: 'Updated October 2026'
+        paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', footer: 'Updated October 2026'
     }
 };
 
@@ -108,12 +112,12 @@ function sectionHeading(id, title, number) {
 }
 
 function links(p, l) {
-    return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
+    return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.type === 'report' ? l.report : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
 }
 
 function metadata(p, l, showRole) {
     const role = showRole ? (p.role === 'equal' ? l.roleEqual : p.role === 'first' ? l.roleFirst : '') : '';
-    return [p.id === 'ESCD' ? 'ESCD' : '', p.venue.replaceAll('Under Review', l.underReview), role].filter(Boolean).map(escape).join(' · ');
+    return [p.venue.replaceAll('Under Review', l.underReview), role].filter(Boolean).map(escape).join(' · ');
 }
 
 const archiveYear = p => p.submissionYear ?? p.year;
@@ -161,9 +165,9 @@ for (const [language, l] of Object.entries(labels)) {
                 <p class="affiliation">${l.affiliation}</p>
                 <p class="advisor">${l.advisor}: ${link(l.advisorName, 'https://scholar.google.com/citations?user=AK9VF30AAAAJ&hl=zh-CN')}</p>
                 <p class="contact-email">Contact: ${link('ljc.mytcl@gmail.com', 'mailto:ljc.mytcl@gmail.com')}</p>
-                <div class="contact">${link('Google Scholar', 'https://scholar.google.com/citations?user=B4udiEoAAAAJ')}${link('GitHub', 'https://github.com/Tammytcl')}</div>
+                <div class="contact">${link('Google Scholar', 'https://scholar.google.com/citations?user=B4udiEoAAAAJ')}${link('GitHub', 'https://github.com/Tammytcl')}<a class="resume-link" href="assets/resume.pdf?v=${resumeVersion}" target="_blank" rel="noopener noreferrer" aria-label="${escape(l.resumeLabel)}">${escape(l.resume)} <span aria-hidden="true">↗</span></a></div>
             </div>
-            <img class="portrait" src="static/img/profile.jpg" width="164" height="164" alt="${language === 'zh' ? '留嘉城的现有头像：阳光下的黑猫' : 'Jiacheng Liu’s existing avatar: a black cat in the sunlight'}">
+            <img class="portrait" src="static/img/profile.png?v=${portraitVersion}" width="164" height="164" alt="${language === 'zh' ? '留嘉城的个人头像' : 'Portrait of Jiacheng Liu'}">
         </div>
         <p class="bio">${l.bio}</p>
         <p class="opportunities">${l.opportunities}</p>
