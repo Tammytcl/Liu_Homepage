@@ -30,7 +30,7 @@ const labels = {
         overviews: [
             ['大语言模型后训练与智能体', [
                 { label: 'Cross-Tokenizer OPD：', text: '我关注教师与学生使用不同 Tokenizer 时的知识迁移，研究如何在学生自主生成的轨迹上构造有效监督。围绕跨词表的概率对齐与事件补全，探索学生生成教师 Token 的部分前缀后，如何对兼容的后续补全集合施加监督，避免将概率任意分配给单个学生 Token，并将这一方法拓展到异构 MoE 的蒸馏。' },
-                { label: 'MOPD：', text: '我开展基于 MOPD 的多能力合并训练，在小模型上进行数学（Math）、代码（Code）与指令遵循（IF）能力的合并，也参与面向工业代码与多模态任务的大规模模型合版。关注不同任务能力的协同迁移、合并后的能力保持，以及训练与评测流程的组织，积累跨任务、跨规模的模型合并经验。' },
+                { label: 'MOPD：', text: '我开展基于 MOPD 的多能力合并训练，围绕 Math、Code、IF 任务进行合版，也参与面向工业代码与多模态任务的大规模模型合版。关注不同任务能力的协同迁移、合并后的能力保持，以及训练与评测流程的组织，积累跨任务、跨规模的模型合并经验。' },
                 { label: 'Agentic OPD：', text: '我关注多轮智能体在推理、工具调用与环境反馈中的蒸馏学习，研究训练基础设施与监督分配的协同设计。通过轮级流式异步训练，及时消费学生交互过程中产生的教师监督，减少长轨迹带来的等待；同时利用任务执行结果持续更新 Critic，调整不同交互轮次的蒸馏强度，使监督分配随学生能力变化而更新。' }
             ]],
             ['高效多模态生成', [
@@ -73,7 +73,7 @@ const labels = {
         overviews: [
             ['LLM Post-training and Agents', [
                 { label: 'Cross-Tokenizer OPD:', text: 'I study knowledge transfer between teachers and students with different tokenizers, focusing on useful supervision along student-generated trajectories. My work explores cross-vocabulary probability alignment and event completion: after a student generates a partial prefix of a teacher token, supervision targets compatible completion sets rather than arbitrary probability splits among individual student tokens. I also extend this direction to heterogeneous MoE distillation.' },
-                { label: 'MOPD:', text: 'I work on MOPD-based capability merging, combining mathematics, coding, and instruction following in small models. I also contribute to larger-scale model merging for industrial coding and multimodal tasks. My focus is on transferring capabilities across tasks, retaining them after merging, and organizing training and evaluation, building experience in model merging across different tasks and scales.' },
+                { label: 'MOPD:', text: 'I work on MOPD-based capability merging across mathematics (Math), coding (Code), and instruction-following (IF) tasks. I also contribute to larger-scale model merging for industrial coding and multimodal tasks. My focus is on transferring capabilities across tasks, retaining them after merging, and organizing training and evaluation, building experience in model merging across different tasks and scales.' },
                 { label: 'Agentic OPD:', text: 'I study distillation for multi-turn agents that reason, use tools, and interact with environment feedback, focusing on training infrastructure and supervision allocation. Turn-level streaming asynchronous training consumes teacher supervision promptly and reduces waiting on long trajectories. An online Critic continually learns from task outcomes to adjust distillation strength across interaction turns, allowing supervision allocation to evolve with the student’s capabilities.' }
             ]],
             ['Efficient Multimodal Generation', [
@@ -101,6 +101,10 @@ const labels = {
 function overviewParagraph(paragraph) {
     if (typeof paragraph === 'string') return `<p>${escape(paragraph)}</p>`;
     return `<p><strong>${escape(paragraph.label)}</strong> ${escape(paragraph.text)}</p>`;
+}
+
+function sectionHeading(id, title, number) {
+    return `<h2 class="section-heading" id="${escape(id)}"><span class="section-index" aria-hidden="true">${String(number).padStart(2, '0')}</span><span>${escape(title)}</span></h2>`;
 }
 
 function links(p, l) {
@@ -164,25 +168,25 @@ for (const [language, l] of Object.entries(labels)) {
         <p class="opportunities">${l.opportunities}</p>
     </header>
     <section id="research" aria-labelledby="research-heading">
-        <h2 id="research-heading">${l.research}</h2>
+        ${sectionHeading('research-heading', l.research, 1)}
         <ul class="interests">${l.interests.map(item => `<li>${item}</li>`).join('')}</ul>
     </section>
     <section id="internships" aria-labelledby="internships-heading">
-        <h2 id="internships-heading">${l.internships}</h2>
+        ${sectionHeading('internships-heading', l.internships, 2)}
         ${l.experience.map(([company, period, role, description]) => `<article class="experience"><div class="experience-heading"><h3>${company}</h3><span class="period">${period}</span></div><p class="role">${role}</p><p>${description}</p></article>`).join('')}
     </section>
     <section id="project-overview" aria-labelledby="overview-heading">
-        <h2 id="overview-heading">${l.overview}</h2>
+        ${sectionHeading('overview-heading', l.overview, 3)}
         <p class="section-note">${l.overviewNote}</p>
         ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(overviewParagraph).join('')}</article>`).join('\n        ')}
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
-        <h2 id="projects-heading">${l.projects}</h2>
+        ${sectionHeading('projects-heading', l.projects, 4)}
         <p class="section-note">${l.selectedNote}</p>
         ${l.groups.map(([heading, selected], i) => `<div class="selected-group" role="group" aria-labelledby="selected-group-${i + 1}"><h3 class="group-heading" id="selected-group-${i + 1}">${escape(heading)}</h3>${selected.map(id => { const p = publications.find(p => p.id === id); if (!p) throw new Error(`Missing selected paper: ${id}`); return work(p, l, language); }).join('\n')}</div>`).join('\n        ')}
     </section>
     <section id="other-publications" aria-labelledby="publications-heading">
-        <h2 id="publications-heading">${l.others}</h2>
+        ${sectionHeading('publications-heading', l.others, 5)}
         <p class="section-note">${l.otherNote}</p>
         ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${otherPapers.filter(p => p.year === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
     </section>
