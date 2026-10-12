@@ -12,12 +12,12 @@ const link = (label, href) => `<a href="${escape(href)}">${escape(label)}</a>`;
 const labels = {
     zh: {
         lang: 'zh-CN', title: '留嘉城 · Jiacheng Liu', description: '留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界模型。',
-        nav: ['简介', '研究方向', '实习', '项目介绍', '代表项目', '其他论文'],
+        nav: ['简介', '研究方向', '实习', '项目介绍', '代表项目', '论文汇总'],
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
         bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体学习、高效多模态生成，以及交互式世界模型。',
         opportunities: '欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。',
-        research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '其他论文',
+        research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '论文汇总',
         interests: [
             '<strong>大语言模型后训练与智能体：</strong>On-Policy Distillation、跨 Tokenizer 与异构 MoE 知识迁移、多轮 Coding Agent 训练与任务评测。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
@@ -49,18 +49,18 @@ const labels = {
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['交互式世界模型', ['GameCraft-2']]
         ],
-        otherNote: '代表项目之外的合作论文、综述与早期研究。在审稿件按投稿年份整理。',
+        otherNote: '收录全部论文、综述与技术报告。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审',
         paper: '论文', code: '代码', project: '项目', footer: '更新于 2026 年 10 月'
     },
     en: {
         lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.',
-        nav: ['About', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Other Papers'],
+        nav: ['About', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Publications'],
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
         bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agent learning, efficient multimodal generation, and interactive world models.',
         opportunities: 'I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.',
-        research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Other Publications',
+        research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Publications',
         interests: [
             '<strong>LLM post-training and agents:</strong> on-policy distillation, cross-tokenizer and heterogeneous MoE knowledge transfer, multi-turn coding-agent training and evaluation.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
@@ -92,7 +92,7 @@ const labels = {
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['Interactive World Models', ['GameCraft-2']]
         ],
-        otherNote: 'Additional collaborations, surveys, and earlier research. Submissions under review are grouped by submission year.',
+        otherNote: 'Complete list of papers, surveys, and technical reports. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review',
         paper: 'Paper', code: 'Code', project: 'Project', footer: 'Updated October 2026'
     }
@@ -133,8 +133,7 @@ function work(p, l, language, compact = false) {
 for (const [language, l] of Object.entries(labels)) {
     const ids = ['about', 'research', 'internships', 'project-overview', 'selected-projects', 'other-publications'];
     const selectedIds = new Set(l.groups.flatMap(group => group[1]));
-    const otherPapers = publications.filter(p => !selectedIds.has(p.id));
-    const years = [...new Set(otherPapers.map(archiveYear))].sort((a, b) => b - a);
+    const years = [...new Set(publications.map(archiveYear))].sort((a, b) => b - a);
     const html = `<!doctype html>
 <html lang="${l.lang}">
 <head>
@@ -190,7 +189,7 @@ for (const [language, l] of Object.entries(labels)) {
     <section id="other-publications" aria-labelledby="publications-heading">
         ${sectionHeading('publications-heading', l.others, 5)}
         <p class="section-note">${l.otherNote}</p>
-        ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${otherPapers.filter(p => archiveYear(p) === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
+        ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${publications.filter(p => archiveYear(p) === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
     </section>
     <footer class="footer"><span>Jiacheng Liu · ${link('ljc.mytcl@gmail.com', 'mailto:ljc.mytcl@gmail.com')}</span><span>${l.footer}</span></footer>
 </main>
@@ -199,5 +198,5 @@ for (const [language, l] of Object.entries(labels)) {
 `;
     const filename = language === 'zh' ? 'index.html' : 'index_en.html';
     fs.writeFileSync(path.join(root, filename), html.split('\n').map(line => line.trimEnd()).join('\n'));
-    console.log(`Built ${filename}: ${selectedIds.size} selected works, ${otherPapers.length} other papers.`);
+    console.log(`Built ${filename}: ${selectedIds.size} selected works, ${publications.length} publication entries in the complete list.`);
 }

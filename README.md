@@ -4,7 +4,7 @@ Live site: https://tammytcl.github.io/Liu_Homepage/
 
 A static, bilingual homepage organized around a short doctoral introduction,
 research interests, internships, selected first-author / co-first-author projects,
-and additional publications grouped by year.
+and a complete publication list grouped by year, including selected work.
 
 ## Update the content
 
