@@ -27,6 +27,11 @@
         "label": "Paper",
         "href": "https://arxiv.org/abs/2510.08669",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Tammytcl/FreqCa",
+        "type": "github"
       }
     ],
     "description": {
