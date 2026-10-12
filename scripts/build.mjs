@@ -54,7 +54,7 @@ const labels = {
         ],
         otherNote: '收录全部论文、综述与技术报告。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审',
-        paper: '论文', code: '代码', project: '项目', report: '最新报告', footer: '更新于 2026 年 10 月'
+        paper: '论文', code: '代码', project: '项目', report: '最新报告', resource: '资源', evaluation: '评测代码', footer: '更新于 2026 年 10 月'
     },
     en: {
         lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.',
@@ -98,7 +98,7 @@ const labels = {
         ],
         otherNote: 'Complete list of papers, surveys, and technical reports. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review',
-        paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', footer: 'Updated October 2026'
+        paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', resource: 'Resources', evaluation: 'Evaluation Code', footer: 'Updated October 2026'
     }
 };
 
@@ -112,7 +112,7 @@ function sectionHeading(id, title, number) {
 }
 
 function links(p, l) {
-    return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.type === 'report' ? l.report : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
+    return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.type === 'report' ? l.report : item.type === 'resource' ? l.resource : item.type === 'evaluation' ? l.evaluation : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
 }
 
 function metadata(p, l, showRole) {

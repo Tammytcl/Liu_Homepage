@@ -5,7 +5,13 @@
     "venue": "NeurIPS 2026",
     "year": 2026,
     "authors": "Cai, P., Zhang, E., Jiacheng Liu, Lin, H., Zhang, R., Mo, W., Ma, Y., Zheng, S., Huang, J., Liu, D., & Zhang, L.†",
-    "links": []
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2605.18346",
+        "type": "paper"
+      }
+    ]
   },
   {
     "id": "Dynamic Video",
@@ -13,7 +19,18 @@
     "venue": "NeurIPS 2026",
     "year": 2026,
     "authors": "Zheng, S., Huang, J., Jiacheng Liu, Chen, G., He, L., Lin, Y., Cai, P., & Zhang, L.†",
-    "links": []
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2605.21042",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/DarrenZheng303/DVG",
+        "type": "github"
+      }
+    ]
   },
   {
     "id": "FreqCa",
@@ -54,7 +71,23 @@
     "venue": "ECCV 2026",
     "year": 2026,
     "authors": "Liu, J.*, Qin, H.*, Tu, X., Jiacheng Liu, Hu, J., Yan, Z., Xie, Y., Shen, K., Ren, J., Lin, Y., Zhang, X., & Zhang, L.†",
-    "links": []
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2608.17973",
+        "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/QHR69/LinCa",
+        "type": "github"
+      },
+      {
+        "label": "Hugging Face · LinCa",
+        "href": "https://huggingface.co/QHRQQQ/LinCa",
+        "type": "model"
+      }
+    ]
   },
   {
     "id": "AViTS",
@@ -62,7 +95,13 @@
     "venue": "ECCV 2026",
     "year": 2026,
     "authors": "Qin, H.*, Yan, Z.*, Zheng, S.*, Tu, X., Jiacheng Liu, Lin, Y., Zou, C., Liu, J., Cai, P., Zhang, X., Ren, J., & Zhang, L.†",
-    "links": []
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2608.17995",
+        "type": "paper"
+      }
+    ]
   },
   {
     "id": "GP Cache",
@@ -70,7 +109,13 @@
     "venue": "ECCV 2026",
     "year": 2026,
     "authors": "Shen, Z.*, Huang, R.*, Zou, C., Zheng, S., Jiacheng Liu, Cai, P., Shi, Z., Du, Y., Feng, L., Tu, X., Ren, J., Zhang, X., & Zhang, L.†",
-    "links": []
+    "links": [
+      {
+        "label": "Paper",
+        "href": "https://arxiv.org/abs/2609.05981",
+        "type": "paper"
+      }
+    ]
   },
   {
     "id": "LESA",
@@ -84,6 +129,11 @@
         "label": "Paper",
         "href": "https://arxiv.org/abs/2602.20497",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/caipeiliang2004/LESA",
+        "type": "github"
       }
     ],
     "description": {
@@ -116,6 +166,11 @@
         "label": "Paper",
         "href": "https://cvpr.thecvf.com/virtual/2026/poster/40070",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Aredstone/L2P-Cache",
+        "type": "github"
       }
     ]
   },
@@ -186,8 +241,13 @@
     "links": [
       {
         "label": "Paper",
-        "href": "https://arxiv.org/html/2508.16984v1",
+        "href": "https://arxiv.org/abs/2508.16984",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/fenglang918/HiCache",
+        "type": "github"
       }
     ]
   },
@@ -236,6 +296,11 @@
         "label": "Paper",
         "href": "https://arxiv.org/abs/2510.19755",
         "type": "paper"
+      },
+      {
+        "label": "Survey Resources",
+        "href": "https://github.com/Tammytcl/Awesome-Diffusion-Acceleration-Cache",
+        "type": "resource"
       }
     ]
   },
@@ -250,6 +315,11 @@
         "label": "Paper",
         "href": "https://www.techrxiv.org/doi/abs/10.36227/techrxiv.177032877.70562626/v1",
         "type": "paper"
+      },
+      {
+        "label": "Survey Resources",
+        "href": "https://github.com/btzyd/Awesome-Linear-Attention-Survey",
+        "type": "resource"
       }
     ]
   },
@@ -265,6 +335,11 @@
         "label": "Paper",
         "href": "assets/PCMamba/PCMamba.pdf",
         "type": "paper"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Tammytcl/PCMamba",
+        "type": "github"
       }
     ]
   },
@@ -465,6 +540,16 @@
         "label": "Project",
         "href": "https://endlessfrontier.tech/",
         "type": "project"
+      },
+      {
+        "label": "Evaluation Code",
+        "href": "https://github.com/endless-frontier/BigBang-v1",
+        "type": "evaluation"
+      },
+      {
+        "label": "Hugging Face · BigBang-v1",
+        "href": "https://huggingface.co/endless-frontier/BigBang-v1",
+        "type": "model"
       }
     ]
   }
