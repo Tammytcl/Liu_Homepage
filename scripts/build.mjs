@@ -37,9 +37,6 @@ const labels = {
             ['交互式世界模型', [
                 '我关注生成模型如何从单向的视频合成走向可控制、可持续交互的环境建模：既响应自然语言指令和玩家动作，也在长时序生成中维持场景、状态与历史的一致性。相关工作贯穿交互视频数据构建、清洗与标注，交互记忆教师模型 SFT，以及指令跟随、动作响应和时序一致性的评测。',
                 '在训练与推理方面，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。研究重点是将控制能力、交互记忆与生成效率一起考虑，使世界模型能够在持续反馈中生成连贯的交互过程。'
-            ]],
-            ['早期研究：医学视觉与生成', [
-                '早期工作围绕医学图像分割与合成，探索卷积、Transformer 与 Mamba 对局部细节和全局结构的建模，以及特征量化与扩散生成的结合。这些研究构成了我对视觉表征、结构建模和生成方法的基础，并逐步延伸到当前对多模态模型效率与能力的研究。'
             ]]
         ],
         overviewNote: '围绕知识迁移、生成效率与交互能力展开的研究。',
@@ -82,9 +79,6 @@ const labels = {
             ['Interactive World Models', [
                 'I study how video generators can model controllable environments with sustained interaction, responding to natural-language instructions and player actions while preserving scene, state, and history consistency over long horizons. My work spans interactive video data construction, cleaning and annotation, interaction-memory teacher-model SFT, and evaluation of instruction following, action response, and temporal consistency.',
                 'For training and inference, I work on Self-Forcing / DMD few-step distillation and reinforcement learning for long-horizon stability and visual quality. This research considers control, interaction memory, and generation efficiency together, aiming to produce coherent interactions under continuous feedback.'
-            ]],
-            ['Earlier Work: Medical Vision and Generation', [
-                'My earlier work on medical image segmentation and synthesis explores local detail and global structure with convolutional, Transformer, and Mamba architectures, as well as feature quantization for diffusion-based synthesis. These studies form the foundation of my interest in visual representations, structural modeling, and generative methods, leading to my current research on multimodal model efficiency and capabilities.'
             ]]
         ],
         overviewNote: 'Research on knowledge transfer, generation efficiency, and interactive capabilities.',
