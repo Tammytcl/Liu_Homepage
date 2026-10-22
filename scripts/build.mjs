@@ -47,14 +47,15 @@ const labels = {
             ]]
         ],
         overviewNote: '以下介绍我正在开展及此前参与的研究工作。',
+        representativeWorks: '代表工作：',
         selectedNote: '* 表示同等贡献，† 表示通讯作者。',
         groups: [
-            ['大语言模型后训练', ['ESCD']],
+            ['大语言模型后训练', ['ESCD', 'PHYRD', 'BigBang', 'TRAIL']],
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['交互式世界模型', ['GameCraft-2']]
         ],
-        otherNote: '收录全部论文、综述与技术报告。在审稿件按投稿年份整理。',
-        roleFirst: '一作', roleEqual: '共同一作', underReview: '在审',
+        otherNote: '收录论文、综述、技术报告及进行中的研究。在审稿件按投稿年份整理。',
+        roleFirst: '一作', roleEqual: '共同一作', underReview: '在审', inProgress: '进行中',
         paper: '论文', code: '代码', project: '项目', report: '最新报告', resource: '资源', evaluation: '评测代码', footer: '更新于 2026 年 10 月'
     },
     en: {
@@ -92,14 +93,15 @@ const labels = {
             ]]
         ],
         overviewNote: 'Below are research projects I am currently working on or have contributed to in the past.',
+        representativeWorks: 'Representative work:',
         selectedNote: '* Equal contribution; † corresponding author.',
         groups: [
-            ['LLM Post-training', ['ESCD']],
+            ['LLM Post-training', ['ESCD', 'PHYRD', 'BigBang', 'TRAIL']],
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['Interactive World Models', ['GameCraft-2']]
         ],
-        otherNote: 'Complete list of papers, surveys, and technical reports. Submissions under review are grouped by submission year.',
-        roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review',
+        otherNote: 'Papers, surveys, technical reports, and research in progress. Submissions under review are grouped by submission year.',
+        roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review', inProgress: 'In progress',
         paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', resource: 'Resources', evaluation: 'Evaluation Code', footer: 'Updated October 2026'
     }
 };
@@ -107,6 +109,17 @@ const labels = {
 function overviewParagraph(paragraph) {
     if (typeof paragraph === 'string') return `<p>${escape(paragraph)}</p>`;
     return `<p><strong>${escape(paragraph.label)}</strong> ${escape(paragraph.text)}</p>`;
+}
+
+function representativeWorks(ids, l) {
+    const references = ids.map(id => {
+        const paper = publications.find(p => p.id === id);
+        if (!paper) throw new Error(`Missing representative work: ${id}`);
+        const name = id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : id;
+        const status = paper.venue === 'In progress' ? ` (${escape(l.inProgress)})` : '';
+        return `${link(name, `#work-${id}`)}${status}`;
+    });
+    return `<p class="representative-works"><strong>${escape(l.representativeWorks)}</strong> ${references.join(' · ')}</p>`;
 }
 
 function sectionHeading(id, title, number) {
@@ -119,7 +132,7 @@ function links(p, l) {
 
 function metadata(p, l, showRole) {
     const role = showRole ? (p.role === 'equal' ? l.roleEqual : p.role === 'first' ? l.roleFirst : '') : '';
-    return [p.venue.replaceAll('Under Review', l.underReview), role].filter(Boolean).map(escape).join(' · ');
+    return [p.venue.replaceAll('Under Review', l.underReview).replaceAll('In progress', l.inProgress), role].filter(Boolean).map(escape).join(' · ');
 }
 
 const archiveYear = p => p.submissionYear ?? p.year;
@@ -185,7 +198,7 @@ for (const [language, l] of Object.entries(labels)) {
     <section id="project-overview" aria-labelledby="overview-heading">
         ${sectionHeading('overview-heading', l.overview, 3)}
         <p class="section-note">${l.overviewNote}</p>
-        ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(overviewParagraph).join('')}</article>`).join('\n        ')}
+        ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(overviewParagraph).join('')}${representativeWorks(l.groups[i][1], l)}</article>`).join('\n        ')}
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
         ${sectionHeading('projects-heading', l.projects, 4)}

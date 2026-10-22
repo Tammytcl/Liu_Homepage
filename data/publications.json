@@ -522,14 +522,18 @@
     "year": 2027,
     "authors": "Zhang, Q., Chen, G., Zhang, W., Wang, J., Song, J., Jiacheng Liu, Chen, S., Linfeng Zhang†",
     "links": [],
-    "submissionYear": 2026
+    "submissionYear": 2026,
+    "description": {
+      "zh": "面向理论物理研究复现与拓展的持续演进评测基准。",
+      "en": "A living benchmark for reproducing and extending theoretical physics research."
+    }
   },
   {
     "id": "BigBang",
     "title": "BigBang: Pursuing Open-Ended Intelligence through Self-Evolving Synthesis of Verifiable Frontier Tasks",
     "venue": "Technical Report",
     "year": 2026,
-    "authors": "",
+    "authors": "The BigBang Team",
     "links": [
       {
         "label": "Paper",
@@ -551,6 +555,23 @@
         "href": "https://huggingface.co/endless-frontier/BigBang-v1",
         "type": "model"
       }
-    ]
+    ],
+    "description": {
+      "zh": "通过生成与评判智能体的迭代交互，合成可验证的前沿任务，用于通用语言模型后训练。",
+      "en": "An iterative generator–critic framework that synthesizes verifiable frontier tasks for post-training a general-purpose language model."
+    }
+  },
+  {
+    "id": "TRAIL",
+    "title": "TRAIL: Critic-Guided On-Policy Distillation for Multi-Turn Agents",
+    "venue": "In progress",
+    "year": 2026,
+    "authors": "Jiacheng Liu*, Jingwei Song*, Siheng Chen, Linfeng Zhang†",
+    "role": "equal",
+    "links": [],
+    "description": {
+      "zh": "面向 Multi-turn agent 的 On-Policy Distillation，结合在线 Critic 的轮级监督分配与异步训练，研究长程任务中的信用分配和训练效率。",
+      "en": "On-policy distillation for multi-turn agents, combining online Critic-guided allocation of supervision across turns with asynchronous training to study credit assignment and training efficiency in long-horizon tasks."
+    }
   }
 ]
