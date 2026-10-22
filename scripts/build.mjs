@@ -18,23 +18,24 @@ const labels = {
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
         resume: '查看简历', resumeLabel: '在新标签页查看简历 PDF',
-        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体学习、高效多模态生成，以及交互式世界模型。',
+        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注多轮 Coding Agent 及其后训练方法、高效多模态生成，以及交互式世界模型。',
         opportunities: '欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。',
         research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '论文汇总',
         interests: [
-            '<strong>大语言模型后训练与智能体：</strong>On-Policy Distillation、跨 Tokenizer 与异构 MoE 知识迁移、多轮 Coding Agent 训练与任务评测。',
+            '<strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
             '<strong>交互式世界模型：</strong>指令驱动的视频生成、动作响应与长时序一致性。'
         ],
         experience: [
-            ['无尽前沿（Endless Frontier）', '2026.09–至今', 'LLM 基模组 · 后训练实习生 · 上海', '开展 On-Policy Distillation 与异构 MoE 知识蒸馏研究，关注跨模型知识迁移和多轮 Coding Agent 训练。'],
+            ['无尽前沿（Endless Frontier）', '2026.09–至今', 'LLM 基模组 · 后训练实习生 · 上海', '围绕多轮 Coding Agent 开展训练研究，关注工具调用、环境反馈与交互轨迹上的蒸馏学习；同时开展跨 Tokenizer、异构 MoE 知识迁移及多能力合并训练。'],
             ['腾讯混元', '2025.07–2026.06', '世界模型组 · 青云计划研究实习生', '参与 Hunyuan-GameCraft-2 的交互视频数据、教师模型 SFT、Self-Forcing / DMD 少步蒸馏、强化学习优化与评测。']
         ],
         overviews: [
             ['大语言模型后训练与智能体', [
-                { label: 'Cross-Tokenizer OPD：', text: '我关注教师与学生使用不同 Tokenizer 时的知识迁移，研究如何在学生自主生成的轨迹上构造有效监督。围绕跨词表的概率对齐与事件补全，探索学生生成教师 Token 的部分前缀后，如何对兼容的后续补全集合施加监督，避免将概率任意分配给单个学生 Token，并将这一方法拓展到异构 MoE 的蒸馏。' },
-                { label: 'MOPD：', text: '我开展基于 MOPD 的多能力合并训练，围绕 Math、Code、IF 任务进行合版，也参与面向工业代码与多模态任务的大规模模型合版。关注不同任务能力的协同迁移、合并后的能力保持，以及训练与评测流程的组织，积累跨任务、跨规模的模型合并经验。' },
-                { label: 'Agentic OPD：', text: '我关注多轮智能体在推理、工具调用与环境反馈中的蒸馏学习，研究训练基础设施与监督分配的协同设计。通过轮级流式异步训练，及时消费学生交互过程中产生的教师监督，减少长轨迹带来的等待；同时利用任务执行结果持续更新 Critic，调整不同交互轮次的蒸馏强度，使监督分配随学生能力变化而更新。' }
+                { label: "1. Coding Agent 任务构建：", text: "将开源仓库中的真实修复记录转化为可执行的代码任务：从 Issue 和已合入 PR 中提取问题描述、修复前代码、参考补丁与测试，构建容器环境和评测脚本，再检查参考修复能否通过测试、未修复代码能否暴露原有问题。任务交付后，Agent 在环境中阅读代码、调用工具、修改实现和运行测试，产生用于训练的交互轨迹。" },
+                { label: "2. Long-Horizon 任务的价值估计与信用分配：", text: "代码任务往往经过多轮尝试才得到最终结果，单个成败信号很难反映中间步骤的作用。我借鉴 PPO 的 Actor–Critic 设计，用任务最终结果训练 Critic，预测当前交互历史下的后续成功概率。通过比较行动及环境反馈前后的价值变化，估计每一轮的任务进展，并据此调整蒸馏权重。Critic 随学生产生的新轨迹持续更新，适应学生能力的变化。" },
+                { label: "3. Multi-turn agent 的异步训练：", text: "不同任务的交互轮数、工具执行和测试耗时差异很大，等待整批任务结束会造成较长的训练空闲。我按轮组织交互数据，将轨迹生成、教师评分与训练更新异步衔接，让已就绪的数据及时得到处理；需要最终结果的 Critic 学习则在任务完成后进行。同时复用历史计算状态，只对新增上下文做增量评分，减少长轨迹中的重复计算，并处理异步执行中的模型版本与监督对齐问题。" },
+                { label: "4. On-Policy Distillation 与跨模型知识迁移：", text: "在 Coding Agent 任务上，开展 Qwen3.5-27B → Qwen3.5-9B 的 Agentic OPD，由教师对学生实际生成的响应提供逐 Token 监督，并用 Critic 的价值变化调整各轮监督强度。在跨模型蒸馏中，通过跨 Tokenizer 概率对齐与事件补全，实现 Kimi 2.7-1T → Qwen3.6-35B-A3B 的跨词表、异构 MoE 蒸馏，以及 Qwen 397B → 30B 的知识迁移。此外，开展基于 MOPD 的 Math、Code 和指令遵循能力合并，检查合并后各项能力的保留情况。" }
             ]],
             ['高效多模态生成', [
                 '围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。',
@@ -45,7 +46,7 @@ const labels = {
                 '在训练与推理方面，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。研究重点是将控制能力、交互记忆与生成效率一起考虑，使世界模型能够在持续反馈中生成连贯的交互过程。'
             ]]
         ],
-        overviewNote: '围绕知识迁移、生成效率与交互能力展开的研究。',
+        overviewNote: '围绕智能体的任务交互与学习、生成效率和交互式环境建模展开的研究。',
         selectedNote: '* 表示同等贡献，† 表示通讯作者。',
         groups: [
             ['大语言模型后训练', ['ESCD']],
@@ -62,23 +63,24 @@ const labels = {
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
         resume: 'View CV', resumeLabel: 'View CV PDF in a new tab',
-        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agent learning, efficient multimodal generation, and interactive world models.',
+        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning multi-turn coding agents and their post-training methods, efficient multimodal generation, and interactive world models.',
         opportunities: 'I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.',
         research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Publications',
         interests: [
-            '<strong>LLM post-training and agents:</strong> on-policy distillation, cross-tokenizer and heterogeneous MoE knowledge transfer, multi-turn coding-agent training and evaluation.',
+            '<strong>LLM post-training and agents:</strong> Coding Agent task construction, credit assignment in long-horizon interactions, asynchronous training for multi-turn agents, and on-policy distillation and cross-model knowledge transfer.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
             '<strong>Interactive world models:</strong> instruction-driven video generation, action response, and long-horizon consistency.'
         ],
         experience: [
-            ['Endless Frontier', 'Sep 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on on-policy distillation and heterogeneous MoE distillation, with a focus on cross-model knowledge transfer and multi-turn coding agents.'],
+            ['Endless Frontier', 'Sep 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on training multi-turn coding agents, focusing on tool use, environment feedback, and distillation along interaction trajectories, alongside cross-tokenizer and heterogeneous MoE knowledge transfer and capability merging.'],
             ['Tencent Hunyuan', 'Jul 2025–Jun 2026', 'World Model Team · Qingyun Research Intern', 'Contributed to Hunyuan-GameCraft-2 through interactive video data, teacher-model SFT, Self-Forcing / DMD few-step distillation, reinforcement learning, and evaluation.']
         ],
         overviews: [
             ['LLM Post-training and Agents', [
-                { label: 'Cross-Tokenizer OPD:', text: 'I study knowledge transfer between teachers and students with different tokenizers, focusing on useful supervision along student-generated trajectories. My work explores cross-vocabulary probability alignment and event completion: after a student generates a partial prefix of a teacher token, supervision targets compatible completion sets rather than arbitrary probability splits among individual student tokens. I also extend this direction to heterogeneous MoE distillation.' },
-                { label: 'MOPD:', text: 'I work on MOPD-based capability merging across mathematics (Math), coding (Code), and instruction-following (IF) tasks. I also contribute to larger-scale model merging for industrial coding and multimodal tasks. My focus is on transferring capabilities across tasks, retaining them after merging, and organizing training and evaluation, building experience in model merging across different tasks and scales.' },
-                { label: 'Agentic OPD:', text: 'I study distillation for multi-turn agents that reason, use tools, and interact with environment feedback, focusing on training infrastructure and supervision allocation. Turn-level streaming asynchronous training consumes teacher supervision promptly and reduces waiting on long trajectories. An online Critic continually learns from task outcomes to adjust distillation strength across interaction turns, allowing supervision allocation to evolve with the student’s capabilities.' }
+                { label: "1. Coding Agent Task Construction:", text: "I turn real fixes from open-source repositories into executable coding tasks. Issues and merged PRs provide the problem description, pre-fix code, reference patch, and tests. The pipeline builds container environments and evaluation scripts, then checks that the reference fix passes the tests and that the original code exposes the reported problem. Agents read code, use tools, modify implementations, and run tests in these environments, producing interaction trajectories for training." },
+                { label: "2. Value Estimation and Credit Assignment for Long-Horizon Tasks:", text: "Coding tasks often require many attempts before a final outcome is available, making a single success or failure signal insufficient to assess intermediate steps. Drawing on the Actor–Critic design in PPO, I train a Critic on final task outcomes to predict the probability of eventual success given the current interaction history. Changes in predicted value before and after an action and its environment feedback estimate progress at each turn and determine distillation weights. The Critic is continually updated with new student trajectories as the student improves." },
+                { label: "3. Asynchronous Training for Multi-turn Agents:", text: "Tasks vary widely in interaction length, tool execution time, and test duration, so waiting for an entire batch to finish can leave training idle. I organize interaction data by turn and connect trajectory generation, teacher scoring, and training updates asynchronously, allowing ready data to be processed promptly. Critic learning that requires final outcomes takes place after task completion. Reusing historical computation states allows incremental scoring of newly added context, reducing repeated computation along long trajectories. I also address model version consistency and supervision alignment during asynchronous execution." },
+                { label: "4. On-Policy Distillation and Cross-model Knowledge Transfer:", text: "For Coding Agent tasks, I work on Agentic OPD from Qwen3.5-27B to Qwen3.5-9B. The teacher provides token-level supervision on responses actually generated by the student, while Critic value changes adjust supervision strength across turns. For cross-model distillation, I use cross-tokenizer probability alignment and event completion for cross-vocabulary, heterogeneous MoE distillation from Kimi 2.7-1T to Qwen3.6-35B-A3B, as well as knowledge transfer from Qwen 397B to 30B. I also work on MOPD-based merging of Math, Code, and instruction-following capabilities, evaluating how well each capability is retained after merging." }
             ]],
             ['Efficient Multimodal Generation', [
                 'I study how feature dynamics across timesteps, network layers, and frequency bands can reduce redundant computation in image, video, and speech generation. My work spans training-free extrapolation, prediction and calibration, learnable and stage-aware predictors, adaptive verification, and computation allocation, alongside surveys of caching methods and efficient attention. The central questions are which computations can be reused or predicted, when to recompute, and how to preserve quality under acceleration.',
@@ -89,7 +91,7 @@ const labels = {
                 'For training and inference, I work on Self-Forcing / DMD few-step distillation and reinforcement learning for long-horizon stability and visual quality. This research considers control, interaction memory, and generation efficiency together, aiming to produce coherent interactions under continuous feedback.'
             ]]
         ],
-        overviewNote: 'Research on knowledge transfer, generation efficiency, and interactive capabilities.',
+        overviewNote: 'Research on agent interaction and learning, generation efficiency, and interactive environment modeling.',
         selectedNote: '* Equal contribution; † corresponding author.',
         groups: [
             ['LLM Post-training', ['ESCD']],
