@@ -50,7 +50,7 @@ const labels = {
         representativeWorks: '代表工作：',
         selectedNote: '* 表示同等贡献，† 表示通讯作者。',
         groups: [
-            ['大语言模型后训练', ['ESCD', 'PHYRD', 'BigBang', 'TRAIL']],
+            ['大语言模型后训练', ['ESCD', 'TRAIL', 'PHYRD', 'BigBang']],
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['交互式世界模型', ['GameCraft-2']]
         ],
@@ -96,7 +96,7 @@ const labels = {
         representativeWorks: 'Representative work:',
         selectedNote: '* Equal contribution; † corresponding author.',
         groups: [
-            ['LLM Post-training', ['ESCD', 'PHYRD', 'BigBang', 'TRAIL']],
+            ['LLM Post-training', ['ESCD', 'TRAIL', 'PHYRD', 'BigBang']],
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
             ['Interactive World Models', ['GameCraft-2']]
         ],
@@ -116,10 +116,9 @@ function representativeWorks(ids, l) {
         const paper = publications.find(p => p.id === id);
         if (!paper) throw new Error(`Missing representative work: ${id}`);
         const name = id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : id;
-        const status = paper.venue === 'In progress' ? ` (${escape(l.inProgress)})` : '';
-        return `${link(name, `#work-${id}`)}${status}`;
+        return link(name, `#work-${id}`);
     });
-    return `<p class="representative-works"><strong>${escape(l.representativeWorks)}</strong> ${references.join(' · ')}</p>`;
+    return `<p class="representative-works"><strong>${escape(l.representativeWorks)}</strong> ${references.join(l.lang === 'zh-CN' ? '；' : '; ')}</p>`;
 }
 
 function sectionHeading(id, title, number) {

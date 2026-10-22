@@ -43,8 +43,8 @@
     <section id="project-overview" aria-labelledby="overview-heading">
         <h2 class="section-heading" id="overview-heading"><span class="section-index" aria-hidden="true">03</span><span>项目介绍</span></h2>
         <p class="section-note">以下介绍我正在开展及此前参与的研究工作。</p>
-        <article class="research-overview" aria-labelledby="overview-1"><h3 id="overview-1">大语言模型后训练与智能体</h3><p><strong>1. Coding Agent 任务构建：</strong> 将开源仓库中的真实修复记录转化为可执行的代码任务：从 Issue 和已合入 PR 中提取问题描述、修复前代码、参考补丁与测试，构建容器环境和评测脚本，再检查参考修复能否通过测试、未修复代码能否暴露原有问题。任务交付后，Agent 在环境中阅读代码、调用工具、修改实现和运行测试，产生用于训练的交互轨迹。</p><p><strong>2. Long-Horizon 任务的价值估计与信用分配：</strong> 代码任务往往经过多轮尝试才得到最终结果，单个成败信号很难反映中间步骤的作用。我借鉴 PPO 的 Actor–Critic 设计，用任务最终结果训练 Critic，预测当前交互历史下的后续成功概率。通过比较行动及环境反馈前后的价值变化，估计每一轮的任务进展，并据此调整蒸馏权重。Critic 随学生产生的新轨迹持续更新，适应学生能力的变化。</p><p><strong>3. Multi-turn agent 的异步训练：</strong> 不同任务的交互轮数、工具执行和测试耗时差异很大，等待整批任务结束会造成较长的训练空闲。我按轮组织交互数据，将轨迹生成、教师评分与训练更新异步衔接，让已就绪的数据及时得到处理；需要最终结果的 Critic 学习则在任务完成后进行。同时复用历史计算状态，只对新增上下文做增量评分，减少长轨迹中的重复计算，并处理异步执行中的模型版本与监督对齐问题。</p><p><strong>4. On-Policy Distillation 与跨模型知识迁移：</strong> 在 Coding Agent 任务上，开展 Qwen3.5-27B → Qwen3.5-9B 的 Agentic OPD，由教师对学生实际生成的响应提供逐 Token 监督，并用 Critic 的价值变化调整各轮监督强度。在跨模型蒸馏中，通过跨 Tokenizer 概率对齐与事件补全，实现 Kimi 2.7-1T → Qwen3.6-35B-A3B 的跨词表、异构 MoE 蒸馏，以及 Qwen 397B → 30B 的知识迁移。此外，开展基于 MOPD 的 Math、Code 和指令遵循能力合并，检查合并后各项能力的保留情况。</p><p class="representative-works"><strong>代表工作：</strong> <a href="#work-ESCD">ESCD</a> · <a href="#work-PHYRD">PHYRD</a> · <a href="#work-BigBang">BigBang</a> · <a href="#work-TRAIL">TRAIL</a> (进行中)</p></article>
-        <article class="research-overview" aria-labelledby="overview-2"><h3 id="overview-2">高效多模态生成</h3><p>围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。</p><p>这一研究主线也延伸到生成过程本身的计算组织，包括渐进分辨率、时空 Token 选择、噪声轨迹选择，以及自回归视频中的 KV 选择与量化；在图像编辑中关注语义保持与局部修改，在语音生成中探索频域与小波引导的外推。通过结合特征、空间、时间和任务层面的计算策略，探索适用于多种生成与编辑任务的效率方法。</p><p class="representative-works"><strong>代表工作：</strong> <a href="#work-FreqCa">FreqCa</a> · <a href="#work-LESA">LESA</a> · <a href="#work-SpeCa">SpeCa</a> · <a href="#work-TaylorSeer">TaylorSeer</a></p></article>
+        <article class="research-overview" aria-labelledby="overview-1"><h3 id="overview-1">大语言模型后训练与智能体</h3><p><strong>1. Coding Agent 任务构建：</strong> 将开源仓库中的真实修复记录转化为可执行的代码任务：从 Issue 和已合入 PR 中提取问题描述、修复前代码、参考补丁与测试，构建容器环境和评测脚本，再检查参考修复能否通过测试、未修复代码能否暴露原有问题。任务交付后，Agent 在环境中阅读代码、调用工具、修改实现和运行测试，产生用于训练的交互轨迹。</p><p><strong>2. Long-Horizon 任务的价值估计与信用分配：</strong> 代码任务往往经过多轮尝试才得到最终结果，单个成败信号很难反映中间步骤的作用。我借鉴 PPO 的 Actor–Critic 设计，用任务最终结果训练 Critic，预测当前交互历史下的后续成功概率。通过比较行动及环境反馈前后的价值变化，估计每一轮的任务进展，并据此调整蒸馏权重。Critic 随学生产生的新轨迹持续更新，适应学生能力的变化。</p><p><strong>3. Multi-turn agent 的异步训练：</strong> 不同任务的交互轮数、工具执行和测试耗时差异很大，等待整批任务结束会造成较长的训练空闲。我按轮组织交互数据，将轨迹生成、教师评分与训练更新异步衔接，让已就绪的数据及时得到处理；需要最终结果的 Critic 学习则在任务完成后进行。同时复用历史计算状态，只对新增上下文做增量评分，减少长轨迹中的重复计算，并处理异步执行中的模型版本与监督对齐问题。</p><p><strong>4. On-Policy Distillation 与跨模型知识迁移：</strong> 在 Coding Agent 任务上，开展 Qwen3.5-27B → Qwen3.5-9B 的 Agentic OPD，由教师对学生实际生成的响应提供逐 Token 监督，并用 Critic 的价值变化调整各轮监督强度。在跨模型蒸馏中，通过跨 Tokenizer 概率对齐与事件补全，实现 Kimi 2.7-1T → Qwen3.6-35B-A3B 的跨词表、异构 MoE 蒸馏，以及 Qwen 397B → 30B 的知识迁移。此外，开展基于 MOPD 的 Math、Code 和指令遵循能力合并，检查合并后各项能力的保留情况。</p><p class="representative-works"><strong>代表工作：</strong> <a href="#work-ESCD">ESCD</a>；<a href="#work-TRAIL">TRAIL</a>；<a href="#work-PHYRD">PHYRD</a>；<a href="#work-BigBang">BigBang</a></p></article>
+        <article class="research-overview" aria-labelledby="overview-2"><h3 id="overview-2">高效多模态生成</h3><p>围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。</p><p>这一研究主线也延伸到生成过程本身的计算组织，包括渐进分辨率、时空 Token 选择、噪声轨迹选择，以及自回归视频中的 KV 选择与量化；在图像编辑中关注语义保持与局部修改，在语音生成中探索频域与小波引导的外推。通过结合特征、空间、时间和任务层面的计算策略，探索适用于多种生成与编辑任务的效率方法。</p><p class="representative-works"><strong>代表工作：</strong> <a href="#work-FreqCa">FreqCa</a>；<a href="#work-LESA">LESA</a>；<a href="#work-SpeCa">SpeCa</a>；<a href="#work-TaylorSeer">TaylorSeer</a></p></article>
         <article class="research-overview" aria-labelledby="overview-3"><h3 id="overview-3">交互式世界模型</h3><p>我关注生成模型如何从单向的视频合成走向可控制、可持续交互的环境建模：既响应自然语言指令和玩家动作，也在长时序生成中维持场景、状态与历史的一致性。相关工作贯穿交互视频数据构建、清洗与标注，交互记忆教师模型 SFT，以及指令跟随、动作响应和时序一致性的评测。</p><p>在训练与推理方面，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。研究重点是将控制能力、交互记忆与生成效率一起考虑，使世界模型能够在持续反馈中生成连贯的交互过程。</p><p class="representative-works"><strong>代表工作：</strong> <a href="#work-GameCraft-2">Hunyuan-GameCraft-2</a></p></article>
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
@@ -55,6 +55,12 @@
         <p class="work-meta">ICLR 2027 · 在审<br><strong>Jiacheng Liu</strong>*, Song, J.*, Zhang, Q., Chen, S., Linfeng Zhang†</p>
         <p class="work-description">针对教师与学生 Tokenizer 不一致的问题，研究基于事件补全的 On-Policy 蒸馏与异构 MoE 知识迁移。</p>
         <div class="paper-links"><a href="https://arxiv.org/abs/2609.34738">论文</a><a href="https://github.com/Tammytcl/ESCD">代码</a><a href="https://github.com/Tammytcl/ESCD/blob/main/ESCD.pdf">最新报告</a><a href="https://huggingface.co/datasets/mytcl/SciDeriv">Hugging Face · SciDeriv</a><a href="https://huggingface.co/datasets/mytcl/PHYRD-40">Hugging Face · PHYRD-40</a></div>
+    </article>
+<article class="work" id="work-TRAIL">
+        <h4 class="work-title">TRAIL: Critic-Guided On-Policy Distillation for Multi-Turn Agents</h4>
+        <p class="work-meta">进行中<br><strong>Jiacheng Liu</strong>*, Jingwei Song*, Siheng Chen, Linfeng Zhang†</p>
+        <p class="work-description">面向 Multi-turn agent 的 On-Policy Distillation，结合在线 Critic 的轮级监督分配与异步训练，研究长程任务中的信用分配和训练效率。</p>
+
     </article>
 <article class="work" id="work-PHYRD">
         <h4 class="work-title">PHYRD: A Living Benchmark for Reproducing and Extending Theoretical Physics Research</h4>
@@ -67,12 +73,6 @@
         <p class="work-meta">Technical Report<br>The BigBang Team</p>
         <p class="work-description">通过生成与评判智能体的迭代交互，合成可验证的前沿任务，用于通用语言模型后训练。</p>
         <div class="paper-links"><a href="https://endlessfrontier.tech/assets/paper.pdf">论文</a><a href="https://endlessfrontier.tech/">项目</a><a href="https://github.com/endless-frontier/BigBang-v1">评测代码</a><a href="https://huggingface.co/endless-frontier/BigBang-v1">Hugging Face · BigBang-v1</a></div>
-    </article>
-<article class="work" id="work-TRAIL">
-        <h4 class="work-title">TRAIL: Critic-Guided On-Policy Distillation for Multi-Turn Agents</h4>
-        <p class="work-meta">进行中<br><strong>Jiacheng Liu</strong>*, Jingwei Song*, Siheng Chen, Linfeng Zhang†</p>
-        <p class="work-description">面向 Multi-turn agent 的 On-Policy Distillation，结合在线 Critic 的轮级监督分配与异步训练，研究长程任务中的信用分配和训练效率。</p>
-
     </article></div>
         <div class="selected-group" role="group" aria-labelledby="selected-group-2"><h3 class="group-heading" id="selected-group-2">高效多模态生成</h3><article class="work" id="work-FreqCa">
         <h4 class="work-title"><a href="https://arxiv.org/abs/2510.08669">FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching</a></h4>
