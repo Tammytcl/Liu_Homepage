@@ -46,7 +46,7 @@ const labels = {
                 '在训练与推理方面，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。研究重点是将控制能力、交互记忆与生成效率一起考虑，使世界模型能够在持续反馈中生成连贯的交互过程。'
             ]]
         ],
-        overviewNote: '围绕智能体的任务交互与学习、生成效率和交互式环境建模展开的研究。',
+        overviewNote: '以下介绍我正在开展及此前参与的研究工作。',
         selectedNote: '* 表示同等贡献，† 表示通讯作者。',
         groups: [
             ['大语言模型后训练', ['ESCD']],
@@ -91,7 +91,7 @@ const labels = {
                 'For training and inference, I work on Self-Forcing / DMD few-step distillation and reinforcement learning for long-horizon stability and visual quality. This research considers control, interaction memory, and generation efficiency together, aiming to produce coherent interactions under continuous feedback.'
             ]]
         ],
-        overviewNote: 'Research on agent interaction and learning, generation efficiency, and interactive environment modeling.',
+        overviewNote: 'Below are research projects I am currently working on or have contributed to in the past.',
         selectedNote: '* Equal contribution; † corresponding author.',
         groups: [
             ['LLM Post-training', ['ESCD']],
