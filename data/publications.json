@@ -546,11 +546,6 @@
         "type": "project"
       },
       {
-        "label": "Evaluation Code",
-        "href": "https://github.com/endless-frontier/BigBang-v1",
-        "type": "evaluation"
-      },
-      {
         "label": "Hugging Face · BigBang-v1",
         "href": "https://huggingface.co/endless-frontier/BigBang-v1",
         "type": "model"
