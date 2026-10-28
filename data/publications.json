@@ -37,8 +37,8 @@
     "title": "FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching",
     "venue": "NeurIPS 2026",
     "year": 2026,
-    "authors": "Jiacheng Liu*, Cai, P.*, Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., & Zhang, L.†",
-    "role": "equal",
+    "authors": "Jiacheng Liu, Cai, P., Zhou, Q., Lin, Y., Kong, D., Huang, B., Pan, Y., Xu, H., Zou, C., Tang, J., Zheng, S., & Zhang, L.†",
+    "role": "first",
     "links": [
       {
         "label": "Paper",
@@ -61,8 +61,7 @@
     "title": "Z-Cache: Accelerating Diffusion Transformers via Self-Reflection",
     "venue": "NeurIPS 2026",
     "year": 2026,
-    "authors": "Cheng, Z.*, Wang, Z.*, Jiacheng Liu*, Tu, X., Zhou, C., Chen, J., Ma, Y., Ma, Z., Ren, J., Zou, L., & Zhang, L.†",
-    "role": "equal",
+    "authors": "Cheng, Z.*, Wang, Z.*, Jiacheng Liu, Tu, X., Zhou, C., Chen, J., Ma, Y., Ma, Z., Ren, J., Zou, L., & Zhang, L.†",
     "links": []
   },
   {
@@ -177,7 +176,7 @@
   {
     "id": "GameCraft-2",
     "title": "Hunyuan-GameCraft-2: Instruction-following Interactive Game World Model",
-    "venue": "Technical Report",
+    "venue": "CVPR 2026 Workshop · Technical Report",
     "year": 2026,
     "authors": "Junshu Tang*, Jiacheng Liu*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†",
     "role": "equal",
@@ -197,26 +196,6 @@
       "zh": "指令驱动的交互式游戏世界模型。参与交互数据构建、教师模型 SFT、少步蒸馏与评测，支持自然语言控制、玩家动作响应和长时序生成。",
       "en": "An instruction-following interactive game world model. Contributed to interactive data, teacher-model SFT, few-step distillation, and evaluation for language control, action response, and long-horizon generation."
     }
-  },
-  {
-    "id": "GameCraft-2-Workshop",
-    "title": "Hunyuan-GameCraft-2: Instruction-following Interactive Game World Model",
-    "venue": "CVPR 2026 Workshop",
-    "year": 2026,
-    "authors": "Junshu Tang*, Jiacheng Liu*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†",
-    "role": "equal",
-    "links": [
-      {
-        "label": "Paper",
-        "href": "https://arxiv.org/abs/2511.23429",
-        "type": "paper"
-      },
-      {
-        "label": "Project",
-        "href": "https://hunyuan-gamecraft-2.github.io/",
-        "type": "project"
-      }
-    ]
   },
   {
     "id": "Hybrid Caching",
