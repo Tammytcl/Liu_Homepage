@@ -9,7 +9,7 @@ including selected work and research in progress.
 
 ## Update the content
 
-- `data/publications.json`: paper titles, authors, venues, links, and bilingual project descriptions.
+- `data/publications.json`: paper titles, authors, venues, links, and bilingual project descriptions. This is also the source of truth for publication metadata in the downloadable CV.
 - `scripts/build.mjs`: introduction, research directions, internships, and selected project ordering.
 - `static/css/academic.css`: responsive page layout and typography.
 - `static/img/profile.png`: profile portrait supplied by the owner.

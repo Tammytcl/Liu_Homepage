@@ -544,8 +544,8 @@
     "role": "equal",
     "links": [],
     "description": {
-      "zh": "面向 Multi-turn agent 的 On-Policy Distillation，结合在线 Critic 的轮级监督分配与异步训练，研究长程任务中的信用分配和训练效率。",
-      "en": "On-policy distillation for multi-turn agents, combining online Critic-guided allocation of supervision across turns with asynchronous training to study credit assignment and training efficiency in long-horizon tasks."
+      "zh": "面向多轮 Agent 的三角色异步蒸馏，结合教师前缀缓存、轨迹合并与完整轨迹提前反向；通过教师侧离线价值头的 Token 前缀价值差，对学生 OPD 损失进行加权。",
+      "en": "Three-role asynchronous distillation for multi-turn agents, combining teacher prefix caching, trajectory coalescing, and early backward on completed trajectories. An offline-trained value head on the frozen teacher weights the student's OPD loss using changes in token-prefix values."
     }
   }
 ]
