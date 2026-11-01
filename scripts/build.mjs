@@ -9,6 +9,7 @@ const portraitVersion = createHash('sha256').update(fs.readFileSync(path.join(ro
 const resumeVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/resume.pdf'))).digest('hex').slice(0, 12);
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'data/publications.json'), 'utf8'));
 const news = JSON.parse(fs.readFileSync(path.join(root, 'data/news.json'), 'utf8'));
+news.sort((a, b) => b.date.localeCompare(a.date));
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const authorText = value => escape(value).replaceAll('Jiacheng Liu', '<strong>Jiacheng Liu</strong>');
 const link = (label, href) => `<a href="${escape(href)}">${escape(label)}</a>`;
@@ -140,23 +141,24 @@ function newsItem(item, l) {
     const reference = paper => {
         const selected = l.groups.some(([, ids]) => ids.includes(paper.id));
         const href = selected ? `#work-${paper.id}` : (paper.links || []).find(x => x.type === 'paper')?.href || '#other-publications';
-        return link(paper.id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : paper.id, href);
+        const name = { 'GameCraft-2': 'Hunyuan-GameCraft-2', 'Hybrid Caching': 'HyCa', 'Forecast Calibrate': 'FoCa' }[paper.id] || paper.id;
+        return link(name, href);
     };
     let text;
     if (item.type === 'conference') {
-        const papers = publications.filter(p => p.year === Number(item.date.slice(0, 4)) && p.venue.split(' · ')[0].replace(/ Oral$/, '') === item.venue);
+        const papers = publications.filter(p => p.year === item.publicationYear && p.venue.split(' · ')[0].replace(/ Oral$/, '') === item.venue);
         if (!papers.length || /Under Review|In progress|Preprint|Technical Report/i.test(item.venue)) throw new Error(`No accepted news papers: ${item.venue}`);
         const venue = `<strong>${escape(item.venue)}</strong>`;
         const oral = papers.filter(p => /\bOral\b/.test(p.venue)).length;
         const summary = zh
-            ? `${papers.length} 篇参与论文获 ${venue} 接收${oral ? `（其中 ${oral} 篇 Oral）` : ''}`
-            : `${papers.length} ${papers.length === 1 ? 'paper' : 'papers'} I co-authored accepted at ${venue}${oral ? ` (${oral} oral)` : ''}`;
+            ? `我负责的 ${papers.length} 篇论文获 ${venue} 接收${oral ? `（其中 ${oral} 篇 Oral）` : ''}`
+            : `${papers.length} of my ${papers.length === 1 ? 'research papers was' : 'research papers were'} accepted at ${venue}${oral ? ` (${oral} oral)` : ''}`;
         if (item.highlight) {
             const paper = papers.find(p => p.id === item.highlight);
             if (!paper || !item.focus?.zh || !item.focus?.en) throw new Error(`Invalid news highlight: ${item.highlight}`);
             text = papers.length === 1
-                ? (zh ? `参与论文 ${reference(paper)} 获 ${venue} 接收，${escape(item.focus.zh)}。` : `${reference(paper)} accepted at ${venue}, on ${escape(item.focus.en)}.`)
-                : (zh ? `${summary}，其中我主要负责的 ${reference(paper)} ${escape(item.focus.zh)}。` : `${summary}. My main project among these, ${reference(paper)}, focuses on ${escape(item.focus.en)}.`);
+                ? (zh ? `我负责的论文 ${reference(paper)} 获 ${venue} 接收，${escape(item.focus.zh)}。` : `My paper ${reference(paper)} was accepted at ${venue}, on ${escape(item.focus.en)}.`)
+                : (zh ? `${summary}：${papers.map(reference).join('、')}。其中，我主要负责的 ${reference(paper)} ${escape(item.focus.zh)}。` : `${summary}: ${papers.map(reference).join(', ')}. My main project among these, ${reference(paper)}, focuses on ${escape(item.focus.en)}.`);
         } else {
             text = zh
                 ? `${summary}：${papers.map(reference).join('、')}。`
@@ -168,8 +170,8 @@ function newsItem(item, l) {
         const venue = paper.venue.split(' · ')[0];
         if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
         text = zh
-            ? `${reference(paper)} 获 <strong>${escape(venue)}</strong> 接收。`
-            : `${reference(paper)} accepted at <strong>${escape(venue)}</strong>.`;
+            ? `我负责的论文 ${reference(paper)} 获 <strong>${escape(venue)}</strong> 接收。`
+            : `My paper ${reference(paper)} was accepted at <strong>${escape(venue)}</strong>.`;
     } else {
         throw new Error(`Unknown news type: ${item.type}`);
     }
