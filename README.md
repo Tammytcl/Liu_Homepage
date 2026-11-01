@@ -10,7 +10,7 @@ including selected work and research in progress.
 ## Update the content
 
 - `data/publications.json`: paper titles, authors, venues, links, and bilingual project descriptions. This is also the source of truth for publication metadata in the downloadable CV.
-- `data/news.json`: news in display order (newest first). Each entry references a publication ID, so the title, venue, and authorship role stay consistent with the publication list. Use `YYYY` dates when only the year is known, or `YYYY-MM` for a confirmed month. Types: `accepted` or `preprint`.
+- `data/news.json`: news in display order (newest first). Use `YYYY` dates when only the year is known, or `YYYY-MM` for a confirmed month. `conference` entries derive counts and paper links from the publication list for that year and exact venue (including Oral, excluding separate workshops). An optional `highlight` and bilingual `focus` describe the owner's main project. `accepted` and `preprint` entries reference individual publication IDs. News omits authorship-role labels; the publication list retains the full metadata.
 - `scripts/build.mjs`: introduction, research directions, internships, and selected project ordering.
 - `static/css/academic.css`: responsive page layout and typography.
 - `static/img/profile.png`: profile portrait supplied by the owner.

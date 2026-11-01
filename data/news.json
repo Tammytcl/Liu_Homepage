@@ -1,8 +1,24 @@
 [
   { "date": "2026", "publication": "ESCD", "type": "preprint" },
-  { "date": "2026", "publication": "FreqCa", "type": "accepted" },
-  { "date": "2026", "publication": "LESA", "type": "accepted" },
+  {
+    "date": "2026", "venue": "NeurIPS 2026", "type": "conference", "highlight": "FreqCa",
+    "focus": { "zh": "研究频率感知缓存，加速图像生成与编辑", "en": "frequency-aware caching for faster image generation and editing" }
+  },
+  { "date": "2026", "venue": "ECCV 2026", "type": "conference" },
+  {
+    "date": "2026", "venue": "CVPR 2026", "type": "conference", "highlight": "LESA",
+    "focus": { "zh": "通过可学习的阶段感知预测器加速扩散模型", "en": "learnable stage-aware predictors for diffusion model acceleration" }
+  },
   { "date": "2026", "publication": "GameCraft-2", "type": "accepted" },
-  { "date": "2025", "publication": "SpeCa", "type": "accepted" },
-  { "date": "2025", "publication": "TaylorSeer", "type": "accepted" }
+  { "date": "2026", "venue": "ICLR 2026", "type": "conference" },
+  { "date": "2026", "venue": "AAAI 2026", "type": "conference" },
+  { "date": "2026", "venue": "TMLR", "type": "conference" },
+  {
+    "date": "2025", "venue": "ACM MM 2025", "type": "conference", "highlight": "SpeCa",
+    "focus": { "zh": "通过预测与验证，自适应分配扩散模型的计算量", "en": "forecasting and verification for adaptive computation in diffusion models" }
+  },
+  {
+    "date": "2025", "venue": "ICCV 2025", "type": "conference", "highlight": "TaylorSeer",
+    "focus": { "zh": "利用历史特征预测后续时间步，实现免训练加速", "en": "training-free acceleration by forecasting future features from their history" }
+  }
 ]

@@ -135,25 +135,48 @@ function sectionHeading(id, title, number) {
 }
 
 function newsItem(item, l) {
-    const paper = publications.find(p => p.id === item.publication);
-    if (!paper) throw new Error(`Missing news publication: ${item.publication}`);
     if (!/^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/.test(item.date)) throw new Error(`Invalid news date: ${item.date}`);
-    const name = paper.id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : paper.id;
-    const reference = link(name, `#work-${paper.id}`);
-    const venue = paper.venue.split(' · ')[0];
     const zh = l.lang === 'zh-CN';
+    const reference = paper => {
+        const selected = l.groups.some(([, ids]) => ids.includes(paper.id));
+        const href = selected ? `#work-${paper.id}` : (paper.links || []).find(x => x.type === 'paper')?.href || '#other-publications';
+        return link(paper.id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : paper.id, href);
+    };
     let text;
-    if (item.type === 'accepted') {
-        if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
-        const role = paper.role === 'first' ? l.roleFirst : paper.role === 'equal' ? l.roleEqual : '';
-        text = zh
-            ? `${reference} 获 <strong>${escape(venue)}</strong> 接收${role ? `（${escape(role)}）` : ''}。`
-            : `${reference} accepted at <strong>${escape(venue)}</strong>${role ? ` (${escape(role.toLowerCase())})` : ''}.`;
-    } else if (item.type === 'preprint') {
-        const status = paper.venue.replaceAll('Under Review', l.underReview).replaceAll('In progress', l.inProgress);
-        text = zh
-            ? `发布 ${reference} 预印本，研究跨 Tokenizer 的事件补全蒸馏；${escape(status)}。`
-            : `${reference} preprint on event-completion distillation across tokenizers; ${escape(status)}.`;
+    if (item.type === 'conference') {
+        const papers = publications.filter(p => p.year === Number(item.date.slice(0, 4)) && p.venue.split(' · ')[0].replace(/ Oral$/, '') === item.venue);
+        if (!papers.length || /Under Review|In progress|Preprint|Technical Report/i.test(item.venue)) throw new Error(`No accepted news papers: ${item.venue}`);
+        const venue = `<strong>${escape(item.venue)}</strong>`;
+        const oral = papers.filter(p => /\bOral\b/.test(p.venue)).length;
+        const summary = zh
+            ? `${papers.length} 篇参与论文获 ${venue} 接收${oral ? `（其中 ${oral} 篇 Oral）` : ''}`
+            : `${papers.length} ${papers.length === 1 ? 'paper' : 'papers'} I co-authored accepted at ${venue}${oral ? ` (${oral} oral)` : ''}`;
+        if (item.highlight) {
+            const paper = papers.find(p => p.id === item.highlight);
+            if (!paper || !item.focus?.zh || !item.focus?.en) throw new Error(`Invalid news highlight: ${item.highlight}`);
+            text = papers.length === 1
+                ? (zh ? `参与论文 ${reference(paper)} 获 ${venue} 接收，${escape(item.focus.zh)}。` : `${reference(paper)} accepted at ${venue}, on ${escape(item.focus.en)}.`)
+                : (zh ? `${summary}，其中我主要负责的 ${reference(paper)} ${escape(item.focus.zh)}。` : `${summary}. My main project among these, ${reference(paper)}, focuses on ${escape(item.focus.en)}.`);
+        } else {
+            text = zh
+                ? `${summary}：${papers.map(reference).join('、')}。`
+                : `${summary}: ${papers.map(reference).join(', ')}.`;
+        }
+    } else if (item.type === 'accepted' || item.type === 'preprint') {
+        const paper = publications.find(p => p.id === item.publication);
+        if (!paper) throw new Error(`Missing news publication: ${item.publication}`);
+        const venue = paper.venue.split(' · ')[0];
+        if (item.type === 'accepted') {
+            if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
+            text = zh
+                ? `${reference(paper)} 获 <strong>${escape(venue)}</strong> 接收。`
+                : `${reference(paper)} accepted at <strong>${escape(venue)}</strong>.`;
+        } else {
+            const status = paper.venue.replaceAll('Under Review', l.underReview).replaceAll('In progress', l.inProgress);
+            text = zh
+                ? `发布 ${reference(paper)} 预印本，研究跨 Tokenizer 的事件补全蒸馏；${escape(status)}。`
+                : `${reference(paper)} preprint on event-completion distillation across tokenizers; ${escape(status)}.`;
+        }
     } else {
         throw new Error(`Unknown news type: ${item.type}`);
     }
