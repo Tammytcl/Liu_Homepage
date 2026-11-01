@@ -141,7 +141,14 @@ function newsItem(item, l) {
     const reference = paper => {
         const selected = l.groups.some(([, ids]) => ids.includes(paper.id));
         const href = selected ? `#work-${paper.id}` : (paper.links || []).find(x => x.type === 'paper')?.href || '#other-publications';
-        const name = { 'GameCraft-2': 'Hunyuan-GameCraft-2', 'Hybrid Caching': 'HyCa', 'Forecast Calibrate': 'FoCa' }[paper.id] || paper.id;
+        const name = {
+            'GameCraft-2': 'Hunyuan-GameCraft-2',
+            'Hybrid Caching': 'HyCa',
+            'Forecast Calibrate': 'FoCa',
+            'Dynamic Video': 'DVG',
+            'Sketch to Fresco': 'Fresco',
+            'Data-Driven Predictor': 'L²P'
+        }[paper.id] || paper.id;
         return link(name, href);
     };
     let text;
