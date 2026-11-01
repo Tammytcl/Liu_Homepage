@@ -13,7 +13,7 @@
   { "date": "2026-05", "publication": "GameCraft-2", "type": "accepted", "dateSource": "https://videoworldmodel-workshop.github.io/", "dateBasis": "Non-Proceedings Track author notification (May 4, 2026); paper listed in that track." },
   { "date": "2026-01", "publicationYear": 2026, "venue": "ICLR 2026", "type": "conference", "dateSource": "https://iclr.cc/Conferences/2026/Dates" },
   { "date": "2025-11", "publicationYear": 2026, "venue": "AAAI 2026", "type": "conference", "dateSource": "https://aaai.org/conference/aaai/aaai-26/" },
-  { "date": "2026-08", "publicationYear": 2026, "venue": "TMLR", "type": "conference", "dateSource": "https://jmlr.org/tmlr/papers/", "dateBasis": "August 2026 in the journal's official accepted-papers listing." },
+  { "date": "2026-08", "publicationYear": 2026, "venue": "TMLR", "type": "conference", "dateSource": "https://jmlr.org/tmlr/papers/", "dateBasis": "Author-confirmed acceptance notification: 26 Aug 2026, 10:40 (timezone unspecified); official accepted-papers listing also gives August 2026." },
   {
     "date": "2025-07", "publicationYear": 2025, "venue": "ACM MM 2025", "type": "conference", "highlight": "SpeCa",
     "dateSource": "https://acmmm2025.org/important-dates/",
