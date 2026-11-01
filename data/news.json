@@ -1,5 +1,4 @@
 [
-  { "date": "2026", "publication": "ESCD", "type": "preprint" },
   {
     "date": "2026", "venue": "NeurIPS 2026", "type": "conference", "highlight": "FreqCa",
     "focus": { "zh": "研究频率感知缓存，加速图像生成与编辑", "en": "frequency-aware caching for faster image generation and editing" }

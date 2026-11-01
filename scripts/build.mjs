@@ -162,21 +162,14 @@ function newsItem(item, l) {
                 ? `${summary}：${papers.map(reference).join('、')}。`
                 : `${summary}: ${papers.map(reference).join(', ')}.`;
         }
-    } else if (item.type === 'accepted' || item.type === 'preprint') {
+    } else if (item.type === 'accepted') {
         const paper = publications.find(p => p.id === item.publication);
         if (!paper) throw new Error(`Missing news publication: ${item.publication}`);
         const venue = paper.venue.split(' · ')[0];
-        if (item.type === 'accepted') {
-            if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
-            text = zh
-                ? `${reference(paper)} 获 <strong>${escape(venue)}</strong> 接收。`
-                : `${reference(paper)} accepted at <strong>${escape(venue)}</strong>.`;
-        } else {
-            const status = paper.venue.replaceAll('Under Review', l.underReview).replaceAll('In progress', l.inProgress);
-            text = zh
-                ? `发布 ${reference(paper)} 预印本，研究跨 Tokenizer 的事件补全蒸馏；${escape(status)}。`
-                : `${reference(paper)} preprint on event-completion distillation across tokenizers; ${escape(status)}.`;
-        }
+        if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
+        text = zh
+            ? `${reference(paper)} 获 <strong>${escape(venue)}</strong> 接收。`
+            : `${reference(paper)} accepted at <strong>${escape(venue)}</strong>.`;
     } else {
         throw new Error(`Unknown news type: ${item.type}`);
     }
