@@ -3,13 +3,14 @@
 Live site: https://tammytcl.github.io/Liu_Homepage/
 
 A static, bilingual homepage organized around a short doctoral introduction,
-research interests, internships, research overviews with links to representative work,
+scrollable news, research interests, internships, research overviews with links to representative work,
 selected research projects, and a complete publication list grouped by year,
 including selected work and research in progress.
 
 ## Update the content
 
 - `data/publications.json`: paper titles, authors, venues, links, and bilingual project descriptions. This is also the source of truth for publication metadata in the downloadable CV.
+- `data/news.json`: news in display order (newest first). Each entry references a publication ID, so the title, venue, and authorship role stay consistent with the publication list. Use `YYYY` dates when only the year is known, or `YYYY-MM` for a confirmed month. Types: `accepted` or `preprint`.
 - `scripts/build.mjs`: introduction, research directions, internships, and selected project ordering.
 - `static/css/academic.css`: responsive page layout and typography.
 - `static/img/profile.png`: profile portrait supplied by the owner.

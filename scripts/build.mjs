@@ -8,13 +8,15 @@ const stylesheetVersion = createHash('sha256').update(fs.readFileSync(path.join(
 const portraitVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'static/img/profile.png'))).digest('hex').slice(0, 12);
 const resumeVersion = createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/resume.pdf'))).digest('hex').slice(0, 12);
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'data/publications.json'), 'utf8'));
+const news = JSON.parse(fs.readFileSync(path.join(root, 'data/news.json'), 'utf8'));
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const authorText = value => escape(value).replaceAll('Jiacheng Liu', '<strong>Jiacheng Liu</strong>');
 const link = (label, href) => `<a href="${escape(href)}">${escape(label)}</a>`;
 const labels = {
     zh: {
         lang: 'zh-CN', title: '留嘉城 · Jiacheng Liu', description: '留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界模型。',
-        nav: ['简介', '研究方向', '实习', '项目介绍', '代表项目', '论文汇总'],
+        nav: ['简介', '动态', '研究方向', '实习', '项目介绍', '代表项目', '论文汇总'],
+        news: '最新动态', newsHint: '上下滚动查看更多动态',
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
         resume: '查看简历', resumeLabel: '在新标签页查看简历 PDF',
@@ -55,11 +57,12 @@ const labels = {
         ],
         otherNote: '收录论文、综述、技术报告及进行中的研究。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审', inProgress: '进行中',
-        paper: '论文', code: '代码', project: '项目', report: '最新报告', resource: '资源', evaluation: '评测代码', footer: '更新于 2026 年 10 月'
+        paper: '论文', code: '代码', project: '项目', report: '最新报告', resource: '资源', evaluation: '评测代码', footer: '更新于 2026 年 11 月'
     },
     en: {
         lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.',
-        nav: ['About', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Publications'],
+        nav: ['About', 'News', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Publications'],
+        news: 'News', newsHint: 'Scroll for more updates',
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
         resume: 'View CV', resumeLabel: 'View CV PDF in a new tab',
@@ -100,7 +103,7 @@ const labels = {
         ],
         otherNote: 'Papers, surveys, technical reports, and research in progress. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review', inProgress: 'In progress',
-        paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', resource: 'Resources', evaluation: 'Evaluation Code', footer: 'Updated October 2026'
+        paper: 'Paper', code: 'Code', project: 'Project', report: 'Latest Report', resource: 'Resources', evaluation: 'Evaluation Code', footer: 'Updated November 2026'
     }
 };
 
@@ -131,6 +134,33 @@ function sectionHeading(id, title, number) {
     return `<h2 class="section-heading" id="${escape(id)}"><span class="section-index" aria-hidden="true">${String(number).padStart(2, '0')}</span><span>${escape(title)}</span></h2>`;
 }
 
+function newsItem(item, l) {
+    const paper = publications.find(p => p.id === item.publication);
+    if (!paper) throw new Error(`Missing news publication: ${item.publication}`);
+    if (!/^\d{4}(?:-(?:0[1-9]|1[0-2]))?$/.test(item.date)) throw new Error(`Invalid news date: ${item.date}`);
+    const name = paper.id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : paper.id;
+    const reference = link(name, `#work-${paper.id}`);
+    const venue = paper.venue.split(' · ')[0];
+    const zh = l.lang === 'zh-CN';
+    let text;
+    if (item.type === 'accepted') {
+        if (/Under Review|In progress|Preprint|Technical Report/i.test(venue)) throw new Error(`Unaccepted venue in news: ${paper.id}`);
+        const role = paper.role === 'first' ? l.roleFirst : paper.role === 'equal' ? l.roleEqual : '';
+        text = zh
+            ? `${reference} 获 <strong>${escape(venue)}</strong> 接收${role ? `（${escape(role)}）` : ''}。`
+            : `${reference} accepted at <strong>${escape(venue)}</strong>${role ? ` (${escape(role.toLowerCase())})` : ''}.`;
+    } else if (item.type === 'preprint') {
+        const status = paper.venue.replaceAll('Under Review', l.underReview).replaceAll('In progress', l.inProgress);
+        text = zh
+            ? `发布 ${reference} 预印本，研究跨 Tokenizer 的事件补全蒸馏；${escape(status)}。`
+            : `${reference} preprint on event-completion distillation across tokenizers; ${escape(status)}.`;
+    } else {
+        throw new Error(`Unknown news type: ${item.type}`);
+    }
+    const date = item.date.replace('-', '.');
+    return `<li class="news-item"><time datetime="${escape(item.date)}">${escape(date)}</time><p>${text}</p></li>`;
+}
+
 function links(p, l) {
     return (p.links || []).map(item => link(item.type === 'github' ? l.code : item.type === 'project' ? l.project : item.type === 'report' ? l.report : item.type === 'resource' ? l.resource : item.type === 'evaluation' ? l.evaluation : item.label === 'Paper' ? l.paper : item.label, item.href)).join('');
 }
@@ -155,7 +185,7 @@ function work(p, l, language, compact = false) {
 }
 
 for (const [language, l] of Object.entries(labels)) {
-    const ids = ['about', 'research', 'internships', 'project-overview', 'selected-projects', 'other-publications'];
+    const ids = ['about', 'news', 'research', 'internships', 'project-overview', 'selected-projects', 'other-publications'];
     const selectedIds = new Set(l.groups.flatMap(group => group[1]));
     const years = [...new Set(publications.map(archiveYear))].sort((a, b) => b - a);
     const html = `<!doctype html>
@@ -192,26 +222,35 @@ for (const [language, l] of Object.entries(labels)) {
         <p class="bio">${l.bio}</p>
         <p class="opportunities">${l.opportunities}</p>
     </header>
+    <section id="news" aria-labelledby="news-heading">
+        <div class="news-heading-row">
+            ${sectionHeading('news-heading', l.news, 1)}
+            <p class="news-hint" id="news-hint">${escape(l.newsHint)} <span aria-hidden="true">↕</span></p>
+        </div>
+        <div class="news-scroll" role="region" aria-labelledby="news-heading" aria-describedby="news-hint" tabindex="0">
+            <ul class="news-list">${news.map(item => newsItem(item, l)).join('\n                ')}</ul>
+        </div>
+    </section>
     <section id="research" aria-labelledby="research-heading">
-        ${sectionHeading('research-heading', l.research, 1)}
+        ${sectionHeading('research-heading', l.research, 2)}
         <ul class="interests">${l.interests.map(item => `<li>${item}</li>`).join('')}</ul>
     </section>
     <section id="internships" aria-labelledby="internships-heading">
-        ${sectionHeading('internships-heading', l.internships, 2)}
+        ${sectionHeading('internships-heading', l.internships, 3)}
         ${l.experience.map(([company, period, role, description]) => `<article class="experience"><div class="experience-heading"><h3>${company}</h3><span class="period">${period}</span></div><p class="role">${role}</p><p>${description}</p></article>`).join('')}
     </section>
     <section id="project-overview" aria-labelledby="overview-heading">
-        ${sectionHeading('overview-heading', l.overview, 3)}
+        ${sectionHeading('overview-heading', l.overview, 4)}
         <p class="section-note">${l.overviewNote}</p>
         ${l.overviews.map(([heading, paragraphs], i) => `<article class="research-overview" aria-labelledby="overview-${i + 1}"><h3 id="overview-${i + 1}">${escape(heading)}</h3>${paragraphs.map(overviewParagraph).join('')}${representativeWorks(l.groups[i][1], l)}</article>`).join('\n        ')}
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
-        ${sectionHeading('projects-heading', l.projects, 4)}
+        ${sectionHeading('projects-heading', l.projects, 5)}
         <p class="section-note">${l.selectedNote}</p>
         ${l.groups.map(([heading, selected], i) => `<div class="selected-group" role="group" aria-labelledby="selected-group-${i + 1}"><h3 class="group-heading" id="selected-group-${i + 1}">${escape(heading)}</h3>${selected.map(id => { const p = publications.find(p => p.id === id); if (!p) throw new Error(`Missing selected paper: ${id}`); return work(p, l, language); }).join('\n')}</div>`).join('\n        ')}
     </section>
     <section id="other-publications" aria-labelledby="publications-heading">
-        ${sectionHeading('publications-heading', l.others, 5)}
+        ${sectionHeading('publications-heading', l.others, 6)}
         <p class="section-note">${l.otherNote}</p>
         ${years.map(year => `<details class="publication-group"><summary>${year}</summary><ol class="publication-list">${publications.filter(p => archiveYear(p) === year).map(p => work(p, l, language, true)).join('')}</ol></details>`).join('')}
     </section>
