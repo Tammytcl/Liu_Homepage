@@ -27,7 +27,7 @@ const labels = {
         interests: [
             '<strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
-            '<strong>交互式世界模型：</strong>指令驱动的视频生成、动作响应与长时序一致性。'
+            '<strong>交互式世界模型：</strong>面向游戏场景的可控交互生成、动作响应与长时序一致性。'
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.09–至今', 'LLM 基模组 · 后训练实习生 · 上海', '围绕多轮 Coding Agent 开展训练研究，关注工具调用、环境反馈与交互轨迹上的蒸馏学习；同时开展跨 Tokenizer、异构 MoE 知识迁移及多能力合并训练。'],
@@ -43,9 +43,9 @@ const labels = {
                 '围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。',
                 '这一研究主线也延伸到生成过程本身的计算组织，包括渐进分辨率、时空 Token 选择、噪声轨迹选择，以及自回归视频中的 KV 选择与量化；在图像编辑中关注语义保持与局部修改，在语音生成中探索频域与小波引导的外推。通过结合特征、空间、时间和任务层面的计算策略，探索适用于多种生成与编辑任务的效率方法。'
             ]],
-            ['交互式世界模型', [
-                '我关注生成模型如何从单向的视频合成走向可控制、可持续交互的环境建模：既响应自然语言指令和玩家动作，也在长时序生成中维持场景、状态与历史的一致性。相关工作贯穿交互视频数据构建、清洗与标注，交互记忆教师模型 SFT，以及指令跟随、动作响应和时序一致性的评测。',
-                '在训练与推理方面，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。研究重点是将控制能力、交互记忆与生成效率一起考虑，使世界模型能够在持续反馈中生成连贯的交互过程。'
+            ['面向游戏场景的交互式世界模型', [
+                {"lead": "研究自然语言和玩家动作驱动的游戏画面生成，关注持续交互中的可控性、时序一致性与生成效率。", "text": "在 Hunyuan-GameCraft-2 相关工作中，参与游戏交互视频数据的构建、清洗与标注，并基于 Unity 渲染游戏场景视频，为世界模型提供训练数据；同时开展过 3D 相关基线实验。"},
+                "在模型训练方面，参与交互记忆教师模型 SFT，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。相关评测围绕指令跟随、玩家动作响应和时序一致性展开。"
             ]]
         ],
         overviewNote: '以下介绍我正在开展及此前参与的研究工作。',
@@ -73,7 +73,7 @@ const labels = {
         interests: [
             '<strong>LLM post-training and agents:</strong> Coding Agent task construction, credit assignment in long-horizon interactions, asynchronous training for multi-turn agents, and on-policy distillation and cross-model knowledge transfer.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
-            '<strong>Interactive world models:</strong> instruction-driven video generation, action response, and long-horizon consistency.'
+            '<strong>Interactive world models:</strong> controllable interactive generation for game environments, action response, and long-horizon consistency.'
         ],
         experience: [
             ['Endless Frontier', 'Sep 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on training multi-turn coding agents, focusing on tool use, environment feedback, and distillation along interaction trajectories, alongside cross-tokenizer and heterogeneous MoE knowledge transfer and capability merging.'],
@@ -89,9 +89,9 @@ const labels = {
                 'I study how feature dynamics across timesteps, network layers, and frequency bands can reduce redundant computation in image, video, and speech generation. My work spans training-free extrapolation, prediction and calibration, learnable and stage-aware predictors, adaptive verification, and computation allocation, alongside surveys of caching methods and efficient attention. The central questions are which computations can be reused or predicted, when to recompute, and how to preserve quality under acceleration.',
                 'This direction also covers how computation is organized throughout generation: progressive resolution, spatiotemporal token selection, noise-trajectory selection, and KV selection and quantization for autoregressive video. In image editing, I explore semantic preservation and local changes; in speech generation, frequency- and wavelet-guided extrapolation. Together, these studies investigate efficiency across features, space, time, and tasks.'
             ]],
-            ['Interactive World Models', [
-                'I study how video generators can model controllable environments with sustained interaction, responding to natural-language instructions and player actions while preserving scene, state, and history consistency over long horizons. My work spans interactive video data construction, cleaning and annotation, interaction-memory teacher-model SFT, and evaluation of instruction following, action response, and temporal consistency.',
-                'For training and inference, I work on Self-Forcing / DMD few-step distillation and reinforcement learning for long-horizon stability and visual quality. This research considers control, interaction memory, and generation efficiency together, aiming to produce coherent interactions under continuous feedback.'
+            ['Interactive World Models for Game Environments', [
+                {"lead": "I study game-visual generation driven by natural-language instructions and player actions, focusing on controllability, temporal consistency, and generation efficiency during sustained interaction.", "text": "In my work on Hunyuan-GameCraft-2, I contributed to constructing, cleaning, and annotating interactive game video data, rendered videos of game scenes in Unity to create world-model training data, and ran experiments with 3D baselines."},
+                "For model training, I contributed to supervised fine-tuning of a teacher model with interaction memory, few-step distillation using Self-Forcing and DMD, and reinforcement learning to improve long-horizon generation stability and visual quality. Evaluation focused on instruction following, player-action response, and temporal consistency."
             ]]
         ],
         overviewNote: 'Below are research projects I am currently working on or have contributed to in the past.',
@@ -110,6 +110,7 @@ const labels = {
 
 function overviewParagraph(paragraph) {
     if (typeof paragraph === 'string') return `<p>${escape(paragraph)}</p>`;
+    if (paragraph.lead) return `<p><strong>${escape(paragraph.lead)}</strong> ${escape(paragraph.text)}</p>`;
     return `<p><strong>${escape(paragraph.label)}</strong><br>${escape(paragraph.text)}</p>`;
 }
 
