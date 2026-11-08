@@ -27,7 +27,7 @@ const labels = {
         interests: [
             '<strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
-            '<strong>交互式世界建模与生成：</strong>游戏场景中的可控视频生成、交互记忆，以及面向具身智能的三维环境与可形变物体生成。'
+            '<strong>LLM4Graphics：</strong>大语言模型与智能体驱动的三维场景生成、可形变物体建模与物理交互环境构建。'
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.06–至今', 'LLM 基模组 · 后训练实习生 · 上海', '围绕多轮 Coding Agent 开展训练研究，关注工具调用、环境反馈与交互轨迹上的蒸馏学习；同时开展跨 Tokenizer、异构 MoE 知识迁移及多能力合并训练。'],
@@ -74,7 +74,7 @@ const labels = {
         interests: [
             '<strong>LLM post-training and agents:</strong> Coding Agent task construction, credit assignment in long-horizon interactions, asynchronous training for multi-turn agents, and on-policy distillation and cross-model knowledge transfer.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
-            '<strong>Interactive world modeling and generation:</strong> controllable video generation and interaction memory for game environments, alongside 3D environments and deformable-object generation for embodied AI.'
+            '<strong>LLM4Graphics:</strong> LLM- and agent-driven generation of 3D scenes and interactive environments, with deformable-object modeling and physical interactions.'
         ],
         experience: [
             ['Endless Frontier', 'Jun 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on training multi-turn coding agents, focusing on tool use, environment feedback, and distillation along interaction trajectories, alongside cross-tokenizer and heterogeneous MoE knowledge transfer and capability merging.'],
