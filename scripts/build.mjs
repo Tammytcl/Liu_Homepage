@@ -21,13 +21,13 @@ const labels = {
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
         resume: '查看简历', resumeLabel: '在新标签页查看简历 PDF',
-        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注多轮 Coding Agent 及其后训练方法、高效多模态生成，以及交互式世界模型。',
+        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体、高效多模态生成，以及交互式世界建模与 LLM4Render。',
         opportunities: '欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。',
         research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '论文汇总',
         interests: [
             '<strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
-            '<strong>LLM4Graphics：</strong>大语言模型与智能体驱动的三维场景生成、可形变物体建模与物理交互环境构建。'
+            '<strong>交互式世界建模与生成：</strong>面向游戏与具身智能，研究视频世界模型的可控交互，以及大语言模型驱动的三维内容生成与交互环境构建（LLM4Render）。'
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.06–至今', 'LLM 基模组 · 后训练实习生 · 上海', '围绕多轮 Coding Agent 开展训练研究，关注工具调用、环境反馈与交互轨迹上的蒸馏学习；同时开展跨 Tokenizer、异构 MoE 知识迁移及多能力合并训练。'],
@@ -68,13 +68,13 @@ const labels = {
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
         resume: 'View CV', resumeLabel: 'View CV PDF in a new tab',
-        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning multi-turn coding agents and their post-training methods, efficient multimodal generation, and interactive world models.',
+        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agents, efficient multimodal generation, and interactive world modeling and LLM4Render.',
         opportunities: 'I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.',
         research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Publications',
         interests: [
             '<strong>LLM post-training and agents:</strong> Coding Agent task construction, credit assignment in long-horizon interactions, asynchronous training for multi-turn agents, and on-policy distillation and cross-model knowledge transfer.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
-            '<strong>LLM4Graphics:</strong> LLM- and agent-driven generation of 3D scenes and interactive environments, with deformable-object modeling and physical interactions.'
+            '<strong>Interactive world modeling and generation:</strong> controllable interaction in video world models, alongside LLM-driven 3D content generation and interactive environment construction (LLM4Render), with applications in games and embodied AI.'
         ],
         experience: [
             ['Endless Frontier', 'Jun 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on training multi-turn coding agents, focusing on tool use, environment feedback, and distillation along interaction trajectories, alongside cross-tokenizer and heterogeneous MoE knowledge transfer and capability merging.'],
