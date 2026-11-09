@@ -15,19 +15,19 @@ const authorText = value => escape(value).replaceAll('Jiacheng Liu', '<strong>Ji
 const link = (label, href) => `<a href="${escape(href)}">${escape(label)}</a>`;
 const labels = {
     zh: {
-        lang: 'zh-CN', title: '留嘉城 · Jiacheng Liu', description: '留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界模型。',
+        lang: 'zh-CN', title: '留嘉城 · Jiacheng Liu', description: '留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界生成与建模。',
         nav: ['简介', '动态', '研究方向', '实习', '项目介绍', '代表项目', '论文汇总'],
         news: '最新动态', newsHint: '上下滚动查看更多动态',
         affiliation: '上海交通大学 · 人工智能学院 · 博士生',
         advisor: '指导教师', advisorName: '张林峰教授',
         resume: '查看简历', resumeLabel: '在新标签页查看简历 PDF',
-        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体、高效多模态生成，以及交互式世界建模与 LLM4Render。',
+        bio: '我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体、高效多模态生成，以及交互式世界生成与建模。',
         opportunities: '欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。',
         research: '研究方向', internships: '实习经历', overview: '项目介绍', projects: '代表项目', others: '论文汇总',
         interests: [
             '<strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。',
             '<strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。',
-            '<strong>交互式世界建模与生成：</strong>面向游戏与具身智能，研究视频世界模型的可控交互，以及大语言模型驱动的三维内容生成与交互环境构建（LLM4Render）。'
+            '<strong>交互式世界生成与建模：</strong>面向游戏与具身智能，研究视频世界模型的可控交互，以及大语言模型驱动的三维内容生成与交互环境构建。'
         ],
         experience: [
             ['无尽前沿（Endless Frontier）', '2026.06–至今', 'LLM 基模组 · 后训练实习生 · 上海', '围绕多轮 Coding Agent 开展训练研究，关注工具调用、环境反馈与交互轨迹上的蒸馏学习；同时开展跨 Tokenizer、异构 MoE 知识迁移及多能力合并训练。'],
@@ -43,7 +43,7 @@ const labels = {
                 '围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。',
                 '这一研究主线也延伸到生成过程本身的计算组织，包括渐进分辨率、时空 Token 选择、噪声轨迹选择，以及自回归视频中的 KV 选择与量化；在图像编辑中关注语义保持与局部修改，在语音生成中探索频域与小波引导的外推。通过结合特征、空间、时间和任务层面的计算策略，探索适用于多种生成与编辑任务的效率方法。'
             ]],
-            ['交互式世界建模与生成', [
+            ['交互式世界生成与建模', [
                 { label: '1. Hunyuan-GameCraft-2：交互式游戏世界模型', text: '面向自然语言和玩家动作驱动的游戏画面生成，关注持续交互中的可控性、时序一致性与生成效率。参与游戏交互视频数据的构建、清洗与标注，并基于 Unity 渲染游戏场景视频，为世界模型提供训练数据；同时开展过 3D 相关基线实验。' },
                 '在模型训练方面，参与交互记忆教师模型 SFT，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。相关评测围绕指令跟随、玩家动作响应和时序一致性展开。',
                 { label: '2. Deformia：可形变物体的交互式三维世界生成', text: '面向具身智能训练与操作能力评测，研究代码驱动的交互式三维室内世界生成。结合图像扩散模型进行场景规划，在 Unity 中构建场景，对体积型、面状和线状可形变物体进行结构感知建模；通过 simulation-as-correction，利用物体与环境的物理交互修正几何。配套评测框架 DOPE 覆盖物体放置的语义合理性、环境约束下的形变与动态交互响应。' }
@@ -55,26 +55,26 @@ const labels = {
         groups: [
             ['大语言模型后训练', ['ESCD', 'TRAIL', 'PHYRD', 'BigBang']],
             ['高效多模态生成', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
-            ['交互式世界建模与生成', ['GameCraft-2', 'DeformWorld']]
+            ['交互式世界生成与建模', ['GameCraft-2', 'DeformWorld']]
         ],
         otherNote: '收录论文、综述、技术报告及进行中的研究。在审稿件按投稿年份整理。',
         roleFirst: '一作', roleEqual: '共同一作', underReview: '在审', inProgress: '进行中',
         paper: '论文', code: '代码', project: '项目', report: '最新报告', resource: '资源', evaluation: '评测代码', footer: '更新于 2026 年 11 月'
     },
     en: {
-        lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world models.',
+        lang: 'en', title: 'Jiacheng Liu (留嘉城)', description: 'Jiacheng Liu, Ph.D. student at Shanghai Jiao Tong University. LLM post-training and agents, efficient multimodal generation, and interactive world generation and modeling.',
         nav: ['About', 'News', 'Research', 'Internships', 'Project Overview', 'Selected Work', 'Publications'],
         news: 'News', newsHint: 'Scroll for more updates',
         affiliation: 'Ph.D. Student · School of Artificial Intelligence · SJTU',
         advisor: 'Advisor', advisorName: 'Prof. Linfeng Zhang',
         resume: 'View CV', resumeLabel: 'View CV PDF in a new tab',
-        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agents, efficient multimodal generation, and interactive world modeling and LLM4Render.',
+        bio: 'I am a first-year Ph.D. student (2026 cohort) at the School of Artificial Intelligence, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. My research focuses on the efficiency and capabilities of generative models and agents, spanning LLM post-training and agents, efficient multimodal generation, and interactive world generation and modeling.',
         opportunities: 'I welcome research internship and collaboration opportunities in LLM post-training, agents, multimodal generation, and world models.',
         research: 'Research Interests', internships: 'Internships', overview: 'Project Overview', projects: 'Selected Projects', others: 'Publications',
         interests: [
             '<strong>LLM post-training and agents:</strong> Coding Agent task construction, credit assignment in long-horizon interactions, asynchronous training for multi-turn agents, and on-policy distillation and cross-model knowledge transfer.',
             '<strong>Efficient multimodal generation:</strong> feature prediction and caching, adaptive computation, video KV caching and quantization, and few-step distillation.',
-            '<strong>Interactive world modeling and generation:</strong> controllable interaction in video world models, alongside LLM-driven 3D content generation and interactive environment construction (LLM4Render), with applications in games and embodied AI.'
+            '<strong>Interactive world generation and modeling:</strong> controllable interaction in video world models, alongside LLM-driven 3D content generation and interactive environment construction, with applications in games and embodied AI.'
         ],
         experience: [
             ['Endless Frontier', 'Jun 2026–Present', 'LLM Foundation Model Team · Post-training Intern · Shanghai', 'Research on training multi-turn coding agents, focusing on tool use, environment feedback, and distillation along interaction trajectories, alongside cross-tokenizer and heterogeneous MoE knowledge transfer and capability merging.'],
@@ -90,7 +90,7 @@ const labels = {
                 'I study how feature dynamics across timesteps, network layers, and frequency bands can reduce redundant computation in image, video, and speech generation. My work spans training-free extrapolation, prediction and calibration, learnable and stage-aware predictors, adaptive verification, and computation allocation, alongside surveys of caching methods and efficient attention. The central questions are which computations can be reused or predicted, when to recompute, and how to preserve quality under acceleration.',
                 'This direction also covers how computation is organized throughout generation: progressive resolution, spatiotemporal token selection, noise-trajectory selection, and KV selection and quantization for autoregressive video. In image editing, I explore semantic preservation and local changes; in speech generation, frequency- and wavelet-guided extrapolation. Together, these studies investigate efficiency across features, space, time, and tasks.'
             ]],
-            ['Interactive World Modeling and Generation', [
+            ['Interactive World Generation and Modeling', [
                 { label: '1. Hunyuan-GameCraft-2: Interactive Game World Models', text: 'I study game-visual generation driven by natural-language instructions and player actions, focusing on controllability, temporal consistency, and generation efficiency during sustained interaction. I contributed to constructing, cleaning, and annotating interactive game video data, rendered videos of game scenes in Unity to create world-model training data, and ran experiments with 3D baselines.' },
                 'For model training, I contributed to supervised fine-tuning of a teacher model with interaction memory, few-step distillation using Self-Forcing and DMD, and reinforcement learning to improve long-horizon generation stability and visual quality. Evaluation focused on instruction following, player-action response, and temporal consistency.',
                 { label: '2. Deformia: Interactive 3D World Generation with Deformable Objects', text: 'For embodied-agent training and manipulation evaluation, I study code-driven generation of interactive 3D indoor worlds. Deformia combines image-diffusion-based scene planning, scene construction in Unity, and structure-aware modeling of volumetric, surface-based, and line-based deformable objects. Simulation-as-correction refines geometry through object–environment interactions. The accompanying DOPE framework evaluates semantic placement plausibility, environment-conditioned deformation, and dynamic interaction responses.' }
@@ -102,7 +102,7 @@ const labels = {
         groups: [
             ['LLM Post-training', ['ESCD', 'TRAIL', 'PHYRD', 'BigBang']],
             ['Efficient Multimodal Generation', ['FreqCa', 'LESA', 'SpeCa', 'TaylorSeer']],
-            ['Interactive World Modeling and Generation', ['GameCraft-2', 'DeformWorld']]
+            ['Interactive World Generation and Modeling', ['GameCraft-2', 'DeformWorld']]
         ],
         otherNote: 'Papers, surveys, technical reports, and research in progress. Submissions under review are grouped by submission year.',
         roleFirst: 'First author', roleEqual: 'Co-first author', underReview: 'Under review', inProgress: 'In progress',

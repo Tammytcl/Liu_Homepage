@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>留嘉城 · Jiacheng Liu</title>
-    <meta name="description" content="留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界模型。">
+    <meta name="description" content="留嘉城，上海交通大学人工智能学院博士生。研究大语言模型后训练与智能体、高效多模态生成及交互式世界生成与建模。">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="static/css/academic.css?v=8e7a65806af3">
     <link rel="alternate" hreflang="zh-CN" href="https://tammytcl.github.io/Liu_Homepage/">
@@ -25,11 +25,11 @@
                 <p class="affiliation">上海交通大学 · 人工智能学院 · 博士生</p>
                 <p class="advisor">指导教师: <a href="https://scholar.google.com/citations?user=AK9VF30AAAAJ&amp;hl=zh-CN">张林峰教授</a></p>
                 <p class="contact-email">Contact: <a href="mailto:ljc.mytcl@gmail.com">ljc.mytcl@gmail.com</a></p>
-                <div class="contact"><a href="https://scholar.google.com/citations?user=B4udiEoAAAAJ">Google Scholar</a><a href="https://github.com/Tammytcl">GitHub</a><a class="resume-link" href="assets/resume.pdf?v=b727e6130556" target="_blank" rel="noopener noreferrer" aria-label="在新标签页查看简历 PDF">查看简历 <span aria-hidden="true">↗</span></a></div>
+                <div class="contact"><a href="https://scholar.google.com/citations?user=B4udiEoAAAAJ">Google Scholar</a><a href="https://github.com/Tammytcl">GitHub</a><a class="resume-link" href="assets/resume.pdf?v=3541f7819bc6" target="_blank" rel="noopener noreferrer" aria-label="在新标签页查看简历 PDF">查看简历 <span aria-hidden="true">↗</span></a></div>
             </div>
             <img class="portrait" src="static/img/profile.png?v=740905a8cd83" width="164" height="164" alt="留嘉城的个人头像">
         </div>
-        <p class="bio">我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体、高效多模态生成，以及交互式世界建模与 LLM4Render。</p>
+        <p class="bio">我是<a href="https://www.sjtu.edu.cn/">上海交通大学</a>人工智能学院 2026 级博士生。我的研究围绕生成模型与智能体的效率和能力展开，重点关注大语言模型后训练与智能体、高效多模态生成，以及交互式世界生成与建模。</p>
         <p class="opportunities">欢迎 LLM 后训练、智能体、多模态生成与世界模型方向的研究实习和合作交流。</p>
     </header>
     <section id="news" aria-labelledby="news-heading">
@@ -51,7 +51,7 @@
     </section>
     <section id="research" aria-labelledby="research-heading">
         <h2 class="section-heading" id="research-heading"><span class="section-index" aria-hidden="true">02</span><span>研究方向</span></h2>
-        <ul class="interests"><li><strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。</li><li><strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。</li><li><strong>交互式世界建模与生成：</strong>面向游戏与具身智能，研究视频世界模型的可控交互，以及大语言模型驱动的三维内容生成与交互环境构建（LLM4Render）。</li></ul>
+        <ul class="interests"><li><strong>大语言模型后训练与智能体：</strong>Coding Agent 任务构建、长程交互中的信用分配、Multi-turn agent 异步训练，以及 On-Policy Distillation 与跨模型知识迁移。</li><li><strong>高效多模态生成：</strong>特征预测与缓存、自适应计算、视频 KV 缓存与量化、少步蒸馏。</li><li><strong>交互式世界生成与建模：</strong>面向游戏与具身智能，研究视频世界模型的可控交互，以及大语言模型驱动的三维内容生成与交互环境构建。</li></ul>
     </section>
     <section id="internships" aria-labelledby="internships-heading">
         <h2 class="section-heading" id="internships-heading"><span class="section-index" aria-hidden="true">03</span><span>实习经历</span></h2>
@@ -62,7 +62,7 @@
         <p class="section-note">以下介绍我正在开展及此前参与的研究工作。</p>
         <article class="research-overview" aria-labelledby="overview-1"><h3 id="overview-1">大语言模型后训练与智能体</h3><p><strong>1. Coding Agent：任务生成与分布式验证</strong><br>构建从仓库与 PR/Issue 采集、候选筛选、版本定位到容器化任务生成与验证的数据流水线，产出包含题面、修复前代码、参考补丁及测试的可执行任务。基于 Temporal 编排多 Worker 并行执行，支持全局资源配额、失败重试和已提交结果复用；通过隔离测试与修复前后对照，校验任务可解性和判分有效性。</p><p><strong>2. 长程 Agent：三角色异步训练与信用分配</strong><br>面向 27B→9B Agent Coding 任务，实现 Rollout、Teacher、Actor 三角色轮级异步流水线。通过教师前缀缓存、轨迹内上下文合并和完整轨迹提前反向衔接评分与训练，在有效 Token 窗口内累积梯度、统一更新并发布权重。冻结教师骨干，以学生完整轨迹的终局成败离线训练前缀价值头，评分时共享教师前向；根据相邻 Token 前缀的价值差构造非负权重，对 Actor 的 OPD 损失进行加权。</p><p><strong>3. 能力迁移：跨 Tokenizer 蒸馏与多教师融合</strong><br>在共享字节空间中对齐师生预测，将教师概率映射为学生词表上的监督目标；针对教师事件跨越多个学生 Token 的情况，聚合合法补全 Token 的概率，监督后续生成。在 Kimi 1T→Qwen 35B、Qwen 397B→30B 的跨 Tokenizer MoE 蒸馏中验证；其中 Kimi 配置在物理推理基准 PHYRD-40 上的平均分较最强对比基线提升 5.1 分。同时通过 MOPD 融合数学、代码与指令遵循能力，并参与工业代码及多模态任务的 27B 级模型合版。</p><p class="representative-works"><strong>以上代表工作：</strong> <a href="#work-ESCD">ESCD</a>（ICLR 在投）；<a href="#work-TRAIL">TRAIL</a>；<a href="#work-PHYRD">PHYRD</a>（ICLR 在投）；<a href="#work-BigBang">BigBang</a>（技术报告）</p></article>
         <article class="research-overview" aria-labelledby="overview-2"><h3 id="overview-2">高效多模态生成</h3><p>围绕图像、视频与语音生成中的重复计算，我研究如何利用特征随时间步、网络层级和频段变化的规律，减少昂贵的模型计算。相关工作覆盖免训练特征外推、预测与校准、可学习及阶段感知预测、自适应验证和计算分配，并从理论与综述角度梳理缓存方法及高效注意力机制。核心问题是：哪些计算可以复用或预测，何时需要重新计算，以及如何在加速时保留生成质量。</p><p>这一研究主线也延伸到生成过程本身的计算组织，包括渐进分辨率、时空 Token 选择、噪声轨迹选择，以及自回归视频中的 KV 选择与量化；在图像编辑中关注语义保持与局部修改，在语音生成中探索频域与小波引导的外推。通过结合特征、空间、时间和任务层面的计算策略，探索适用于多种生成与编辑任务的效率方法。</p><p class="representative-works"><strong>以上代表工作：</strong> <a href="#work-FreqCa">FreqCa</a>（NeurIPS 2026）；<a href="#work-LESA">LESA</a>（CVPR 2026）；<a href="#work-SpeCa">SpeCa</a>（ACM MM 2025）；<a href="#work-TaylorSeer">TaylorSeer</a>（ICCV 2025）</p></article>
-        <article class="research-overview" aria-labelledby="overview-3"><h3 id="overview-3">交互式世界建模与生成</h3><p><strong>1. Hunyuan-GameCraft-2：交互式游戏世界模型</strong><br>面向自然语言和玩家动作驱动的游戏画面生成，关注持续交互中的可控性、时序一致性与生成效率。参与游戏交互视频数据的构建、清洗与标注，并基于 Unity 渲染游戏场景视频，为世界模型提供训练数据；同时开展过 3D 相关基线实验。</p><p>在模型训练方面，参与交互记忆教师模型 SFT，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。相关评测围绕指令跟随、玩家动作响应和时序一致性展开。</p><p><strong>2. Deformia：可形变物体的交互式三维世界生成</strong><br>面向具身智能训练与操作能力评测，研究代码驱动的交互式三维室内世界生成。结合图像扩散模型进行场景规划，在 Unity 中构建场景，对体积型、面状和线状可形变物体进行结构感知建模；通过 simulation-as-correction，利用物体与环境的物理交互修正几何。配套评测框架 DOPE 覆盖物体放置的语义合理性、环境约束下的形变与动态交互响应。</p><p class="representative-works"><strong>以上代表工作：</strong> <a href="#work-GameCraft-2">Hunyuan-GameCraft-2</a>（技术报告、CVPR 2026 Workshop）；<a href="#work-DeformWorld">Deformia</a>（CVPR 2027 在投）</p></article>
+        <article class="research-overview" aria-labelledby="overview-3"><h3 id="overview-3">交互式世界生成与建模</h3><p><strong>1. Hunyuan-GameCraft-2：交互式游戏世界模型</strong><br>面向自然语言和玩家动作驱动的游戏画面生成，关注持续交互中的可控性、时序一致性与生成效率。参与游戏交互视频数据的构建、清洗与标注，并基于 Unity 渲染游戏场景视频，为世界模型提供训练数据；同时开展过 3D 相关基线实验。</p><p>在模型训练方面，参与交互记忆教师模型 SFT，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。相关评测围绕指令跟随、玩家动作响应和时序一致性展开。</p><p><strong>2. Deformia：可形变物体的交互式三维世界生成</strong><br>面向具身智能训练与操作能力评测，研究代码驱动的交互式三维室内世界生成。结合图像扩散模型进行场景规划，在 Unity 中构建场景，对体积型、面状和线状可形变物体进行结构感知建模；通过 simulation-as-correction，利用物体与环境的物理交互修正几何。配套评测框架 DOPE 覆盖物体放置的语义合理性、环境约束下的形变与动态交互响应。</p><p class="representative-works"><strong>以上代表工作：</strong> <a href="#work-GameCraft-2">Hunyuan-GameCraft-2</a>（技术报告、CVPR 2026 Workshop）；<a href="#work-DeformWorld">Deformia</a>（CVPR 2027 在投）</p></article>
     </section>
     <section id="selected-projects" aria-labelledby="projects-heading">
         <h2 class="section-heading" id="projects-heading"><span class="section-index" aria-hidden="true">05</span><span>代表项目</span></h2>
@@ -115,7 +115,7 @@
         <p class="work-description">基于历史特征与高阶差分预测后续时间步，将缓存从直接复用推进到预测；论文实验在 FLUX 与 HunyuanVideo 上分别实现 4.99× 和 5.00× 加速，无需额外训练。</p>
         <div class="paper-links"><a href="https://doi.org/10.48550/arXiv.2503.06923">论文</a><a href="https://github.com/Shenyi-Z/TaylorSeer">代码</a><a href="https://taylorseer.github.io/TaylorSeer/">项目</a></div>
     </article></div>
-        <div class="selected-group" role="group" aria-labelledby="selected-group-3"><h3 class="group-heading" id="selected-group-3">交互式世界建模与生成</h3><article class="work" id="work-GameCraft-2">
+        <div class="selected-group" role="group" aria-labelledby="selected-group-3"><h3 class="group-heading" id="selected-group-3">交互式世界生成与建模</h3><article class="work" id="work-GameCraft-2">
         <h4 class="work-title"><a href="https://arxiv.org/abs/2511.23429">Hunyuan-GameCraft-2: Instruction-following Interactive Game World Model</a></h4>
         <p class="work-meta">CVPR 2026 Workshop · Technical Report<br>Junshu Tang*, <strong>Jiacheng Liu</strong>*, Jiaqi Li*, Longhuang Wu, Haoyu Yang, Penghao Zhao, Siruis Gong, Xiang Yuan, Shuai Shao, Linfeng Zhang, Qinglin Lu†</p>
         <p class="work-description">指令驱动的交互式游戏世界模型。参与交互数据构建、教师模型 SFT、少步蒸馏与评测，支持自然语言控制、玩家动作响应和长时序生成。</p>
