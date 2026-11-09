@@ -1,16 +1,17 @@
 [
   {
     "id": "DeformWorld",
-    "title": "DeformWorld: Agentic Generation of Interactive 3D Worlds with Deformable Objects",
-    "venue": "CVPR · Under Review",
-    "year": 2026,
+    "title": "Deformia: Agentic Simulation-Ready Indoor Worlds with Diverse Deformable Objects",
+    "venue": "CVPR 2027 · Under Review",
+    "year": 2027,
     "submissionYear": 2026,
     "authors": "Zhikai Wang, Haoran Mu, Jiacheng Liu, Zexuan Yan, Suning Huang, Qianzhong Chen, Jiahang Tu, Zhixuan Liang, Linfeng Zhang, Yue Ma",
     "links": [],
     "description": {
       "zh": "基于 Unity 的代码驱动交互式三维世界生成，结合扩散模型场景规划、可形变物体建模与物理交互反馈修正，并通过 DOPE 评估物体放置、形变及动态交互响应。",
       "en": "Code-driven interactive 3D world generation in Unity, combining diffusion-based scene planning, deformable-object modeling, and simulation-as-correction, with DOPE evaluating placement, deformation, and dynamic interaction responses."
-    }
+    },
+    "shortTitle": "Deformia"
   },
   {
     "id": "Focused Forcing",

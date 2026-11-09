@@ -46,7 +46,7 @@ const labels = {
             ['交互式世界建模与生成', [
                 { label: '1. Hunyuan-GameCraft-2：交互式游戏世界模型', text: '面向自然语言和玩家动作驱动的游戏画面生成，关注持续交互中的可控性、时序一致性与生成效率。参与游戏交互视频数据的构建、清洗与标注，并基于 Unity 渲染游戏场景视频，为世界模型提供训练数据；同时开展过 3D 相关基线实验。' },
                 '在模型训练方面，参与交互记忆教师模型 SFT，基于 Self-Forcing 与 DMD 开展少步蒸馏，并结合强化学习优化长程生成稳定性与视觉质量。相关评测围绕指令跟随、玩家动作响应和时序一致性展开。',
-                { label: '2. DeformWorld：可形变物体的交互式三维世界生成', text: '面向具身智能训练与操作能力评测，研究代码驱动的交互式三维室内世界生成。结合图像扩散模型进行场景规划，在 Unity 中构建场景，对体积型、面状和线状可形变物体进行结构感知建模；通过 simulation-as-correction，利用物体与环境的物理交互修正几何。配套评测框架 DOPE 覆盖物体放置的语义合理性、环境约束下的形变与动态交互响应。' }
+                { label: '2. Deformia：可形变物体的交互式三维世界生成', text: '面向具身智能训练与操作能力评测，研究代码驱动的交互式三维室内世界生成。结合图像扩散模型进行场景规划，在 Unity 中构建场景，对体积型、面状和线状可形变物体进行结构感知建模；通过 simulation-as-correction，利用物体与环境的物理交互修正几何。配套评测框架 DOPE 覆盖物体放置的语义合理性、环境约束下的形变与动态交互响应。' }
             ]]
         ],
         overviewNote: '以下介绍我正在开展及此前参与的研究工作。',
@@ -93,7 +93,7 @@ const labels = {
             ['Interactive World Modeling and Generation', [
                 { label: '1. Hunyuan-GameCraft-2: Interactive Game World Models', text: 'I study game-visual generation driven by natural-language instructions and player actions, focusing on controllability, temporal consistency, and generation efficiency during sustained interaction. I contributed to constructing, cleaning, and annotating interactive game video data, rendered videos of game scenes in Unity to create world-model training data, and ran experiments with 3D baselines.' },
                 'For model training, I contributed to supervised fine-tuning of a teacher model with interaction memory, few-step distillation using Self-Forcing and DMD, and reinforcement learning to improve long-horizon generation stability and visual quality. Evaluation focused on instruction following, player-action response, and temporal consistency.',
-                { label: '2. DeformWorld: Interactive 3D World Generation with Deformable Objects', text: 'For embodied-agent training and manipulation evaluation, I study code-driven generation of interactive 3D indoor worlds. DeformWorld combines image-diffusion-based scene planning, scene construction in Unity, and structure-aware modeling of volumetric, surface-based, and line-based deformable objects. Simulation-as-correction refines geometry through object–environment interactions. The accompanying DOPE framework evaluates semantic placement plausibility, environment-conditioned deformation, and dynamic interaction responses.' }
+                { label: '2. Deformia: Interactive 3D World Generation with Deformable Objects', text: 'For embodied-agent training and manipulation evaluation, I study code-driven generation of interactive 3D indoor worlds. Deformia combines image-diffusion-based scene planning, scene construction in Unity, and structure-aware modeling of volumetric, surface-based, and line-based deformable objects. Simulation-as-correction refines geometry through object–environment interactions. The accompanying DOPE framework evaluates semantic placement plausibility, environment-conditioned deformation, and dynamic interaction responses.' }
             ]]
         ],
         overviewNote: 'Below are research projects I am currently working on or have contributed to in the past.',
@@ -120,13 +120,13 @@ function representativeWorks(ids, l) {
     const references = ids.map(id => {
         const paper = publications.find(p => p.id === id);
         if (!paper) throw new Error(`Missing representative work: ${id}`);
-        const name = id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : id;
+        const name = paper.shortTitle || (id === 'GameCraft-2' ? 'Hunyuan-GameCraft-2' : id);
         const annotation = id === 'ESCD' || id === 'PHYRD'
             ? (l.lang === 'zh-CN' ? 'ICLR 在投' : 'ICLR, under review')
             : id === 'BigBang'
                 ? (l.lang === 'zh-CN' ? '技术报告' : 'Technical Report')
                 : id === 'DeformWorld'
-                    ? (l.lang === 'zh-CN' ? 'CVPR 在投' : 'CVPR, under review')
+                    ? (l.lang === 'zh-CN' ? 'CVPR 2027 在投' : 'CVPR 2027, under review')
                 : id === 'GameCraft-2'
                     ? (l.lang === 'zh-CN' ? '技术报告、CVPR 2026 Workshop' : 'Technical Report, CVPR 2026 Workshop')
                     : ['TaylorSeer', 'SpeCa', 'LESA', 'FreqCa'].includes(id) ? paper.venue : '';
@@ -146,14 +146,14 @@ function newsItem(item, l) {
     const reference = paper => {
         const selected = l.groups.some(([, ids]) => ids.includes(paper.id));
         const href = selected ? `#work-${paper.id}` : (paper.links || []).find(x => x.type === 'paper')?.href || '#other-publications';
-        const name = {
+        const name = paper.shortTitle || ({
             'GameCraft-2': 'Hunyuan-GameCraft-2',
             'Hybrid Caching': 'HyCa',
             'Forecast Calibrate': 'FoCa',
             'Dynamic Video': 'DVG',
             'Sketch to Fresco': 'Fresco',
             'Data-Driven Predictor': 'L²P'
-        }[paper.id] || paper.id;
+        }[paper.id] || paper.id);
         return link(name, href);
     };
     let text;
